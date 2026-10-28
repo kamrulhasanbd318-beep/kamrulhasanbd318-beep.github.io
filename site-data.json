@@ -1,8 +1,8 @@
 {
   "brand": "Kamrul Eagle Fimia",
   "whatsapp": "+8801625453876",
-  "heroTitle": "Premium Products. Trusted Gulfwide Delivery.",
-  "heroText": "Discover our collection for customers across the Gulf. Free delivery in listed areas. Advance payment only.",
+  "heroTitle": "Premium Products. Advance Payment. Fast Delivery.",
+  "heroText": "Pay in advance to confirm your order. After payment is confirmed, delivery is targeted within about 1 hour depending on your location and product availability.",
   "languages": [
     "en",
     "ar",
@@ -11,15 +11,15 @@
   "payment": {
     "method": "Advance payment only",
     "cashOnDelivery": false,
-    "notice": "Payment must be completed before dispatch. Cash on Delivery is not available."
+    "notice": "Please pay the full product price in advance. We do not accept Cash on Delivery or hand-to-hand payment. Your order is processed after payment is confirmed."
   },
   "delivery": {
     "free": true,
-    "notice": "Free delivery in listed service areas. Confirm availability and timing with our team before payment."
+    "notice": "After payment is confirmed, we aim to deliver within about 1 hour, depending on your selected location and product availability. Please confirm the delivery time with our team before paying."
   },
   "notice": {
     "title": "Customer Notice",
-    "text": "Free delivery in listed areas. Advance payment only — Cash on Delivery is not available.",
+    "text": "Advance payment is required. No Cash on Delivery or hand-to-hand payment. Delivery is targeted within about 1 hour after payment confirmation, depending on your location.",
     "active": true
   },
   "countries": [
