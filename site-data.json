@@ -15,6 +15,7 @@
   "delivery": {"free":true,"notice":"Cash on Delivery and pay-at-the-door payment are not available. Advance payment is required to confirm your order. After confirmation, delivery will be made to the location you provide."},
   "notice": {"title":"Customer Notice","text":"⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. Currently, payments are only accepted via bKash. We will notify you once the bank accounts are activated.","active":true},
   "countries": [
+    {"name":"Bangladesh","code":"BD","currency":"BDT","areas":["Dhaka","Chattogram","Sylhet","Rajshahi","Khulna","Barishal","Rangpur","Mymensingh","Cumilla","Gazipur","Narayanganj","Cox's Bazar","Jashore","Bogura","Savar","Tongi","Narsingdi","Feni","Noakhali","Brahmanbaria","Tangail","Dinajpur","Pabna","Kushtia","Faridpur","Madaripur","Gopalganj","Moulvibazar","Habiganj","Sunamganj"]},
     {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":["Riyadh","Jeddah","Makkah","Madinah","Dammam","Al Khobar","Dhahran","Jubail","Taif","Tabuk","Abha","Khamis Mushait","Jazan","Najran","Hail","Al Bahah","Yanbu","Al Qassim","Al Ahsa","Hafar Al Batin","Arar","Sakaka","Al Kharj","Qurayyat","Bisha"]},
     {"name":"Oman","code":"OM","currency":"OMR","areas":["Muscat","Seeb","Muttrah","Bawshar","Al Amarat","Qurayyat","Sohar","Salalah","Nizwa","Sur","Ibri","Barka","Rustaq","Buraimi","Khasab","Ibra","Duqm","Adam"]},
     {"name":"Qatar","code":"QA","currency":"QAR","areas":["Doha","Al Rayyan","Al Wakrah","Al Khor","Lusail","Al Daayen","Umm Salal","Al Shamal","Al Shahaniya","Mesaieed","Dukhan","The Pearl","West Bay"]},
@@ -23,7 +24,7 @@
     {"name":"Malaysia","code":"MY","currency":"MYR","areas":["Kuala Lumpur","Putrajaya","Cyberjaya","Petaling Jaya","Shah Alam","Klang","Subang Jaya","Kajang","Seremban","Melaka City","Johor Bahru","Batu Pahat","Ipoh","Taiping","George Town","Butterworth","Alor Setar","Kangar","Kota Bharu","Kuala Terengganu","Kuantan","Temerloh","Kota Kinabalu","Sandakan","Tawau","Kuching","Miri","Sibu","Bintulu"]},
     {"name":"Kuwait","code":"KW","currency":"KWD","areas":["Kuwait City","Hawalli","Salmiya","Farwaniya","Khaitan","Jahra","Ahmadi","Mangaf","Fahaheel","Mahboula","Abu Halifa","Sabah Al Salem","Mubarak Al-Kabeer","Jabriya","Fintas","Ardiya","Shuwaikh","Sabhan"]}
   ],
-  "deliveryAreas": ["Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
+  "deliveryAreas": ["Bangladesh","Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
   "services": [{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
   "paymentAccounts": [
     {"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
