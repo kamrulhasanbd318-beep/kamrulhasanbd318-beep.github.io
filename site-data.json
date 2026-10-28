@@ -2,6 +2,7 @@
   "brand": "Kamrul Eagle Prime",
   "whatsapp": "+8801625453876",
   "contact": {
+    "phone": "01907486593",
     "whatsapp": "+8801625453876",
     "imo": "",
     "messenger": "https://www.facebook.com/messages/"
@@ -9,50 +10,10 @@
   "heroTitle": "Premium Products. Advance Payment. Fast Delivery.",
   "heroText": "Once your advance payment is confirmed, we aim to deliver to your location within 40–45 minutes.",
   "languages": ["bn", "en", "ar", "hi"],
-  "exchangeRates": {
-    "BDT": 1,
-    "SAR": 0.0307,
-    "QAR": 0.0298,
-    "OMR": 0.0031,
-    "AED": 0.0299,
-    "BHD": 0.0031,
-    "KWD": 0.0025,
-    "MYR": 0.038,
-    "INR": 0.76,
-    "PHP": 0.49,
-    "PKR": 2.32,
-    "LKR": 2.50,
-    "NPR": 1.60,
-    "IDR": 133,
-    "VND": 520,
-    "JPY": 1.35,
-    "CNY": 0.058,
-    "KRW": 12,
-    "SGD": 0.011,
-    "THB": 0.28,
-    "TWD": 0.27,
-    "HKD": 0.063,
-    "MOP": 0.065,
-    "MMK": 18.4,
-    "KHR": 32.3,
-    "BND": 0.011,
-    "KZT": 0.41,
-    "UZS": 99
-  },
-  "payment": {
-    "method": "Advance payment only",
-    "cashOnDelivery": false,
-    "notice": "Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment. Currently, payment is accepted only through the active bKash account shown below."
-  },
-  "delivery": {
-    "free": true,
-    "notice": "Cash on Delivery and pay-at-the-door payment are not available. Advance payment is required to confirm your order. After confirmation, delivery will be made to the location you provide."
-  },
-  "notice": {
-    "title": "Customer Notice",
-    "text": "⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. Currently, payments are only accepted via bKash. We will notify you once the bank accounts are activated.",
-    "active": true
-  },
+  "exchangeRates": {"BDT":1,"SAR":0.0307,"QAR":0.0298,"OMR":0.0031,"AED":0.0299,"BHD":0.0031,"KWD":0.0025,"MYR":0.038,"INR":0.76,"PHP":0.49,"PKR":2.32,"LKR":2.50,"NPR":1.60,"IDR":133,"VND":520,"JPY":1.35,"CNY":0.058,"KRW":12,"SGD":0.011,"THB":0.28,"TWD":0.27,"HKD":0.063,"MOP":0.065,"MMK":18.4,"KHR":32.3,"BND":0.011,"KZT":0.41,"UZS":99},
+  "payment": {"method":"Advance payment only","cashOnDelivery":false,"notice":"Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment. Currently, payment is accepted only through the active bKash account shown below."},
+  "delivery": {"free":true,"notice":"Cash on Delivery and pay-at-the-door payment are not available. Advance payment is required to confirm your order. After confirmation, delivery will be made to the location you provide."},
+  "notice": {"title":"Customer Notice","text":"⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. Currently, payments are only accepted via bKash. We will notify you once the bank accounts are activated.","active":true},
   "countries": [
     {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":["Riyadh","Jeddah","Makkah","Madinah","Dammam","Al Khobar","Dhahran","Jubail","Taif","Tabuk","Abha","Khamis Mushait","Jazan","Najran","Hail","Al Bahah","Yanbu","Al Qassim","Al Ahsa","Hafar Al Batin","Arar","Sakaka","Al Kharj","Qurayyat","Bisha"]},
     {"name":"Oman","code":"OM","currency":"OMR","areas":["Muscat","Seeb","Muttrah","Bawshar","Al Amarat","Qurayyat","Sohar","Salalah","Nizwa","Sur","Ibri","Barka","Rustaq","Buraimi","Khasab","Ibra","Duqm","Adam"]},
@@ -63,9 +24,7 @@
     {"name":"Kuwait","code":"KW","currency":"KWD","areas":["Kuwait City","Hawalli","Salmiya","Farwaniya","Khaitan","Jahra","Ahmadi","Mangaf","Fahaheel","Mahboula","Abu Halifa","Sabah Al Salem","Mubarak Al-Kabeer","Jabriya","Fintas","Ardiya","Shuwaikh","Sabhan"]}
   ],
   "deliveryAreas": ["Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
-  "services": [
-    {"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}
-  ],
+  "services": [{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
   "paymentAccounts": [
     {"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
     {"id":"nagad","country":"বাংলাদেশ","method":"নগদ (Nagad)","holder":"","number":"","type":"","active":false},
