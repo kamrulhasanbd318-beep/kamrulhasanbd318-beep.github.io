@@ -81,6 +81,38 @@
    </article>
   </div>
  </section>
+ 
+ <section id="customerOrder" aria-labelledby="order-heading" class="glass mt-7 rounded-3xl p-5 sm:p-7">
+  <p class="text-sm font-bold uppercase tracking-widest gold">Customer checkout</p>
+  <h2 id="order-heading" class="mt-1 text-2xl font-black sm:text-3xl">অর্ডার, লোকেশন ও পেমেন্ট</h2>
+  <p class="mt-2 text-sm soft">নিচের তথ্য দিন। অর্ডার WhatsApp-এ পাঠানো হবে; পেমেন্ট করার আগে ব্যবসার কাছ থেকে সঠিক অ্যাকাউন্ট নম্বর ও মোট মূল্য নিশ্চিত করুন।</p>
+  <div class="mt-5 grid gap-4 sm:grid-cols-2">
+   <label class="block text-sm font-bold">আপনার নাম<input id="customerName" required maxlength="80" autocomplete="name" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="পুরো নাম লিখুন"></label>
+   <label class="block text-sm font-bold">মোবাইল নম্বর<input id="customerPhone" required maxlength="25" autocomplete="tel" inputmode="tel" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="01XXXXXXXXX"></label>
+   <label class="block text-sm font-bold">সিলেটের এলাকা / সংগ্রহের লোকেশন
+    <select id="deliveryLocation" required class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal">
+     <option value="">লোকেশন নির্বাচন করুন</option><option>সিলেট সদর</option><option>জিন্দাবাজার</option><option>আম্বরখানা</option><option>উপশহর</option><option>শিবগঞ্জ</option><option>সুবিদবাজার</option><option>তিলাগড়</option><option>দক্ষিণ সুরমা</option><option>বালাগঞ্জ</option><option>বিশ্বনাথ</option><option>গোলাপগঞ্জ</option><option>বিয়ানীবাজার</option><option>ফেঞ্চুগঞ্জ</option><option>জৈন্তাপুর</option><option>কানাইঘাট</option><option>জকিগঞ্জ</option><option>কোম্পানীগঞ্জ</option><option>গোয়াইনঘাট</option><option>ওসমানীনগর</option><option>অন্যান্য — পরে নিশ্চিত করব</option>
+    </select>
+   </label>
+   <label class="block text-sm font-bold">পেমেন্ট পদ্ধতি
+    <select id="paymentMethod" required class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal">
+     <option value="">পদ্ধতি নির্বাচন করুন</option><option value="বিকাশ (bKash)">বিকাশ (bKash)</option><option value="নগদ (Nagad)">নগদ (Nagad)</option><option value="রকেট (Rocket)">রকেট (Rocket)</option><option value="ব্যাংক ট্রান্সফার">ব্যাংক ট্রান্সফার</option><option value="অন্যান্য — আগে নিশ্চিত করতে চাই">অন্যান্য — আগে নিশ্চিত করতে চাই</option>
+    </select>
+   </label>
+   <label class="block text-sm font-bold sm:col-span-2">পূর্ণ ঠিকানা / অতিরিক্ত নির্দেশনা (ঐচ্ছিক)<textarea id="customerAddress" maxlength="500" rows="2" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="এলাকা, রাস্তা বা সংগ্রহের সুবিধাজনক তথ্য"></textarea></label>
+  </div>
+  <div class="mt-4 rounded-xl border border-amber-200/20 bg-black/20 p-3 text-sm text-slate-200">⚠️ বর্তমানে হোম ডেলিভারি বা প্রতিটি এলাকার সার্ভিস নিশ্চিত নয়। লোকেশন নির্বাচন করে অর্ডার পাঠালে WhatsApp-এ সংগ্রহের পয়েন্ট, চূড়ান্ত মূল্য ও পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন। Cash on Delivery নেই।</div>
+  <div class="mt-6 border-t border-slate-600/60 pt-5">
+   <h3 class="text-lg font-black gold">অন্যান্য পণ্য অর্ডার / জানতে চান?</h3>
+   <p class="mt-1 text-sm soft">চিনি ছাড়া অন্য পণ্যের নাম ও পরিমাণ লিখে WhatsApp-এ জিজ্ঞাসা করতে পারেন। এই মুহূর্তে অন্য পণ্যের তালিকা ও দাম সাইটে যোগ করা নেই।</p>
+   <div class="mt-3 grid gap-3 sm:grid-cols-2">
+    <label class="block text-sm font-bold">পণ্যের নাম<input id="otherProduct" maxlength="120" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="যে পণ্যটি চান"></label>
+    <label class="block text-sm font-bold">পরিমাণ<input id="otherQuantity" maxlength="80" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="যেমন: 2 প্যাকেট"></label>
+   </div>
+   <button id="otherProductOrder" type="button" class="wa mt-4 w-full rounded-xl px-4 py-3 font-extrabold">🟢 অন্যান্য পণ্য সম্পর্কে WhatsApp-এ জিজ্ঞাসা করুন</button>
+  </div>
+ </section>
+
  <section class="glass mt-7 rounded-2xl p-4 sm:p-5">
   <h2 class="font-bold gold">Currency conversion</h2>
   <p class="mt-1 text-sm soft">Use the currency selector in the header. All origin prices and WhatsApp order summaries update to the selected currency automatically.</p>
@@ -113,9 +145,17 @@
  function renderAll(){document.getElementById('currencyLabel').textContent=currency;renderProduct('iran');renderProduct('afghan')}
  function order(key){
   const p=products[key],grams=p.selected,base=p.prices[grams],total=converted(base);
-  const message=['Eagle Premium / Kamrul Hasan Official','Product: Premium Sugar (চিনি)','Origin: '+p.label,'Quantity: '+grams+' Gram','Base price: '+fmt(base,'SAR'),'Selected currency: '+currency,'Converted price: '+fmt(total,currency),'Please confirm availability, delivery, and final price.'].join('\n');
+  const name=document.getElementById('customerName').value.trim(),phone=document.getElementById('customerPhone').value.trim(),location=document.getElementById('deliveryLocation').value,payment=document.getElementById('paymentMethod').value,address=document.getElementById('customerAddress').value.trim();
+  if(!name||!phone||!location||!payment){document.getElementById('customerOrder').scrollIntoView({behavior:'smooth',block:'start'});alert('অর্ডার পাঠাতে নাম, মোবাইল, লোকেশন ও পেমেন্ট পদ্ধতি নির্বাচন করুন।');return}
+  const message=['Eagle Premium / Kamrul Hasan Official','কাস্টমার অর্ডার','Customer name: '+name,'Mobile: '+phone,'Location / pickup area: '+location,'Address / notes: '+(address||'Not provided'),'Payment method selected: '+payment,'Product: Premium Sugar (চিনি)','Origin: '+p.label,'Quantity: '+grams+' Gram','Base price: '+fmt(base,'SAR'),'Selected currency: '+currency,'Converted price estimate: '+fmt(total,currency),'অনুগ্রহ করে চূড়ান্ত মূল্য, পণ্যের মজুত, সংগ্রহের লোকেশন ও সঠিক পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন।'].join('\\n');
   window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
  }
+ document.getElementById('otherProductOrder').addEventListener('click',()=>{
+  const name=document.getElementById('customerName').value.trim(),phone=document.getElementById('customerPhone').value.trim(),location=document.getElementById('deliveryLocation').value,payment=document.getElementById('paymentMethod').value,product=document.getElementById('otherProduct').value.trim(),quantity=document.getElementById('otherQuantity').value.trim(),address=document.getElementById('customerAddress').value.trim();
+  if(!name||!phone||!location||!payment||!product){document.getElementById('customerOrder').scrollIntoView({behavior:'smooth',block:'start'});alert('নাম, মোবাইল, লোকেশন, পেমেন্ট পদ্ধতি ও পণ্যের নাম পূরণ করুন।');return}
+  const message=['Eagle Premium / Kamrul Hasan Official','অন্যান্য পণ্যের অনুসন্ধান','Customer name: '+name,'Mobile: '+phone,'Location / pickup area: '+location,'Address / notes: '+(address||'Not provided'),'Payment method: '+payment,'Requested product: '+product,'Quantity: '+(quantity||'Not specified'),'অনুগ্রহ করে পণ্যের মজুত, মূল্য, সংগ্রহের লোকেশন ও সঠিক পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন।'].join('\\n');
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+ });
  document.getElementById('currency').addEventListener('change',e=>{currency=e.target.value;renderAll()});
  document.getElementById('year').textContent=new Date().getFullYear();
  document.getElementById('rateNote').textContent='Approximate fixed rates: 1 SAR ≈ '+rates.QAR+' QAR, '+rates.OMR+' OMR, '+rates.AED+' AED, '+rates.BHD+' BHD, '+rates.KWD+' KWD, and '+rates.BDT+' BDT. Not a live FX feed.';
