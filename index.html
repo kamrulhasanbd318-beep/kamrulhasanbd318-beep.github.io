@@ -125,7 +125,7 @@ async function init(){try{const res=await fetch('./site-data.json',{cache:'no-st
  $('paymentNotice').textContent=(data.payment?.notice||'Advance payment only')+' '+(data.notice?.text?.bn||'');
  const phone=data.contact?.phone||'';$('phoneLink').textContent=phone;$('phoneLink').href='tel:'+phone;
  const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');$('waLink').href='https://wa.me/'+wa;$('year').textContent=new Date().getFullYear();
- renderProducts();renderCountries();if($('productSelect').options.length)setProduct();else $('productSelect').innerHTML='<option value="">কোনো বিক্রয়যোগ্য পণ্য নেই</option>';renderArea();
+ const langLabels={bn:'বাংলা',en:'English',ar:'العربية',hi:'हिन्दी'};$('siteLanguage').innerHTML=(data.languages||['bn','en','ar','hi']).filter(k=>langLabels[k]).map(k=>'<option value="'+k+'">'+langLabels[k]+'</option>').join('');if(!$('siteLanguage').options.length)$('siteLanguage').innerHTML='<option value="bn">বাংলা</option>';siteLang=$('siteLanguage').value||'bn';renderProducts();renderCountries();if($('productSelect').options.length)setProduct();else $('productSelect').innerHTML='<option value="">কোনো বিক্রয়যোগ্য পণ্য নেই</option>';renderArea();
  }catch(err){$('products').innerHTML='<div class="notice">সাইটের পণ্য ও ডেলিভারি তথ্য লোড করা যায়নি। অনুগ্রহ করে কিছুক্ষণ পরে আবার চেষ্টা করুন।</div>';console.error(err);}}
 init();
 })();
