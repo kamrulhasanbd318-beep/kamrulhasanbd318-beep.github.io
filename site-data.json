@@ -1,40 +1,35 @@
 {
   "brand": "Kamrul Eagle Prime",
   "whatsapp": "+8801625453876",
-  "contact": {
-    "phone": "01907486593",
-    "whatsapp": "+8801625453876",
-    "imo": "",
-    "messenger": "https://www.facebook.com/messages/"
-  },
+  "contact": {"phone":"01907486593","whatsapp":"+8801625453876","imo":"","messenger":"https://www.facebook.com/messages/"},
   "heroTitle": "Premium Products. Advance Payment. Fast Delivery.",
   "heroText": "Once your advance payment is confirmed, we aim to deliver to your location within 40–45 minutes.",
-  "languages": ["bn", "en", "ar", "hi"],
-  "exchangeRates": {"BDT":1,"SAR":0.0307,"QAR":0.0298,"OMR":0.0031,"AED":0.0299,"BHD":0.0031,"KWD":0.0025,"MYR":0.038,"INR":0.76,"PHP":0.49,"PKR":2.32,"LKR":2.50,"NPR":1.60,"IDR":133,"VND":520,"JPY":1.35,"CNY":0.058,"KRW":12,"SGD":0.011,"THB":0.28,"TWD":0.27,"HKD":0.063,"MOP":0.065,"MMK":18.4,"KHR":32.3,"BND":0.011,"KZT":0.41,"UZS":99},
-  "payment": {"method":"Advance payment only","cashOnDelivery":false,"notice":"Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment. Currently, payment is accepted only through the active bKash account shown below."},
-  "delivery": {"free":true,"notice":"Cash on Delivery and pay-at-the-door payment are not available. Advance payment is required to confirm your order. After confirmation, delivery will be made to the location you provide."},
-  "notice": {"title":"Customer Notice","text":"⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. Currently, payments are only accepted via bKash. We will notify you once the bank accounts are activated.","active":true},
+  "languages": ["bn","en","ar","hi"],
+  "exchangeRates": {"BDT":1,"SAR":0.0307,"QAR":0.0298,"OMR":0.0031,"AED":0.0299,"BHD":0.0031,"KWD":0.0025,"MYR":0.038,"INR":0.76,"PHP":0.49,"PKR":2.32,"LKR":2.5,"NPR":1.6,"IDR":133,"VND":520,"JPY":1.35,"CNY":0.058,"KRW":12,"SGD":0.011,"THB":0.28,"TWD":0.27,"HKD":0.063,"MOP":0.065,"MMK":18.4,"KHR":32.3,"BND":0.011,"KZT":0.41,"UZS":99},
+  "payment": {"method":"Advance payment only","cashOnDelivery":false,"notice":"Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment. Currently, payment is accepted only through active payment accounts shown below."},
+  "delivery": {"free":true,"notice":"Delivery is available across the listed countries. Select your country and then your city/area. Advance payment is required to confirm the order."},
+  "notice": {"title":"Customer Notice","text":"⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. We will notify you once the bank accounts are activated.","active":true},
   "countries": [
-    {"name":"Bangladesh","code":"BD","currency":"BDT","areas":[]},
-    {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":[]},
-    {"name":"Oman","code":"OM","currency":"OMR","areas":[]},
-    {"name":"Qatar","code":"QA","currency":"QAR","areas":[]},
-    {"name":"Bahrain","code":"BH","currency":"BHD","areas":[]},
-    {"name":"United Arab Emirates","code":"AE","currency":"AED","areas":[]},
-    {"name":"Malaysia","code":"MY","currency":"MYR","areas":[]},
-    {"name":"Kuwait","code":"KW","currency":"KWD","areas":[]}
+    {"name":"Bangladesh","code":"BD","currency":"BDT","areas":["Dhaka","Chattogram","Sylhet","Rajshahi","Khulna","Barishal","Rangpur","Mymensingh","Cumilla","Gazipur","Narayanganj","Cox's Bazar","Jashore","Bogura","Savar","Tongi","Narsingdi","Feni","Noakhali","Brahmanbaria","Tangail","Dinajpur","Pabna","Kushtia","Faridpur","Madaripur","Gopalganj","Moulvibazar","Habiganj","Sunamganj"]},
+    {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":["Riyadh","Jeddah","Makkah","Madinah","Dammam","Al Khobar","Dhahran","Jubail","Taif","Tabuk","Abha","Khamis Mushait","Jazan","Najran","Hail","Al Bahah","Yanbu","Al Qassim","Al Ahsa","Hafar Al Batin","Arar","Sakaka","Al Kharj","Qurayyat","Bisha"]},
+    {"name":"Oman","code":"OM","currency":"OMR","areas":["Muscat","Seeb","Muttrah","Bawshar","Al Amarat","Qurayyat","Sohar","Salalah","Nizwa","Sur","Ibri","Barka","Rustaq","Buraimi","Khasab","Ibra","Duqm","Adam"]},
+    {"name":"Qatar","code":"QA","currency":"QAR","areas":["Doha","Al Rayyan","Al Wakrah","Al Khor","Lusail","Al Daayen","Umm Salal","Al Shamal","Al Shahaniya","Mesaieed","Dukhan","The Pearl","West Bay"]},
+    {"name":"Bahrain","code":"BH","currency":"BHD","areas":["Manama","Muharraq","Riffa","Isa Town","Hamad Town","Sitra","A'ali","Budaiya","Jidhafs","Sanabis","Arad","Hidd","Zallaq","Saar","Juffair","Seef","Tubli"]},
+    {"name":"United Arab Emirates","code":"AE","currency":"AED","areas":["Abu Dhabi","Dubai","Sharjah","Ajman","Al Ain","Ras Al Khaimah","Fujairah","Umm Al Quwain","Khor Fakkan","Kalba","Dibba Al-Fujairah","Jebel Ali","Madinat Zayed","Ruwais","Liwa","Al Dhafra"]},
+    {"name":"Malaysia","code":"MY","currency":"MYR","areas":["Kuala Lumpur","Putrajaya","Cyberjaya","Petaling Jaya","Shah Alam","Klang","Subang Jaya","Kajang","Seremban","Melaka City","Johor Bahru","Batu Pahat","Ipoh","Taiping","George Town","Butterworth","Alor Setar","Kangar","Kota Bharu","Kuala Terengganu","Kuantan","Temerloh","Kota Kinabalu","Sandakan","Tawau","Kuching","Miri","Sibu","Bintulu"]},
+    {"name":"Kuwait","code":"KW","currency":"KWD","areas":["Kuwait City","Hawalli","Salmiya","Farwaniya","Khaitan","Jahra","Ahmadi","Mangaf","Fahaheel","Mahboula","Abu Halifa","Sabah Al Salem","Mubarak Al-Kabeer","Jabriya","Fintas","Ardiya","Shuwaikh","Sabhan"]}
   ],
-  "deliveryAreas": ["Bangladesh","Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
-  "services": [{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
-  "paymentAccounts": [
+  "deliveryAreas":["Bangladesh","Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
+  "services":[{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
+  "paymentAccounts":[
     {"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
-    {"id":"nagad","country":"বাংলাদেশ","method":"নগদ (Nagad)","holder":"","number":"","type":"","active":false},
-    {"id":"rocket","country":"বাংলাদেশ","method":"রকেট (Rocket)","holder":"","number":"","type":"","active":false},
+    {"id":"nagad","country":"বাংলাদেশ","method":"নগদ (Nagad)","holder":"","number":"","type":"Mobile Account","active":false},
+    {"id":"rocket","country":"বাংলাদেশ","method":"রকেট (Rocket)","holder":"","number":"","type":"Mobile Account","active":false},
     {"id":"dbbl","country":"বাংলাদেশ","method":"ডাচ-বাংলা ব্যাংক (DBBL)","holder":"","number":"","type":"Bank Account","active":false},
     {"id":"islami-bank","country":"বাংলাদেশ","method":"ইসলামী ব্যাংক বাংলাদেশ","holder":"","number":"","type":"Bank Account","active":false},
     {"id":"sonali-bank","country":"বাংলাদেশ","method":"সোনালী ব্যাংক","holder":"","number":"","type":"Bank Account","active":false}
   ],
-  "gccBankAccounts": [
+  "gccBankAccounts":[
     {"country":"Saudi Arabia","flag":"🇸🇦","bank":"Saudi Arabia Bank Account","account":"SA42 **** **** **** 1289","active":false},
     {"country":"Qatar","flag":"🇶🇦","bank":"Qatar Bank Account","account":"QA **** **** 4589","active":false},
     {"country":"Oman","flag":"🇴🇲","bank":"Oman Bank Account","account":"OM **** **** 6721","active":false},
