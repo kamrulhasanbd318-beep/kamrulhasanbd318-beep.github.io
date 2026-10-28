@@ -21,44 +21,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout website source
+      - name: Checkout this website repository
         uses: actions/checkout@v4
-        with:
-          repository: kamrulhasanbd318-beep/Kamrulhasan
-          ref: main
-          path: site
-
-      - name: Set root-site URLs
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('site/index.html')
-          s = p.read_text(encoding='utf-8')
-          s = s.replace('https://kamrulhasanbd318-beep.github.io/Kamrulhasan/', 'https://kamrulhasanbd318-beep.github.io/')
-          p.write_text(s, encoding='utf-8')
-
-          Path('site/robots.txt').write_text(
-              'User-agent: *\nAllow: /\nSitemap: https://kamrulhasanbd318-beep.github.io/sitemap.xml\n',
-              encoding='utf-8'
-          )
-
-          Path('site/sitemap.xml').write_text(
-              '<?xml version="1.0" encoding="UTF-8"?>\n'
-              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-              '  <url><loc>https://kamrulhasanbd318-beep.github.io/</loc></url>\n'
-              '</urlset>\n',
-              encoding='utf-8'
-          )
-          PY
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Upload site artifact
+      - name: Upload website root
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
-
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
