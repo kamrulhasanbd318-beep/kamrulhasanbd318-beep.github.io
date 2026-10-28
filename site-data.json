@@ -21,7 +21,25 @@
     {"name":"Kuwait","code":"KW","currency":"KWD","deliveryEnabled":true,"areas":["Kuwait City","Hawalli","Salmiya","Farwaniya","Khaitan","Jahra","Ahmadi","Mangaf","Fahaheel","Mahboula","Abu Halifa","Sabah Al Salem","Mubarak Al-Kabeer","Jabriya","Fintas","Ardiya","Shuwaikh","Sabhan"]}
   ],
   "deliveryAreas":["Saudi Arabia","Qatar","Oman","Bahrain","Kuwait","Malaysia","United Arab Emirates"],
-  "services":[{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
+  "services":[
+    {
+      "id":"sugar-tier-template",
+      "name":{"bn":"প্রিমিয়াম চিনি","en":"Premium Sugar","ar":"سكر فاخر","hi":"प्रीमियम चीनी"},
+      "price":"",
+      "image":"",
+      "description":{"bn":"চিনির প্যাক সাইজ/টিয়ার টেমপ্লেট। অ্যাডমিন প্যানেল থেকে প্রতিটি টিয়ারের দাম, নাম ও বিবরণ পরিবর্তন করা যাবে।","en":"Editable sugar pack-size tier template. Each tier name, price and description can be changed from the admin panel.","ar":"قالب قابل للتعديل لأحجام عبوات السكر. يمكن تغيير اسم وسعر ووصف كل فئة من لوحة الإدارة.","hi":"संपादन योग्य चीनी पैक-साइज़ टियर टेम्पलेट। हर टियर का नाम, कीमत और विवरण एडमिन पैनल से बदला जा सकता है।"},
+      "variations":[
+        {"name":{"bn":"1 গ্রাম","en":"1g","ar":"1 غرام","hi":"1 ग्राम"},"price":""},
+        {"name":{"bn":"2 গ্রাম","en":"2g","ar":"2 غرام","hi":"2 ग्राम"},"price":""},
+        {"name":{"bn":"3 গ্রাম","en":"3g","ar":"3 غرام","hi":"3 ग्राम"},"price":""},
+        {"name":{"bn":"5 গ্রাম","en":"5g","ar":"5 غرام","hi":"5 ग्राम"},"price":""},
+        {"name":{"bn":"10 গ্রাম","en":"10g","ar":"10 غرام","hi":"10 ग्राम"},"price":""},
+        {"name":{"bn":"20 গ্রাম","en":"20g","ar":"20 غرام","hi":"20 ग्राम"},"price":""},
+        {"name":{"bn":"30 গ্রাম","en":"30g","ar":"30 غرام","hi":"30 ग्राम"},"price":""}
+      ],
+      "countryPrices":{"SA":"","QA":"","OM":"","BH":"","KW":"","MY":"","AE":""}
+    }
+  ],
   "paymentAccounts":[
     {"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
     {"id":"bkash-sa","country":"Saudi Arabia","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
