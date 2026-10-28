@@ -45,16 +45,16 @@
   ],
   "notice": {
     "title": {
-      "bn": "⚠️ জরুরি পেমেন্ট সতর্কতা",
-      "en": "⚠️ Important Payment Warning",
-      "ar": "⚠️ تحذير مهم للدفع",
-      "hi": "⚠️ महत्वपूर्ण भुगतान चेतावनी"
+      "bn": "👋 স্বাগতম আমাদের Eagle Premium পরিবারে",
+      "en": "👋 Welcome to the Eagle Premium family",
+      "ar": "👋 مرحبًا بكم في عائلة Eagle Premium",
+      "hi": "👋 Eagle Premium परिवार में आपका स्वागत है"
     },
     "text": {
-      "bn": "⚠️ ব্যাংক অ্যাকাউন্টগুলো বর্তমানে বন্ধ/নিষ্ক্রিয়। এসব অ্যাকাউন্টে টাকা পাঠাবেন না। শুধু সক্রিয় bKash ব্যবহার করুন।",
-      "en": "⚠️ Bank accounts are currently closed/inactive. Do NOT send money to these accounts. Use active bKash only.",
-      "ar": "⚠️ الحسابات البنكية مغلقة أو غير نشطة حاليًا. لا ترسل الأموال إليها. استخدم bKash النشط فقط.",
-      "hi": "⚠️ बैंक खाते अभी बंद/निष्क्रिय हैं। इन खातों में पैसे न भेजें। केवल सक्रिय bKash का उपयोग करें।"
+      "bn": "আমাদের পরিবারে স্বাগতম! পেমেন্টের জন্য বর্তমানে শুধু সক্রিয় bKash ব্যবহার করুন। বিদেশ থেকে পাঠালে bKash-সমর্থিত আন্তর্জাতিক রেমিট্যান্স/ট্রান্সফার সেবা ব্যবহার করতে হবে; সরাসরি bKash অ্যাপ সব দেশে কাজ নাও করতে পারে। ব্যাংক অ্যাকাউন্টগুলো নিষ্ক্রিয়—সেগুলোতে টাকা পাঠাবেন না।",
+      "en": "Welcome to our family! Only the active bKash account is currently accepted. From abroad, use an international remittance/transfer service that supports bKash; the bKash app may not work directly in every country. Bank accounts are inactive—do not send money to them.",
+      "ar": "مرحبًا بكم في عائلتنا! حاليًا نقبل الدفع عبر حساب bKash النشط فقط. من الخارج، استخدم خدمة تحويل دولي تدعم bKash؛ قد لا يعمل تطبيق bKash مباشرةً في جميع البلدان. الحسابات البنكية غير نشطة—يرجى عدم التحويل إليها.",
+      "hi": "हमारे परिवार में आपका स्वागत है! फिलहाल केवल सक्रिय bKash खाते से भुगतान स्वीकार है। विदेश से भुगतान के लिए bKash का समर्थन करने वाली अंतरराष्ट्रीय रेमिटेंस/ट्रांसफर सेवा का उपयोग करें; bKash ऐप हर देश में सीधे काम नहीं कर सकता। बैंक खाते निष्क्रिय हैं—उनमें पैसे न भेजें।"
     },
     "active": true
   },
@@ -695,7 +695,7 @@
   "paymentAccounts": [
     {
       "id": "bkash-personal",
-      "country": "Bangladesh",
+      "country": "All countries (via supported international remittance)",
       "method": "বিকাশ (bKash)",
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
