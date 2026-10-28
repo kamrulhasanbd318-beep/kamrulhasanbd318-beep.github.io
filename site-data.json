@@ -1,0 +1,33 @@
+{
+  "brand": "Gulf Business Connect",
+  "whatsapp": "+8801625453876",
+  "heroTitle": "Your Gateway to Gulf Business",
+  "heroText": "A professional point of contact for business inquiries and connections across the Gulf region.",
+  "countries": [
+    "Saudi Arabia",
+    "Qatar",
+    "Oman",
+    "Bahrain",
+    "Kuwait"
+  ],
+  "services": [
+    {
+      "name": "Business Inquiries",
+      "price": "",
+      "image": "",
+      "description": "Reach out with business questions, proposals or collaboration ideas."
+    },
+    {
+      "name": "Gulf Market Connections",
+      "price": "",
+      "image": "",
+      "description": "Start a conversation about opportunities in the GCC markets."
+    },
+    {
+      "name": "Direct Contact",
+      "price": "",
+      "image": "",
+      "description": "Contact us directly on WhatsApp and explain what you need."
+    }
+  ]
+}
