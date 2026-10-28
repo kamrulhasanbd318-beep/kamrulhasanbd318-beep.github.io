@@ -411,7 +411,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-sa-1",
@@ -447,7 +447,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-qa-1",
@@ -483,7 +483,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-om-1",
@@ -519,7 +519,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-bh-1",
@@ -555,7 +555,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-kw-1",
@@ -591,7 +591,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-my-1",
@@ -627,7 +627,7 @@
       "holder": "AMBIA KHATUN",
       "number": "01629625993",
       "type": "Personal",
-      "active": true
+      "active": false
     },
     {
       "id": "bank-ae-1",
