@@ -405,15 +405,6 @@
       "active": true
     },
     {
-      "id": "bkash-sa",
-      "country": "Saudi Arabia",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
-      "active": false
-    },
-    {
       "id": "bank-sa-1",
       "country": "Saudi Arabia",
       "method": "Saudi Bank Account 01",
@@ -438,15 +429,6 @@
       "holder": "K**** H****",
       "number": "SA77 **** **** 9031",
       "type": "Bank Account",
-      "active": false
-    },
-    {
-      "id": "bkash-qa",
-      "country": "Qatar",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
       "active": false
     },
     {
@@ -477,15 +459,6 @@
       "active": false
     },
     {
-      "id": "bkash-om",
-      "country": "Oman",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
-      "active": false
-    },
-    {
       "id": "bank-om-1",
       "country": "Oman",
       "method": "Oman Bank Account 01",
@@ -510,15 +483,6 @@
       "holder": "R**** A****",
       "number": "OM **** **** 8350",
       "type": "Bank Account",
-      "active": false
-    },
-    {
-      "id": "bkash-bh",
-      "country": "Bahrain",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
       "active": false
     },
     {
@@ -549,15 +513,6 @@
       "active": false
     },
     {
-      "id": "bkash-kw",
-      "country": "Kuwait",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
-      "active": false
-    },
-    {
       "id": "bank-kw-1",
       "country": "Kuwait",
       "method": "Kuwait Bank Account 01",
@@ -585,15 +540,6 @@
       "active": false
     },
     {
-      "id": "bkash-my",
-      "country": "Malaysia",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
-      "active": false
-    },
-    {
       "id": "bank-my-1",
       "country": "Malaysia",
       "method": "Malaysia Bank Account 01",
@@ -618,15 +564,6 @@
       "holder": "H**** K****",
       "number": "MY **** **** 1749",
       "type": "Bank Account",
-      "active": false
-    },
-    {
-      "id": "bkash-ae",
-      "country": "United Arab Emirates",
-      "method": "বিকাশ (bKash)",
-      "holder": "AMBIA KHATUN",
-      "number": "01629625993",
-      "type": "Personal",
       "active": false
     },
     {
