@@ -11,19 +11,28 @@
 </style>
 </head>
 <body class="min-h-screen text-slate-100">
-<section aria-labelledby="payment-rule-title" class="border-b border-amber-300/40 bg-gradient-to-r from-amber-950 via-slate-900 to-amber-950 px-3 py-3 sm:py-4">
- <div class="mx-auto max-w-6xl rounded-2xl border border-amber-300/50 bg-slate-950/75 p-3 shadow-lg shadow-black/20 sm:p-4">
-  <div class="flex items-center gap-2">
-   <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-amber-300/15 text-sm text-amber-200" aria-hidden="true">✓</span>
-   <h2 class="text-sm font-extrabold tracking-wide text-amber-200 sm:text-base">পেমেন্ট ও পণ্য সংগ্রহের নিয়ম</h2>
+<section aria-labelledby="payment-rule-title" class="relative overflow-hidden border-b border-amber-300/40 bg-gradient-to-r from-[#080f1c] via-[#172b40] to-[#080f1c] px-3 py-4 sm:py-5">
+ <div class="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-amber-300/60 bg-slate-950/85 shadow-xl shadow-black/30">
+  <div class="flex items-center gap-3 border-b border-amber-200/20 bg-gradient-to-r from-amber-300/15 to-transparent px-4 py-3 sm:px-5">
+   <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-amber-200 to-amber-500 text-lg font-black text-slate-950 shadow-lg" aria-hidden="true">!</span>
+   <div>
+    <p class="text-[10px] font-extrabold uppercase tracking-[.22em] text-amber-300 sm:text-xs">PLEASE READ BEFORE ORDERING</p>
+    <h2 id="payment-rule-title" class="mt-0.5 text-base font-black text-white sm:text-xl">পেমেন্ট ও পণ্য সংগ্রহের নিয়ম</h2>
+   </div>
   </div>
-  <div class="mt-3 rounded-xl border border-amber-200/20 bg-amber-100/5 px-3 py-2.5">
-   <p class="text-xs font-bold text-amber-200 sm:text-sm">বাংলা</p>
-   <p id="payment-rule-title" class="mt-1 text-sm leading-6 text-white sm:text-base">আপনি যে প্রোডাক্টই অর্ডার করুন না কেন, অর্ডার কনফার্ম করতে আগে সম্পূর্ণ পেমেন্ট করতে হবে। পেমেন্ট পাওয়ার পর আপনার দেওয়া লোকেশনে পণ্য সংগ্রহের ব্যবস্থা করা হবে। পণ্য প্রস্তুত হলে ওই লোকেশন থেকে আপনাকেই সংগ্রহ করতে হবে। হাতে হাতে ডেলিভারি এবং ক্যাশ অন ডেলিভারি (COD) নেই।</p>
+  <div class="grid gap-3 p-3 sm:grid-cols-2 sm:gap-4 sm:p-4">
+   <div class="rounded-xl border border-amber-300/35 bg-amber-300/[.07] p-3 sm:p-4">
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-200 sm:text-sm"><span aria-hidden="true">🇧🇩</span> বাংলা</p>
+    <p class="mt-2 text-sm font-semibold leading-6 text-white sm:text-base">সব অর্ডারে <span class="text-amber-300">আগে সম্পূর্ণ পেমেন্ট</span> করতে হবে। পণ্য প্রস্তুত হলে আপনার দেওয়া লোকেশন থেকে সংগ্রহ করুন।</p>
+   </div>
+   <div class="rounded-xl border border-sky-200/25 bg-sky-300/[.06] p-3 sm:p-4">
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-sky-200 sm:text-sm"><span aria-hidden="true">🌐</span> ENGLISH</p>
+    <p class="mt-2 text-sm font-semibold leading-6 text-white sm:text-base"><span class="text-sky-200">Full advance payment</span> is required for every order. Collect your order from your selected location once it is ready.</p>
+   </div>
   </div>
-  <div class="mt-2 rounded-xl border border-slate-500/40 bg-slate-800/70 px-3 py-2.5">
-   <p class="text-xs font-bold uppercase tracking-wider text-sky-200 sm:text-sm">English</p>
-   <p class="mt-1 text-sm leading-6 text-slate-100 sm:text-base">Full payment is required in advance for every product. After payment is received, your order will be prepared for collection at the location you provide. You must collect it from that location once it is ready. No hand-to-hand delivery or Cash on Delivery (COD) is available.</p>
+  <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-t border-rose-300/20 bg-rose-500/[.08] px-3 py-3 text-center text-xs font-extrabold sm:text-sm">
+   <span class="rounded-full border border-rose-300/35 bg-rose-400/10 px-3 py-1.5 text-rose-200">✕ হাতে হাতে ডেলিভারি নেই</span>
+   <span class="rounded-full border border-rose-300/35 bg-rose-400/10 px-3 py-1.5 text-rose-200">✕ Cash on Delivery (COD) নেই</span>
   </div>
  </div>
 </section>
