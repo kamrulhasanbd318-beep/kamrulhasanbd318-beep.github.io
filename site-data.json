@@ -392,6 +392,42 @@
           }
         }
       ]
+    },
+    {
+      "id": "product-slot-4",
+      "name": {
+        "bn": "নতুন পণ্য ৪ (পরে যোগ করবেন)",
+        "en": "New Product 4 (add later)",
+        "ar": "منتج جديد 4 (يُضاف لاحقًا)",
+        "hi": "नया उत्पाद 4 (बाद में जोड़ें)"
+      },
+      "price": "",
+      "image": "",
+      "description": {
+        "bn": "নতুন পণ্যের তথ্য ও ছবি পরে যোগ করুন।",
+        "en": "Add product details and image later.",
+        "ar": "أضف تفاصيل المنتج والصورة لاحقًا.",
+        "hi": "उत्पाद का विवरण और तस्वीर बाद में जोड़ें।"
+      },
+      "placeholder": true
+    },
+    {
+      "id": "product-slot-5",
+      "name": {
+        "bn": "নতুন পণ্য ৫ (পরে যোগ করবেন)",
+        "en": "New Product 5 (add later)",
+        "ar": "منتج جديد 5 (يُضاف لاحقًا)",
+        "hi": "नया उत्पाद 5 (बाद में जोड़ें)"
+      },
+      "price": "",
+      "image": "",
+      "description": {
+        "bn": "নতুন পণ্যের তথ্য ও ছবি পরে যোগ করুন।",
+        "en": "Add product details and image later.",
+        "ar": "أضف تفاصيل المنتج والصورة لاحقًا.",
+        "hi": "उत्पाद का विवरण और तस्वीर बाद में जोड़ें।"
+      },
+      "placeholder": true
     }
   ],
   "paymentAccounts": [
