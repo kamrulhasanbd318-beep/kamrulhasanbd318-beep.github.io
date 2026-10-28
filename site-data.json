@@ -420,74 +420,74 @@
       "price": "",
       "image": "",
       "description": {
-        "bn": "চিনির প্যাক সাইজ/টিয়ার টেমপ্লেট।",
-        "en": "Editable sugar pack-size tier template.",
-        "ar": "قالب قابل للتعديل لأحجام عبوات السكر.",
-        "hi": "संपादन योग्य चीनी पैक-साइज़ टियर टेम्पलेट।"
+        "bn": "ইরান ও আফগানিস্তানের প্রিমিয়াম চিনি। ভ্যারিয়েন্ট বেছে মূল্য দেখুন। যেসব সাইজের দাম দেওয়া হয়নি, অর্ডার নিশ্চিত করার আগে যোগাযোগ করে দাম যাচাই করুন।",
+        "en": "Premium sugar from Iran and Afghanistan. Select an available variant to view its price. Confirm prices for sizes without a listed rate before ordering.",
+        "ar": "سكر فاخر من إيران وأفغانستان. اختر النوع لعرض السعر. يرجى تأكيد أسعار الأحجام غير المدرجة قبل الطلب.",
+        "hi": "ईरान और अफ़ग़ानिस्तान की प्रीमियम चीनी। कीमत देखने के लिए विकल्प चुनें। जिन आकारों की कीमत नहीं दी गई है, ऑर्डर से पहले पुष्टि करें।"
       },
       "variations": [
         {
+          "grams": 1,
           "name": {
             "bn": "1 গ্রাম",
             "en": "1g",
             "ar": "1 غرام",
             "hi": "1 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 2,
           "name": {
             "bn": "2 গ্রাম",
             "en": "2g",
             "ar": "2 غرام",
             "hi": "2 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 3,
           "name": {
             "bn": "3 গ্রাম",
             "en": "3g",
             "ar": "3 غرام",
             "hi": "3 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 5,
           "name": {
             "bn": "5 গ্রাম",
             "en": "5g",
             "ar": "5 غرام",
             "hi": "5 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 10,
           "name": {
             "bn": "10 গ্রাম",
             "en": "10g",
             "ar": "10 غرام",
             "hi": "10 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 20,
           "name": {
             "bn": "20 গ্রাম",
             "en": "20g",
             "ar": "20 غرام",
             "hi": "20 ग्राम"
-          },
-          "price": ""
+          }
         },
         {
+          "grams": 30,
           "name": {
             "bn": "30 গ্রাম",
             "en": "30g",
             "ar": "30 غرام",
             "hi": "30 ग्राम"
-          },
-          "price": ""
+          }
         }
       ],
       "countryPrices": {
@@ -498,7 +498,42 @@
         "KW": "",
         "MY": "",
         "AE": ""
-      }
+      },
+      "origins": [
+        {
+          "id": "iran",
+          "name": {
+            "bn": "ইরান",
+            "en": "Iran",
+            "ar": "إيران",
+            "hi": "ईरान"
+          },
+          "flag": "🇮🇷",
+          "prices": {
+            "1": 250,
+            "2": 400,
+            "3": 550,
+            "5": 600
+          }
+        },
+        {
+          "id": "afghanistan",
+          "name": {
+            "bn": "আফগানিস্তান",
+            "en": "Afghanistan",
+            "ar": "أفغانستان",
+            "hi": "अफ़ग़ानिस्तान"
+          },
+          "flag": "🇦🇫",
+          "prices": {
+            "1": 220,
+            "2": 300,
+            "5": 520
+          }
+        }
+      ],
+      "currency": "SAR",
+      "whatsappOrder": true
     },
     {
       "id": "chocolate",
@@ -511,35 +546,35 @@
       "price": "",
       "image": "",
       "description": {
-        "bn": "মিয়ানমার ও ভারত Origin। ন্যূনতম অর্ডার ১০ পিস। ২০+ পিসে ১০%, ৩০+ পিসে ৩০% এবং ৪০+ পিসে ৪০% ছাড়।",
-        "en": "Myanmar and India origins. Minimum order 10 pieces. 10% off at 20+, 30% at 30+, and 40% at 40+ pieces.",
-        "ar": "منشأ ميانمار والهند. الحد الأدنى 10 قطع. خصم 10٪ عند 20 قطعة، و30٪ عند 30، و40٪ عند 40 قطعة.",
-        "hi": "म्यांमार और भारत मूल। न्यूनतम ऑर्डर 10 पीस। 20+ पर 10%, 30+ पर 30% और 40+ पीस पर 40% छूट।"
+        "bn": "চকলেট: Original ৩০ রিয়াল/পিস, W ২০ রিয়াল/পিস। ন্যূনতম অর্ডার ১০ পিস। ২০+ পিসে ২০%, ৩০+ পিসে ৩০%, ৪০+ পিসে ৪০% ছাড়।",
+        "en": "Chocolate: Original SAR 30/piece, W SAR 20/piece. Minimum order 10 pieces. 20% off at 20+, 30% at 30+, and 40% at 40+ pieces.",
+        "ar": "الشوكولاتة: Original بسعر 30 ريالًا للقطعة، وW بسعر 20 ريالًا. الحد الأدنى 10 قطع. خصم 20٪ عند 20 قطعة، و30٪ عند 30، و40٪ عند 40 قطعة.",
+        "hi": "चॉकलेट: Original 30 SAR/पीस, W 20 SAR/पीस। न्यूनतम ऑर्डर 10 पीस। 20+ पर 20%, 30+ पर 30%, और 40+ पर 40% छूट।"
       },
       "whatsappOrder": true,
       "currency": "SAR",
       "origins": [
         {
-          "id": "myanmar",
+          "id": "original",
           "name": {
-            "bn": "মিয়ানমার Original",
-            "en": "Myanmar Original",
-            "ar": "أصل ميانمار",
-            "hi": "म्यांमार मूल"
+            "bn": "Original",
+            "en": "Original",
+            "ar": "Original",
+            "hi": "Original"
           },
-          "flag": "🇲🇲",
+          "flag": "🍫",
           "unitPrice": 30,
           "moq": 10
         },
         {
-          "id": "india",
+          "id": "w",
           "name": {
-            "bn": "ইন্ডিয়া Original",
-            "en": "India Original",
-            "ar": "أصل الهند",
-            "hi": "भारत मूल"
+            "bn": "W",
+            "en": "W",
+            "ar": "W",
+            "hi": "W"
           },
-          "flag": "🇮🇳",
+          "flag": "🍫",
           "unitPrice": 20,
           "moq": 10
         }
