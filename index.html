@@ -1,166 +1,125 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071426">
-<meta name="description" content="Eagle Premium / Kamrul Hasan Official — premium edible sugar with origin and quantity options.">
-<title>Eagle Premium | Premium Sugar</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071426"><meta name="description" content="Kamrul Eagle Prime — products, international delivery areas and payment information.">
+<title>Kamrul Eagle Prime | Official Store</title>
 <style>
-:root{color-scheme:dark}body{background:radial-gradient(ellipse at top,#173653 0,#081423 48%,#03070d 100%);font-family:Arial,"Noto Sans Bengali",sans-serif}.glass{background:rgba(10,25,43,.88);border:1px solid rgba(242,201,109,.35);box-shadow:0 20px 55px rgba(0,0,0,.25)}.gold{color:#ffe8a6}.gold-bg{background:linear-gradient(135deg,#ffe9ad,#c08b32);color:#111827}.tier{border:1px solid #3b5066;background:#0b1a2b;color:#e5edf5}.tier.active{border-color:#f2c96d;background:#3b2b10;color:#ffe9a6;box-shadow:0 0 0 1px #f2c96d33}.wa{background:#20bd62;color:#062313}.wa:hover{background:#35d879}.select-dark{background:#091827;border:1px solid #43566b;color:#fff}.soft{color:#aebfd1}
+:root{color-scheme:dark;--bg:#07111f;--panel:#0d1d30;--line:#31465e;--gold:#f3cd79;--muted:#b7c5d5;--green:#20bd62}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#173653 0,#081423 50%,#03070d 100%);font-family:Arial,"Noto Sans Bengali",sans-serif;color:#f4f7fb;line-height:1.5}a{color:inherit}.wrap{max-width:1080px;margin:auto;padding:18px}.top{position:sticky;top:0;z-index:5;background:#071426ed;border-bottom:1px solid #26394d;backdrop-filter:blur(12px)}.topin{max-width:1080px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:800;color:var(--gold);font-size:19px}.tag{font-size:12px;color:var(--muted)}.hero,.panel,.product{background:#0c1b2deF;border:1px solid #2d425a;border-radius:18px;padding:20px;box-shadow:0 14px 35px #0003}.hero{margin-top:20px;border-color:#715c35;background:linear-gradient(135deg,#122b43,#0a1728)}h1{font-size:clamp(26px,5vw,42px);line-height:1.15;margin:8px 0 12px}.gold{color:var(--gold)}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #53677d;border-radius:999px;padding:4px 10px;font-size:12px;margin:3px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px;margin:14px 0}.product h3{margin:5px 0;color:var(--gold)}.price{font-size:21px;font-weight:800;margin:10px 0}.notice{padding:12px;border-radius:12px;border:1px solid #986f32;background:#382b14;color:#ffdfa0;margin:12px 0}.good{border-color:#286b4a;background:#0c3023;color:#c8ffe0}.section-title{margin:28px 0 8px;font-size:24px;color:var(--gold)}label{display:block;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #435971;border-radius:10px;background:#071625;color:#fff;font:inherit}button,.btn{display:inline-block;border:0;border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer;text-decoration:none}.primary{background:linear-gradient(135deg,#ffe9ad,#c08b32);color:#151a22}.wa{background:var(--green);color:#062313;width:100%;margin-top:16px}.disabled{opacity:.55}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.foot{padding:30px 18px;text-align:center;color:var(--muted);font-size:13px}.hidden{display:none!important}.small{font-size:13px}.country-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#081625}.country-card b{color:var(--gold)}.status{font-size:12px;border-radius:999px;padding:3px 8px;background:#193d2d;color:#a9f5c8}.status.off{background:#472b20;color:#ffd3b8}
 </style>
 </head>
-<body class="min-h-screen text-slate-100">
-<header class="sticky top-0 z-20 border-b border-amber-200/20 bg-slate-950/90 backdrop-blur">
- <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-  <a href="#" class="flex items-center gap-3">
-   <span class="grid h-11 w-11 place-items-center rounded-xl gold-bg text-lg font-black">EP</span>
-   <span><strong class="block text-base sm:text-lg">Eagle Premium</strong><small class="soft">Kamrul Hasan Official</small></span>
-  </a>
-  <div class="flex items-center gap-2">
-   <label for="currency" class="text-sm soft">Currency</label>
-   <select id="currency" class="select-dark rounded-xl px-3 py-2 text-sm font-bold">
-    <option value="SAR">🇸🇦 SAR</option><option value="QAR">🇶🇦 QAR</option><option value="OMR">🇴🇲 OMR</option><option value="AED">🇦🇪 AED</option><option value="BHD">🇧🇭 BHD</option><option value="KWD">🇰🇼 KWD</option><option value="BDT">🇧🇩 BDT</option>
-   </select>
-  </div>
- </div>
-</header>
-<section aria-labelledby="payment-rule-title" class="border-b border-amber-300/35 bg-gradient-to-r from-[#06101d] via-[#12304a] to-[#06101d] px-3 py-3 sm:py-4">
- <div class="mx-auto flex max-w-6xl items-center gap-3 rounded-2xl border border-amber-300/50 bg-gradient-to-br from-slate-950 via-[#0b1b2d] to-slate-950 px-3 py-3 shadow-xl shadow-black/30 sm:px-5 sm:py-4">
-  <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-amber-200/40 bg-gradient-to-br from-amber-200 to-[#c08b32] text-lg font-black text-[#102033] shadow-md" aria-hidden="true">৳</span>
-  <div class="min-w-0 flex-1">
-   <h2 id="payment-rule-title" class="text-sm font-black tracking-wide text-[#ffe4a0] sm:text-base">পেমেন্ট ও ডেলিভারি নিয়ম</h2>
-   <p class="mt-1 text-sm font-medium leading-6 text-slate-100 sm:text-base">আগে সম্পূর্ণ পেমেন্ট করুন।<br class="sm:hidden"> প্রস্তুত হলে নির্ধারিত লোকেশন থেকে পণ্য সংগ্রহ করুন।</p>
-   <div class="mt-2 flex flex-wrap gap-2 text-[11px] font-extrabold sm:text-xs">
-    <span class="rounded-full border border-rose-300/35 bg-gradient-to-r from-rose-950/70 to-rose-900/30 px-3 py-1.5 text-rose-200 shadow-sm">✕ হাতে হাতে ডেলিভারি নেই</span>
-    <span class="rounded-full border border-rose-300/35 bg-gradient-to-r from-rose-950/70 to-rose-900/30 px-3 py-1.5 text-rose-200 shadow-sm">✕ ক্যাশ অন ডেলিভারি নেই</span>
-   </div>
-  </div>
- </div>
-</section>
-
-<main class="mx-auto max-w-6xl px-4 pb-14 pt-8 sm:pt-12">
- <section class="mb-8 grid items-center gap-6 md:grid-cols-[1.15fr_.85fr]">
-  <div>
-   <span class="inline-flex rounded-full border border-amber-200/40 bg-amber-100/5 px-3 py-1 text-xs font-bold uppercase tracking-widest gold">Premium edible sugar</span>
-   <h1 class="mt-4 text-4xl font-black leading-tight sm:text-6xl">Premium Sugar <span class="gold">(চিনি)</span></h1>
-   <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">Choose the origin and quantity. The displayed price updates automatically when you select a size or change the currency.</p>
-   <p class="mt-3 text-sm soft">Prices are listed in SAR as the base currency. Converted amounts are estimates using fixed exchange rates, not live market rates.</p>
-  </div>
-  <div class="glass rounded-3xl p-6 text-center sm:p-8">
-   <div class="text-6xl" aria-hidden="true">🍚</div>
-   <p class="mt-3 text-xl font-extrabold gold">Two origin options</p>
-   <p class="mt-2 text-sm soft">Iran 🇮🇷 · Afghanistan 🇦🇫</p>
-   <div class="mt-5 rounded-xl border border-amber-200/20 bg-black/20 px-4 py-3 text-sm text-slate-300">Select a quantity below to see its exact price.</div>
-  </div>
- </section>
- <section aria-labelledby="origin-heading">
-  <div class="mb-4 flex flex-wrap items-end justify-between gap-2"><div><p class="text-sm font-bold uppercase tracking-widest gold">Product selection</p><h2 id="origin-heading" class="mt-1 text-2xl font-black sm:text-3xl">Choose your origin</h2></div><span class="rounded-lg border border-slate-700 px-3 py-1 text-xs soft">Currency: <b id="currencyLabel" class="text-white">SAR</b></span></div>
-  <div class="grid gap-5 md:grid-cols-2">
-   <article class="glass rounded-3xl p-5 sm:p-7">
-    <div class="flex items-start justify-between gap-3"><div><span class="text-3xl" aria-hidden="true">🇮🇷</span><h3 class="mt-2 text-2xl font-black">Iran Origin</h3><p class="mt-1 text-sm gold">Best Quality</p></div><span class="rounded-full border border-amber-200/30 bg-amber-100/5 px-3 py-1 text-xs font-bold gold">IRAN</span></div>
-    <p class="mt-4 text-sm soft">Select quantity</p>
-    <div id="iranTiers" class="mt-3 grid grid-cols-2 gap-2"></div>
-    <div class="mt-5 rounded-2xl border border-amber-200/25 bg-slate-950/40 p-4">
-     <div class="flex items-center justify-between gap-3 text-sm soft"><span>Selected quantity</span><strong id="iranQty" class="text-white">1 Gram</strong></div>
-     <div class="mt-2 flex items-end justify-between gap-3"><span class="text-sm soft">Price</span><strong id="iranPrice" class="text-3xl font-black gold">250 SAR</strong></div>
-     <div class="mt-2 text-xs soft">Base price: <span id="iranBase">250 SAR</span></div>
-    </div>
-    <button id="iranOrder" class="wa mt-4 w-full rounded-xl px-4 py-3 font-extrabold">🟢 Order Iran Origin on WhatsApp</button>
-   </article>
-   <article class="glass rounded-3xl p-5 sm:p-7">
-    <div class="flex items-start justify-between gap-3"><div><span class="text-3xl" aria-hidden="true">🇦🇫</span><h3 class="mt-2 text-2xl font-black">Afghanistan Origin</h3><p class="mt-1 text-sm gold">Premium Grade</p></div><span class="rounded-full border border-amber-200/30 bg-amber-100/5 px-3 py-1 text-xs font-bold gold">AFGHANISTAN</span></div>
-    <p class="mt-4 text-sm soft">Select quantity</p>
-    <div id="afghanTiers" class="mt-3 grid grid-cols-2 gap-2"></div>
-    <div class="mt-5 rounded-2xl border border-amber-200/25 bg-slate-950/40 p-4">
-     <div class="flex items-center justify-between gap-3 text-sm soft"><span>Selected quantity</span><strong id="afghanQty" class="text-white">1 Gram</strong></div>
-     <div class="mt-2 flex items-end justify-between gap-3"><span class="text-sm soft">Price</span><strong id="afghanPrice" class="text-3xl font-black gold">220 SAR</strong></div>
-     <div class="mt-2 text-xs soft">Base price: <span id="afghanBase">220 SAR</span></div>
-    </div>
-    <button id="afghanOrder" class="wa mt-4 w-full rounded-xl px-4 py-3 font-extrabold">🟢 Order Afghanistan Origin on WhatsApp</button>
-   </article>
-  </div>
- </section>
- 
- <section id="customerOrder" aria-labelledby="order-heading" class="glass mt-7 rounded-3xl p-5 sm:p-7">
-  <p class="text-sm font-bold uppercase tracking-widest gold">Customer checkout</p>
-  <h2 id="order-heading" class="mt-1 text-2xl font-black sm:text-3xl">অর্ডার, লোকেশন ও পেমেন্ট</h2>
-  <p class="mt-2 text-sm soft">নিচের তথ্য দিন। অর্ডার WhatsApp-এ পাঠানো হবে; পেমেন্ট করার আগে ব্যবসার কাছ থেকে সঠিক অ্যাকাউন্ট নম্বর ও মোট মূল্য নিশ্চিত করুন।</p>
-  <div class="mt-5 grid gap-4 sm:grid-cols-2">
-   <label class="block text-sm font-bold">আপনার নাম<input id="customerName" required maxlength="80" autocomplete="name" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="পুরো নাম লিখুন"></label>
-   <label class="block text-sm font-bold">মোবাইল নম্বর<input id="customerPhone" required maxlength="25" autocomplete="tel" inputmode="tel" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="01XXXXXXXXX"></label>
-   <label class="block text-sm font-bold">সিলেটের এলাকা / সংগ্রহের লোকেশন
-    <select id="deliveryLocation" required class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal">
-     <option value="">লোকেশন নির্বাচন করুন</option><option>সিলেট সদর</option><option>জিন্দাবাজার</option><option>আম্বরখানা</option><option>উপশহর</option><option>শিবগঞ্জ</option><option>সুবিদবাজার</option><option>তিলাগড়</option><option>দক্ষিণ সুরমা</option><option>বালাগঞ্জ</option><option>বিশ্বনাথ</option><option>গোলাপগঞ্জ</option><option>বিয়ানীবাজার</option><option>ফেঞ্চুগঞ্জ</option><option>জৈন্তাপুর</option><option>কানাইঘাট</option><option>জকিগঞ্জ</option><option>কোম্পানীগঞ্জ</option><option>গোয়াইনঘাট</option><option>ওসমানীনগর</option><option>অন্যান্য — পরে নিশ্চিত করব</option>
-    </select>
-   </label>
-   <label class="block text-sm font-bold">পেমেন্ট পদ্ধতি
-    <select id="paymentMethod" required class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal">
-     <option value="">পদ্ধতি নির্বাচন করুন</option><option value="বিকাশ (bKash)">বিকাশ (bKash)</option><option value="নগদ (Nagad)">নগদ (Nagad)</option><option value="রকেট (Rocket)">রকেট (Rocket)</option><option value="ব্যাংক ট্রান্সফার">ব্যাংক ট্রান্সফার</option><option value="অন্যান্য — আগে নিশ্চিত করতে চাই">অন্যান্য — আগে নিশ্চিত করতে চাই</option>
-    </select>
-   </label>
-   <label class="block text-sm font-bold sm:col-span-2">পূর্ণ ঠিকানা / অতিরিক্ত নির্দেশনা (ঐচ্ছিক)<textarea id="customerAddress" maxlength="500" rows="2" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="এলাকা, রাস্তা বা সংগ্রহের সুবিধাজনক তথ্য"></textarea></label>
-  </div>
-  <div class="mt-4 rounded-xl border border-amber-200/20 bg-black/20 p-3 text-sm text-slate-200">⚠️ বর্তমানে হোম ডেলিভারি বা প্রতিটি এলাকার সার্ভিস নিশ্চিত নয়। লোকেশন নির্বাচন করে অর্ডার পাঠালে WhatsApp-এ সংগ্রহের পয়েন্ট, চূড়ান্ত মূল্য ও পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন। Cash on Delivery নেই।</div>
-  <div class="mt-6 border-t border-slate-600/60 pt-5">
-   <h3 class="text-lg font-black gold">অন্যান্য পণ্য অর্ডার / জানতে চান?</h3>
-   <p class="mt-1 text-sm soft">চিনি ছাড়া অন্য পণ্যের নাম ও পরিমাণ লিখে WhatsApp-এ জিজ্ঞাসা করতে পারেন। এই মুহূর্তে অন্য পণ্যের তালিকা ও দাম সাইটে যোগ করা নেই।</p>
-   <div class="mt-3 grid gap-3 sm:grid-cols-2">
-    <label class="block text-sm font-bold">পণ্যের নাম<input id="otherProduct" maxlength="120" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="যে পণ্যটি চান"></label>
-    <label class="block text-sm font-bold">পরিমাণ<input id="otherQuantity" maxlength="80" class="select-dark mt-2 w-full rounded-xl px-3 py-3 font-normal" placeholder="যেমন: 2 প্যাকেট"></label>
-   </div>
-   <button id="otherProductOrder" type="button" class="wa mt-4 w-full rounded-xl px-4 py-3 font-extrabold">🟢 অন্যান্য পণ্য সম্পর্কে WhatsApp-এ জিজ্ঞাসা করুন</button>
-  </div>
- </section>
-
- <section class="glass mt-7 rounded-2xl p-4 sm:p-5">
-  <h2 class="font-bold gold">Currency conversion</h2>
-  <p class="mt-1 text-sm soft">Use the currency selector in the header. All origin prices and WhatsApp order summaries update to the selected currency automatically.</p>
-  <p id="rateNote" class="mt-2 text-xs soft"></p>
- </section>
-</main>
-<footer class="border-t border-amber-200/15 px-4 py-6 text-center text-sm soft">© <span id="year"></span> Eagle Premium / Kamrul Hasan Official</footer>
+<body>
+<header class="top"><div class="topin"><div><div class="brand" id="brand">Kamrul Eagle Prime</div><div class="tag">Official customer store</div></div><a class="btn primary" href="#order">অর্ডার করুন</a></div></header>
+<main class="wrap">
+<section class="hero"><span class="pill">International delivery</span><span class="pill">Advance payment only</span><h1 id="heroTitle">Premium Products</h1><p id="heroText" class="muted">Delivery and payment information loading…</p><div class="notice" id="deliveryNotice"></div></section>
+<h2 class="section-title">পণ্যসমূহ / Products</h2><p class="muted small">দাম ও অর্ডারের পরিমাণ পণ্য অনুযায়ী দেখানো হয়েছে। যেসব পণ্যের দাম সেট করা নেই সেগুলো অর্ডারের তালিকায় দেখানো হয়নি।</p>
+<div id="products" class="grid"><div class="panel">পণ্য লোড হচ্ছে…</div></div>
+<h2 class="section-title">ডেলিভারি চালু থাকা দেশ ও এলাকা</h2><div id="countryList" class="grid"></div>
+<h2 class="section-title">অর্ডার ও পেমেন্ট</h2>
+<section class="panel" id="order">
+<div class="notice" id="paymentNotice"></div>
+<form id="orderForm">
+<div class="two"><div><label for="customerName">আপনার নাম</label><input id="customerName" required placeholder="সম্পূর্ণ নাম"></div><div><label for="phone">মোবাইল / WhatsApp নম্বর</label><input id="phone" required placeholder="+966… / +974…"></div></div>
+<label for="country">দেশ নির্বাচন করুন</label><select id="country" required></select>
+<div id="bdMessage" class="notice hidden">বাংলাদেশে ডেলিভারি নেই। বাংলাদেশ থেকে শুধু পেমেন্ট গ্রহণ করা হয়।</div>
+<div id="deliveryFields"><label for="area">ডেলিভারি এলাকা নির্বাচন করুন</label><select id="area" required><option value="">আগে দেশ নির্বাচন করুন</option></select><label for="address">সম্পূর্ণ ঠিকানা</label><textarea id="address" rows="2" placeholder="বিল্ডিং, রাস্তা, এলাকা, অতিরিক্ত নির্দেশনা"></textarea></div>
+<label for="productSelect">পণ্য নির্বাচন করুন</label><select id="productSelect" required></select>
+<div id="variantFields"></div>
+<label for="qty">পরিমাণ</label><input id="qty" type="number" min="1" value="10" required>
+<div id="pricePreview" class="notice">পণ্য ও পরিমাণ নির্বাচন করুন।</div>
+<label for="paymentMethod">পেমেন্ট পদ্ধতি</label><select id="paymentMethod" required></select>
+<div id="accountDetails" class="country-card small"></div>
+<label for="reference">পেমেন্ট রেফারেন্স / নোট (ঐচ্ছিক)</label><input id="reference" placeholder="Transaction ID বা অর্ডার নোট">
+<button class="wa" type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+<p class="muted small">অর্ডার পাঠালে WhatsApp-এ আপনার তথ্য ও পণ্যের বিবরণ তৈরি হবে। পেমেন্ট করার আগে শুধু সক্রিয় হিসেবে দেখানো অ্যাকাউন্ট ব্যবহার করুন।</p>
+</form></section>
+<h2 class="section-title">যোগাযোগ</h2><section class="panel"><p>ফোন: <a id="phoneLink" href="tel:01907486593">01907486593</a></p><p>WhatsApp: <a id="waLink" href="https://wa.me/8801625453876" target="_blank" rel="noopener">WhatsApp-এ যোগাযোগ</a></p></section>
+</main><footer class="foot">© <span id="year"></span> <span id="footerBrand">Kamrul Eagle Prime</span>. All rights reserved.</footer>
 <script>
 (function(){
- const WHATSAPP='8801907486593';
- // Approximate currency units per 1 SAR. Update these rates when needed.
- const rates={SAR:1,QAR:0.97,OMR:0.102,AED:0.98,BHD:0.103,KWD:0.082,BDT:32.6};
- const symbols={SAR:'SAR',QAR:'QAR',OMR:'OMR',AED:'AED',BHD:'BHD',KWD:'KWD',BDT:'BDT'};
- const products={
-  iran:{label:'Iran Origin 🇮🇷',selected:1,prices:{1:250,2:400,3:550,5:600},tiers:[1,2,3,5],tierRoot:'iranTiers',qty:'iranQty',price:'iranPrice',base:'iranBase',order:'iranOrder'},
-  afghan:{label:'Afghanistan Origin 🇦🇫',selected:1,prices:{1:220,2:300,5:520},tiers:[1,2,5],tierRoot:'afghanTiers',qty:'afghanQty',price:'afghanPrice',base:'afghanBase',order:'afghanOrder'}
- };
- let currency='SAR';
- const fmt=(amount,cur)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:cur==='BDT'?0:3,minimumFractionDigits:0}).format(amount)+' '+symbols[cur];
- function converted(sar){return sar*rates[currency]}
- function renderProduct(key){
-  const p=products[key],root=document.getElementById(p.tierRoot);
-  root.innerHTML=p.tiers.map(g=>'<button type="button" class="tier rounded-xl px-3 py-3 text-left font-bold '+(p.selected===g?'active':'')+'" data-gram="'+g+'" aria-pressed="'+(p.selected===g)+'"><span class="block text-base">'+g+'g</span><span class="mt-1 block text-sm">'+fmt(converted(p.prices[g]),currency)+'</span></button>').join('');
-  root.querySelectorAll('[data-gram]').forEach(btn=>btn.addEventListener('click',()=>{p.selected=Number(btn.dataset.gram);renderProduct(key)}));
-  document.getElementById(p.qty).textContent=p.selected+' Gram';
-  document.getElementById(p.price).textContent=fmt(converted(p.prices[p.selected]),currency);
-  document.getElementById(p.base).textContent=fmt(p.prices[p.selected],'SAR');
-  document.getElementById(p.order).onclick=()=>order(key);
- }
- function renderAll(){document.getElementById('currencyLabel').textContent=currency;renderProduct('iran');renderProduct('afghan')}
- function order(key){
-  const p=products[key],grams=p.selected,base=p.prices[grams],total=converted(base);
-  const name=document.getElementById('customerName').value.trim(),phone=document.getElementById('customerPhone').value.trim(),location=document.getElementById('deliveryLocation').value,payment=document.getElementById('paymentMethod').value,address=document.getElementById('customerAddress').value.trim();
-  if(!name||!phone||!location||!payment){document.getElementById('customerOrder').scrollIntoView({behavior:'smooth',block:'start'});alert('অর্ডার পাঠাতে নাম, মোবাইল, লোকেশন ও পেমেন্ট পদ্ধতি নির্বাচন করুন।');return}
-  const message=['Eagle Premium / Kamrul Hasan Official','কাস্টমার অর্ডার','Customer name: '+name,'Mobile: '+phone,'Location / pickup area: '+location,'Address / notes: '+(address||'Not provided'),'Payment method selected: '+payment,'Product: Premium Sugar (চিনি)','Origin: '+p.label,'Quantity: '+grams+' Gram','Base price: '+fmt(base,'SAR'),'Selected currency: '+currency,'Converted price estimate: '+fmt(total,currency),'অনুগ্রহ করে চূড়ান্ত মূল্য, পণ্যের মজুত, সংগ্রহের লোকেশন ও সঠিক পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন।'].join('\n');
-  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
- }
- document.getElementById('otherProductOrder').addEventListener('click',()=>{
-  const name=document.getElementById('customerName').value.trim(),phone=document.getElementById('customerPhone').value.trim(),location=document.getElementById('deliveryLocation').value,payment=document.getElementById('paymentMethod').value,product=document.getElementById('otherProduct').value.trim(),quantity=document.getElementById('otherQuantity').value.trim(),address=document.getElementById('customerAddress').value.trim();
-  if(!name||!phone||!location||!payment||!product){document.getElementById('customerOrder').scrollIntoView({behavior:'smooth',block:'start'});alert('নাম, মোবাইল, লোকেশন, পেমেন্ট পদ্ধতি ও পণ্যের নাম পূরণ করুন।');return}
-  const message=['Eagle Premium / Kamrul Hasan Official','অন্যান্য পণ্যের অনুসন্ধান','Customer name: '+name,'Mobile: '+phone,'Location / pickup area: '+location,'Address / notes: '+(address||'Not provided'),'Payment method: '+payment,'Requested product: '+product,'Quantity: '+(quantity||'Not specified'),'অনুগ্রহ করে পণ্যের মজুত, মূল্য, সংগ্রহের লোকেশন ও সঠিক পেমেন্ট অ্যাকাউন্ট নিশ্চিত করুন।'].join('\n');
-  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
- });
- document.getElementById('currency').addEventListener('change',e=>{currency=e.target.value;renderAll()});
- document.getElementById('year').textContent=new Date().getFullYear();
- document.getElementById('rateNote').textContent='Approximate fixed rates: 1 SAR ≈ '+rates.QAR+' QAR, '+rates.OMR+' OMR, '+rates.AED+' AED, '+rates.BHD+' BHD, '+rates.KWD+' KWD, and '+rates.BDT+' BDT. Not a live FX feed.';
- renderAll();
+const $=id=>document.getElementById(id);let data=null;let chosenProduct=null;
+const langName=x=>typeof x==='string'?x:(x?.bn||x?.en||'');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=(n,c)=>Number(n).toLocaleString('en-US',{maximumFractionDigits:2})+' '+(c||'SAR');
+function countriesEnabled(){return (data.countries||[]).filter(c=>c.deliveryEnabled&& (data.deliveryCountries||[]).includes(c.code))}
+function paymentFor(country){return (data.paymentAccounts||[]).filter(a=>a.country===country)}
+function productPrice(p,originId,qty){
+ if(!p)return null;
+ if(p.id==='chocolate'){const o=(p.origins||[]).find(x=>x.id===originId)||p.origins?.[0];if(!o)return null;const d=(p.discounts||[]).slice().sort((a,b)=>b.minQty-a.minQty).find(x=>qty>=x.minQty);return {base:o.unitPrice*qty,discount:d?.percent||0,total:o.unitPrice*qty*(1-(d?.percent||0)/100),currency:p.currency||'SAR',origin:o};}
+ if(p.id==='neem-leaves'){const tier=(p.tiers||[]).find(t=>String(t.grams)===String($('variant')?.value))||p.tiers?.[0];const o=(p.origins||[]).find(x=>x.id===originId)||p.origins?.[0];if(!tier||!o)return null;const total=tier.price*(1+(o.premiumPercent||0)/100);return {base:total,discount:0,total,currency:p.currency||'SAR',origin:o,tier};}
+ return null;
+}
+function renderProducts(){
+ const ps=(data.services||[]).filter(p=>!p.placeholder&&((p.origins&&p.origins.length)||(p.tiers&&p.tiers.length)||(p.price!==''&&p.price!=null)));
+ $('products').innerHTML=ps.map(p=>'<article class="product"><h3>'+esc(langName(p.name))+'</h3><p class="muted">'+esc(langName(p.description))+'</p>'+(p.origins||[]).map(o=>'<span class="pill">'+esc(o.flag||'')+' '+esc(langName(o.name))+(o.unitPrice!=null?' · '+money(o.unitPrice,p.currency||'SAR')+'/piece':'')+'</span>').join('')+(p.tiers||[]).map(t=>'<span class="pill">'+esc(t.grams)+'g · '+money(t.price,p.currency||'SAR')+'</span>').join('')+(p.discounts?'<p class="small gold">পরিমাণভিত্তিক ছাড়: '+p.discounts.slice().sort((a,b)=>a.minQty-b.minQty).map(d=>d.minQty+'+ = '+d.percent+'%').join(' · ')+'</p>':'')+'<button class="primary" type="button" data-product="'+esc(p.id)+'">এই পণ্য অর্ডার করুন</button></article>').join('')||'<div class="panel">এখনো বিক্রির জন্য মূল্যসহ কোনো পণ্য সেট করা নেই।</div>';
+ $('productSelect').innerHTML=ps.map(p=>'<option value="'+esc(p.id)+'">'+esc(langName(p.name))+'</option>').join('');
+ $('products').querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>{$('productSelect').value=b.dataset.product;setProduct();$('order').scrollIntoView({behavior:'smooth'});}));
+}
+function renderCountries(){
+ const cs=data.countries||[];const enabled=countriesEnabled();
+ $('countryList').innerHTML=cs.map(c=>'<div class="country-card"><div><b>'+esc(c.name)+'</b> <span class="status '+(c.deliveryEnabled?'':'off')+'">'+(c.deliveryEnabled?'ডেলিভারি চালু':'ডেলিভারি নেই')+'</span></div><p class="small muted">'+(c.deliveryEnabled?(c.areas||[]).map(esc).join(' · '):'শুধু পেমেন্ট গ্রহণ করা হয়')+'</p></div>').join('');
+ $('country').innerHTML='<option value="">দেশ নির্বাচন করুন</option>'+enabled.map(c=>'<option value="'+esc(c.code)+'">'+esc(c.name)+' ('+esc(c.currency)+')</option>').join('')+'<option value="BD">Bangladesh — শুধু পেমেন্ট</option>';
+}
+function selectedCountry(){return (data.countries||[]).find(c=>c.code===$('country').value)}
+function renderArea(){
+ const c=selectedCountry(),bd=c?.code==='BD',active=!!c?.deliveryEnabled;
+ $('bdMessage').classList.toggle('hidden',!bd);$('deliveryFields').classList.toggle('hidden',bd||!active);
+ $('area').required=active;$('address').required=active;
+ $('area').innerHTML=active?'<option value="">ডেলিভারি এলাকা নির্বাচন করুন</option>'+(c.areas||[]).map(a=>'<option>'+esc(a)+'</option>').join(''):'<option value="">এই দেশে ডেলিভারি নেই</option>';
+ renderPayment();
+}
+function renderPayment(){
+ const c=selectedCountry();const countryName=c?.name;let accounts=paymentFor(countryName);
+ if(c?.code!=='BD' && !accounts.length) accounts=[];
+ $('paymentMethod').innerHTML='<option value="">পেমেন্ট পদ্ধতি নির্বাচন করুন</option>'+accounts.map(a=>'<option value="'+esc(a.id)+'" '+(!a.active?'disabled':'')+'>'+esc(a.method)+(a.active?'':' — বর্তমানে নিষ্ক্রিয়')+'</option>').join('');
+ if(!accounts.length){$('paymentMethod').innerHTML+='<option value="unavailable" disabled>এই দেশের সক্রিয় পেমেন্ট অ্যাকাউন্ট নেই</option>';}
+ const active=accounts.filter(a=>a.active);
+ if(active.length){$('paymentMethod').value=active[0].id;showAccount();}
+ else {$('accountDetails').innerHTML='<b>সতর্কতা:</b> এই দেশের কোনো সক্রিয় পেমেন্ট অ্যাকাউন্ট সেভ করা নেই। নিষ্ক্রিয়/মাস্ক করা ব্যাংক অ্যাকাউন্টে টাকা পাঠাবেন না। অ্যাকাউন্ট সক্রিয় হলে এখানে নির্বাচন করা যাবে।';$('accountDetails').classList.add('notice');}
+}
+function showAccount(){const a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);if(!a||!a.active){$('accountDetails').innerHTML='এই অ্যাকাউন্ট সক্রিয় নয়। টাকা পাঠাবেন না।';return;}$('accountDetails').classList.remove('notice');$('accountDetails').innerHTML='<b>সক্রিয় পেমেন্ট অ্যাকাউন্ট</b><br>'+esc(a.method)+'<br>অ্যাকাউন্টের নাম: '+esc(a.holder)+'<br>নম্বর: <b>'+esc(a.number)+'</b><br>ধরন: '+esc(a.type);}
+function setProduct(){
+ chosenProduct=(data.services||[]).find(p=>p.id===$('productSelect').value);
+ const p=chosenProduct;let html='';
+ if(p?.origins?.length)html+='<label for="origin">Origin নির্বাচন করুন</label><select id="origin">'+p.origins.map(o=>'<option value="'+esc(o.id)+'">'+esc(o.flag||'')+' '+esc(langName(o.name))+'</option>').join('')+'</select>';
+ if(p?.tiers?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.tiers.map(t=>'<option value="'+t.grams+'">'+t.grams+'g — '+money(t.price,p.currency||'SAR')+'</option>').join('')+'</select>';
+ $('variantFields').innerHTML=html;
+ if(p?.id==='chocolate')$('qty').min=10;
+ else $('qty').min=1;
+ $('qty').value=p?.id==='chocolate'?10:1;
+ $('variantFields').querySelectorAll('select').forEach(s=>s.addEventListener('change',previewPrice));
+ $('qty').oninput=previewPrice;previewPrice();
+}
+function previewPrice(){
+ const p=chosenProduct;if(!p){$('pricePreview').textContent='পণ্য নির্বাচন করুন।';return;}
+ if(p.id==='chocolate'||p.id==='neem-leaves'){const r=productPrice(p,$('origin')?.value,Math.max(1,Number($('qty').value)||1));if(!r){$('pricePreview').textContent='দাম হিসাব করা যায়নি।';return;}
+ $('pricePreview').innerHTML='<b>আনুমানিক মোট: '+money(r.total,r.currency)+'</b>'+(r.discount?'<br>ছাড়: '+r.discount+'%':'')+(p.id==='chocolate'?'<br>ন্যূনতম অর্ডার: 10 পিস':'')+(p.id==='neem-leaves'?'<br>নির্বাচিত প্যাক: '+r.tier.grams+'g · Origin premium: '+(r.origin.premiumPercent||0)+'%':'');
+ }else $('pricePreview').textContent='এই পণ্যের মূল্য এখনো নির্ধারণ করা হয়নি।';
+}
+$('country').addEventListener('change',renderArea);$('paymentMethod').addEventListener('change',showAccount);$('productSelect').addEventListener('change',setProduct);
+$('orderForm').addEventListener('submit',e=>{
+ e.preventDefault();const c=selectedCountry(),p=chosenProduct,a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
+ if(!c||!p){alert('দেশ ও পণ্য নির্বাচন করুন।');return;}
+ if(c.code!=='BD'&&!c.deliveryEnabled){alert('এই দেশে ডেলিভারি চালু নেই।');return;}
+ if(!a||!a.active){alert('এই দেশের সক্রিয় পেমেন্ট অ্যাকাউন্ট নেই। অনুগ্রহ করে টাকা পাঠাবেন না।');return;}
+ const q=Math.max(1,Number($('qty').value)||1);if(p.id==='chocolate'&&q<10){alert('চকলেটের ন্যূনতম অর্ডার ১০ পিস।');return;}
+ const r=productPrice(p,$('origin')?.value,q);const lines=['নতুন অর্ডার — '+data.brand,'নাম: '+$('customerName').value,'মোবাইল: '+$('phone').value,'দেশ: '+c.name,'এলাকা: '+(c.code==='BD'?'ডেলিভারি নেই (পেমেন্ট গ্রহণ) $('area').value: $('area').value),'ঠিকানা: '+$('address').value,'পণ্য: '+langName(p.name),'পরিমাণ: '+q];
+ if($('origin')?.value){const o=p.origins.find(x=>x.id===$('origin').value);lines.push('Origin: '+langName(o.name));}
+ if($('variant')?.value)lines.push('প্যাক: '+$('variant').value+'g');
+ if(r)lines.push('আনুমানিক মোট: '+money(r.total,r.currency));
+ lines.push('পেমেন্ট: '+a.method,'অ্যাকাউন্ট: '+a.holder+' / '+a.number,'রেফারেন্স/নোট: '+$('reference').value);
+ const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');if(!wa){alert('WhatsApp নম্বর সেট করা নেই।');return;}window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+});
+async function init(){try{const res=await fetch('./site-data.json',{cache:'no-store'});if(!res.ok)throw new Error('site-data.json unavailable');data=await res.json();
+ $('brand').textContent=data.brand||'Kamrul Eagle Prime';$('footerBrand').textContent=data.brand||'';$('heroTitle').textContent=data.heroTitle||'Premium Products';$('heroText').textContent=data.heroText||'';
+ $('deliveryNotice').textContent=(data.delivery?.notice||'')+' বাংলাদেশে ডেলিভারি নেই; বাংলাদেশ শুধু পেমেন্ট গ্রহণের জন্য।';
+ $('paymentNotice').textContent=(data.payment?.notice||'Advance payment only')+' '+(data.notice?.text?.bn||'');
+ const phone=data.contact?.phone||'';$('phoneLink').textContent=phone;$('phoneLink').href='tel:'+phone;
+ const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');$('waLink').href='https://wa.me/'+wa;$('year').textContent=new Date().getFullYear();
+ renderProducts();renderCountries();if($('productSelect').options.length)setProduct();else $('productSelect').innerHTML='<option value="">কোনো বিক্রয়যোগ্য পণ্য নেই</option>';renderArea();
+ }catch(err){$('products').innerHTML='<div class="notice">সাইটের পণ্য ও ডেলিভারি তথ্য লোড করা যায়নি। অনুগ্রহ করে কিছুক্ষণ পরে আবার চেষ্টা করুন।</div>';console.error(err);}}
+init();
 })();
 </script>
-</body>
-</html>
+</body></html>
