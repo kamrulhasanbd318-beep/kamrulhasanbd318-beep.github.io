@@ -11,15 +11,15 @@
   "payment": {
     "method": "Advance payment only",
     "cashOnDelivery": false,
-    "notice": "Full payment must be made in advance. Cash on Delivery and cash payment upon handover are not available. Delivery is expected within 40–45 minutes after payment confirmation."
+    "notice": "Full payment is required in advance. We do not offer Cash on Delivery or exchange-at-the-door payment (product first, cash second). Your order is confirmed after payment, and delivery will be made to your provided location within 40–45 minutes."
   },
   "delivery": {
     "free": true,
-    "notice": "After advance payment is confirmed, delivery is expected within 40–45 minutes. Cash on Delivery and payment in cash upon handover are not available. Please confirm your location before paying."
+    "notice": "Cash on Delivery and pay-at-the-door (receiving the product and paying in cash at the same time) are not available. Advance payment is required to confirm your order. After confirmation, we will deliver your product to the location you provide within 40–45 minutes. Please verify your location before payment."
   },
   "notice": {
     "title": "Customer Notice",
-    "text": "Advance payment is required. Cash on Delivery and cash payment upon handover are not available. Delivery is expected within 40–45 minutes after payment confirmation.",
+    "text": "We do not offer Cash on Delivery or pay-at-the-door service. Please pay in advance to confirm your order. Once your order is confirmed, we will deliver to your provided location within 40–45 minutes.",
     "active": true
   },
   "countries": [
