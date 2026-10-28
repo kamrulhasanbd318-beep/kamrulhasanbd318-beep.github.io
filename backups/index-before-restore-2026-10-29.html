@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071426"><meta name="description" content="Kamrul Eagle Prime — products, international delivery areas and payment information.">
+<title>Kamrul Eagle Prime | Official Store</title>
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#0d1d30;--line:#31465e;--gold:#f3cd79;--muted:#b7c5d5;--green:#20bd62}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#173653 0,#081423 50%,#03070d 100%);font-family:Arial,"Noto Sans Bengali",sans-serif;color:#f4f7fb;line-height:1.5}a{color:inherit}.wrap{max-width:1080px;margin:auto;padding:18px}.top{position:sticky;top:0;z-index:5;background:#071426ed;border-bottom:1px solid #26394d;backdrop-filter:blur(12px)}.topin{max-width:1080px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:800;color:var(--gold);font-size:19px}.tag{font-size:12px;color:var(--muted)}.hero,.panel,.product{background:#0c1b2deF;border:1px solid #2d425a;border-radius:18px;padding:20px;box-shadow:0 14px 35px #0003}.hero{margin-top:20px;border-color:#715c35;background:linear-gradient(135deg,#122b43,#0a1728)}h1{font-size:clamp(26px,5vw,42px);line-height:1.15;margin:8px 0 12px}.gold{color:var(--gold)}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #53677d;border-radius:999px;padding:4px 10px;font-size:12px;margin:3px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px;margin:14px 0}.product h3{margin:5px 0;color:var(--gold)}.price{font-size:21px;font-weight:800;margin:10px 0}.notice{padding:12px;border-radius:12px;border:1px solid #986f32;background:#382b14;color:#ffdfa0;margin:12px 0}.good{border-color:#286b4a;background:#0c3023;color:#c8ffe0}.section-title{margin:28px 0 8px;font-size:24px;color:var(--gold)}label{display:block;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #435971;border-radius:10px;background:#071625;color:#fff;font:inherit}button,.btn{display:inline-block;border:0;border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer;text-decoration:none}.primary{background:linear-gradient(135deg,#ffe9ad,#c08b32);color:#151a22}.wa{background:var(--green);color:#062313;width:100%;margin-top:16px}.disabled{opacity:.55}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.foot{padding:30px 18px;text-align:center;color:var(--muted);font-size:13px}.hidden{display:none!important}.small{font-size:13px}.country-card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#081625}.country-card b{color:var(--gold)}.status{font-size:12px;border-radius:999px;padding:3px 8px;background:#193d2d;color:#a9f5c8}.status.off{background:#472b20;color:#ffd3b8}
+</style>
+</head>
+<body>
+<header class="top"><div class="topin"><div><div class="brand" id="brand">Kamrul Eagle Prime</div><div class="tag">Official customer store</div></div><div><label for="siteLanguage" class="small">Language / ভাষা</label><select id="siteLanguage" aria-label="Language"><option value="bn">বাংলা</option><option value="en">English</option><option value="ar">العربية</option><option value="hi">हिन्दी</option></select></div><a class="btn primary" href="#order">অর্ডার করুন</a></div></header>
+<main class="wrap">
+<section class="hero"><span class="pill">International delivery</span><span class="pill">Advance payment only</span><h1 id="heroTitle">Premium Products</h1><p id="heroText" class="muted">Delivery and payment information loading…</p><div class="notice" id="deliveryNotice"></div></section>
+<h2 class="section-title">পণ্যসমূহ / Products</h2><p class="muted small">দাম ও অর্ডারের পরিমাণ পণ্য অনুযায়ী দেখানো হয়েছে। যেসব পণ্যের দাম সেট করা নেই সেগুলো অর্ডারের তালিকায় দেখানো হয়নি।</p>
+<div id="products" class="grid"><div class="panel">পণ্য লোড হচ্ছে…</div></div>
+<h2 class="section-title">ডেলিভারি চালু থাকা দেশ ও এলাকা</h2><div id="countryList" class="grid"></div>
+<h2 class="section-title">অর্ডার ও পেমেন্ট</h2>
+<section class="panel" id="order">
+<div class="notice" id="paymentNotice"></div>
+<form id="orderForm">
+<div class="two"><div><label for="customerName">আপনার নাম</label><input id="customerName" required placeholder="সম্পূর্ণ নাম"></div><div><label for="phone">মোবাইল / WhatsApp নম্বর</label><input id="phone" required placeholder="+966… / +974…"></div></div>
+<label for="country">দেশ নির্বাচন করুন</label><select id="country" required></select>
+<div id="bdMessage" class="notice hidden">বাংলাদেশে ডেলিভারি নেই। বাংলাদেশ থেকে শুধু পেমেন্ট গ্রহণ করা হয়।</div>
+<div id="deliveryFields"><label for="area">ডেলিভারি এলাকা নির্বাচন করুন</label><select id="area" required><option value="">আগে দেশ নির্বাচন করুন</option></select><label for="address">সম্পূর্ণ ঠিকানা</label><textarea id="address" rows="2" placeholder="বিল্ডিং, রাস্তা, এলাকা, অতিরিক্ত নির্দেশনা"></textarea></div>
+<label for="productSelect">পণ্য নির্বাচন করুন</label><select id="productSelect" required></select>
+<div id="variantFields"></div>
+<label for="qty">পরিমাণ</label><input id="qty" type="number" min="1" value="10" required>
+<div id="pricePreview" class="notice">পণ্য ও পরিমাণ নির্বাচন করুন।</div>
+<label for="paymentMethod">পেমেন্ট পদ্ধতি</label><select id="paymentMethod" required></select>
+<div id="accountDetails" class="country-card small"></div>
+<label for="reference">পেমেন্ট রেফারেন্স / নোট (ঐচ্ছিক)</label><input id="reference" placeholder="Transaction ID বা অর্ডার নোট">
+<button class="wa" type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+<p class="muted small">অর্ডার পাঠালে WhatsApp-এ আপনার তথ্য ও পণ্যের বিবরণ তৈরি হবে। পেমেন্ট করার আগে শুধু সক্রিয় হিসেবে দেখানো অ্যাকাউন্ট ব্যবহার করুন।</p>
+</form></section>
+<h2 class="section-title">যোগাযোগ</h2><section class="panel"><p>ফোন: <a id="phoneLink" href="tel:01907486593">01907486593</a></p><p>WhatsApp: <a id="waLink" href="https://wa.me/8801625453876" target="_blank" rel="noopener">WhatsApp-এ যোগাযোগ</a></p></section>
+</main><footer class="foot">© <span id="year"></span> <span id="footerBrand">Kamrul Eagle Prime</span>. All rights reserved.</footer>
+<script>
+(function(){
+const $=id=>document.getElementById(id);let data=null;let chosenProduct=null;let siteLang='bn';
+const langName=x=>typeof x==='string'?x:(x?.[siteLang]||x?.bn||x?.en||'');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=(n,c)=>Number(n).toLocaleString('en-US',{maximumFractionDigits:2})+' '+(c||'SAR');
+function countriesEnabled(){return (data.countries||[]).filter(c=>c.deliveryEnabled&& (data.deliveryCountries||[]).includes(c.code))}
+function paymentFor(country){const all=data.paymentAccounts||[];return [...all.filter(a=>a.country===country),...all.filter(a=>a.id==='bkash-personal'&&a.active)];}
+function productPrice(p,originId,qty){
+ if(!p)return null;
+ if(p.id==='chocolate'){const o=(p.origins||[]).find(x=>x.id===originId)||p.origins?.[0];if(!o)return null;const d=(p.discounts||[]).slice().sort((a,b)=>b.minQty-a.minQty).find(x=>qty>=x.minQty);return {base:o.unitPrice*qty,discount:d?.percent||0,total:o.unitPrice*qty*(1-(d?.percent||0)/100),currency:p.currency||'SAR',origin:o};}
+ if(p.id==='neem-leaves'){const tier=(p.tiers||[]).find(t=>String(t.grams)===String($('variant')?.value))||p.tiers?.[0];const o=(p.origins||[]).find(x=>x.id===originId)||p.origins?.[0];if(!tier||!o)return null;const total=tier.price*(1+(o.premiumPercent||0)/100);return {base:total,discount:0,total,currency:p.currency||'SAR',origin:o,tier};}
+ return null;
+}
+function renderProducts(){
+ const ps=(data.services||[]).filter(p=>!p.placeholder&&((p.origins&&p.origins.length)||(p.tiers&&p.tiers.length)||(p.variations&&p.variations.length)||(p.price!==''&&p.price!=null)));
+ $('products').innerHTML=ps.map(p=>'<article class="product"><h3>'+esc(langName(p.name))+'</h3><p class="muted">'+esc(langName(p.description))+'</p>'+(p.origins||[]).map(o=>'<span class="pill">'+esc(o.flag||'')+' '+esc(langName(o.name))+(o.unitPrice!=null?' · '+money(o.unitPrice,p.currency||'SAR')+'/piece':'')+'</span>').join('')+(p.tiers||[]).map(t=>'<span class="pill">'+esc(t.grams)+'g · '+(t.price!==''&&t.price!=null?money(t.price,p.currency||'SAR'):'দাম জানতে যোগাযোগ')+'</span>').join('')+(p.variations||[]).map(v=>'<span class="pill">'+esc(langName(v.name))+(v.price!==''&&v.price!=null?' · '+money(v.price,p.currency||'SAR'):' · দাম জানতে যোগাযোগ')+'</span>').join('')+(p.discounts?'<p class="small gold">পরিমাণভিত্তিক ছাড়: '+p.discounts.slice().sort((a,b)=>a.minQty-b.minQty).map(d=>d.minQty+'+ = '+d.percent+'%').join(' · ')+'</p>':'')+'<button class="primary" type="button" data-product="'+esc(p.id)+'">এই পণ্য অর্ডার করুন</button></article>').join('')||'<div class="panel">এখনো বিক্রির জন্য মূল্যসহ কোনো পণ্য সেট করা নেই।</div>';
+ $('productSelect').innerHTML=ps.map(p=>'<option value="'+esc(p.id)+'">'+esc(langName(p.name))+'</option>').join('');
+ $('products').querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>{$('productSelect').value=b.dataset.product;setProduct();$('order').scrollIntoView({behavior:'smooth'});}));
+}
+function renderCountries(){
+ const cs=data.countries||[];const enabled=countriesEnabled();
+ $('countryList').innerHTML=cs.map(c=>'<div class="country-card"><div><b>'+esc(c.name)+'</b> <span class="status '+(c.deliveryEnabled?'':'off')+'">'+(c.deliveryEnabled?'ডেলিভারি চালু':'ডেলিভারি নেই')+'</span></div><p class="small muted">'+(c.deliveryEnabled?(c.areas||[]).map(esc).join(' · '):'শুধু পেমেন্ট গ্রহণ করা হয়')+'</p></div>').join('');
+ $('country').innerHTML='<option value="">দেশ নির্বাচন করুন</option>'+enabled.map(c=>'<option value="'+esc(c.code)+'">'+esc(c.name)+' ('+esc(c.currency)+')</option>').join('');
+}
+function selectedCountry(){return (data.countries||[]).find(c=>c.code===$('country').value)}
+function renderArea(){
+ const c=selectedCountry(),bd=c?.code==='BD',active=!!c?.deliveryEnabled;
+ $('bdMessage').classList.toggle('hidden',!bd);$('deliveryFields').classList.toggle('hidden',bd||!active);
+ $('area').required=active;$('address').required=active;
+ $('area').innerHTML=active?'<option value="">ডেলিভারি এলাকা নির্বাচন করুন</option>'+(c.areas||[]).map(a=>'<option>'+esc(a)+'</option>').join(''):'<option value="">এই দেশে ডেলিভারি নেই</option>';
+ renderPayment();
+}
+function renderPayment(){
+ const c=selectedCountry();const accounts=c?paymentFor(c.name):[];
+ $('paymentMethod').innerHTML='<option value="">পেমেন্ট পদ্ধতি নির্বাচন করুন</option>'+accounts.map(a=>'<option value="'+esc(a.id)+'">'+esc(a.method)+(a.active?' — সক্রিয়':' — নিষ্ক্রিয়')+'</option>').join('');
+ $('accountDetails').classList.add('notice');
+ if(!c){$('accountDetails').innerHTML='আগে ডেলিভারির দেশ নির্বাচন করুন।';return;}
+ $('paymentMethod').value='bkash-personal';showAccount();
+}
+function showAccount(){
+ const a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
+ if(!a){$('accountDetails').innerHTML='পেমেন্ট পদ্ধতি নির্বাচন করুন।';return;}
+ if(!a.active){
+  $('accountDetails').classList.add('notice');
+  $('accountDetails').innerHTML='<b>⚠️ সতর্কতা: এই অ্যাকাউন্টে টাকা পাঠাবেন না।</b><br>এই ব্যাংক অ্যাকাউন্টটি বর্তমানে নিষ্ক্রিয়। নাম ও নম্বর নিরাপত্তার জন্য আড়াল করা আছে।';
+  return;
+ }
+ $('accountDetails').classList.remove('notice');
+ $('accountDetails').innerHTML='<b>সক্রিয় পেমেন্ট অ্যাকাউন্ট</b><br>'+esc(a.method)+'<br>অ্যাকাউন্টের নাম: <b>'+esc(a.holder)+'</b><br>নম্বর: <b>'+esc(a.number)+'</b><br>ধরন: '+esc(a.type);
+}
+function setProduct(){
+ chosenProduct=(data.services||[]).find(p=>p.id===$('productSelect').value);
+ const p=chosenProduct;let html='';
+ if(p?.origins?.length)html+='<label for="origin">Origin নির্বাচন করুন</label><select id="origin">'+p.origins.map(o=>'<option value="'+esc(o.id)+'">'+esc(o.flag||'')+' '+esc(langName(o.name))+'</option>').join('')+'</select>';
+ if(p?.tiers?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.tiers.map(t=>'<option value="'+t.grams+'">'+t.grams+'g — '+(t.price!==''&&t.price!=null?money(t.price,p.currency||'SAR'):'দাম জানতে যোগাযোগ')+'</option>').join('')+'</select>';else if(p?.variations?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.variations.map((v,i)=>'<option value="'+i+'">'+esc(langName(v.name))+(v.price!==''&&v.price!=null?' — '+money(v.price,p.currency||'SAR'):' — দাম জানতে যোগাযোগ')+'</option>').join('')+'</select>';
+ $('variantFields').innerHTML=html;
+ if(p?.id==='chocolate')$('qty').min=10;
+ else $('qty').min=1;
+ $('qty').value=p?.id==='chocolate'?10:1;
+ $('variantFields').querySelectorAll('select').forEach(s=>s.addEventListener('change',previewPrice));
+ $('qty').oninput=previewPrice;previewPrice();
+}
+function previewPrice(){
+ const p=chosenProduct;if(!p){$('pricePreview').textContent='পণ্য নির্বাচন করুন।';return;}
+ if(p.id==='chocolate'||p.id==='neem-leaves'){const r=productPrice(p,$('origin')?.value,Math.max(1,Number($('qty').value)||1));if(!r){$('pricePreview').textContent='দাম হিসাব করা যায়নি।';return;}
+ $('pricePreview').innerHTML='<b>আনুমানিক মোট: '+money(r.total,r.currency)+'</b>'+(r.discount?'<br>ছাড়: '+r.discount+'%':'')+(p.id==='chocolate'?'<br>ন্যূনতম অর্ডার: 10 পিস':'')+(p.id==='neem-leaves'?'<br>নির্বাচিত প্যাক: '+r.tier.grams+'g · Origin premium: '+(r.origin.premiumPercent||0)+'%':'');
+ }else $('pricePreview').textContent='এই পণ্যের মূল্য এখনো নির্ধারণ করা হয়নি।';
+}
+$('country').addEventListener('change',renderArea);$('paymentMethod').addEventListener('change',showAccount);$('productSelect').addEventListener('change',setProduct);$('siteLanguage').addEventListener('change',()=>{siteLang=$('siteLanguage').value;renderProducts();if($('productSelect').options.length)setProduct();});
+$('orderForm').addEventListener('submit',e=>{
+ e.preventDefault();const c=selectedCountry(),p=chosenProduct,a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
+ if(!c||!p){alert('দেশ ও পণ্য নির্বাচন করুন।');return;}
+ if(c.code!=='BD'&&!c.deliveryEnabled){alert('এই দেশে ডেলিভারি চালু নেই।');return;}
+ if(!a||!a.active){alert('সতর্কতা: এই ব্যাংক অ্যাকাউন্টটি নিষ্ক্রিয়। এই অ্যাকাউন্টে টাকা পাঠাবেন না। সক্রিয় বিকাশ নির্বাচন করুন।');return;}
+ const q=Math.max(1,Number($('qty').value)||1);if(p.id==='chocolate'&&q<10){alert('চকলেটের ন্যূনতম অর্ডার ১০ পিস।');return;}
+ const r=productPrice(p,$('origin')?.value,q);const lines=['নতুন অর্ডার — '+data.brand,'নাম: '+$('customerName').value,'মোবাইল: '+$('phone').value,'দেশ: '+c.name,'এলাকা: '+$('area').value,'ঠিকানা: '+$('address').value,'পণ্য: '+langName(p.name),'পরিমাণ: '+q];
+ if($('origin')?.value){const o=p.origins.find(x=>x.id===$('origin').value);lines.push('Origin: '+langName(o.name));}
+ if($('variant')?.value){const vv=p.variations?.[Number($('variant').value)];lines.push('প্যাক: '+(vv?langName(vv.name):$('variant').value+'g'));}
+ if(r)lines.push('আনুমানিক মোট: '+money(r.total,r.currency));if(p.id==='sugar-tier-template'){const sv=p.variations?.[Number($('variant')?.value)||0];if(!sv||sv.price===''||sv.price==null){alert('এই প্যাকের দাম এখনো সেট করা নেই। অর্ডারের আগে WhatsApp-এ মূল্য জেনে নিন।');return;}lines.push('প্যাকের মূল্য: '+money(sv.price,p.currency||'SAR'));}
+ lines.push('পেমেন্ট: '+a.method,'অ্যাকাউন্ট: '+a.holder+' / '+a.number,'রেফারেন্স/নোট: '+$('reference').value);
+ const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');if(!wa){alert('WhatsApp নম্বর সেট করা নেই।');return;}window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+});
+async function init(){try{const res=await fetch('./site-data.json',{cache:'no-store'});if(!res.ok)throw new Error('site-data.json unavailable');data=await res.json();
+ $('brand').textContent=data.brand||'Kamrul Eagle Prime';$('footerBrand').textContent=data.brand||'';$('heroTitle').textContent=data.heroTitle||'Premium Products';$('heroText').textContent=data.heroText||'';
+ $('deliveryNotice').textContent=(data.delivery?.notice||'')+' বাংলাদেশে ডেলিভারি নেই; বাংলাদেশ শুধু পেমেন্ট গ্রহণের জন্য।';
+ $('paymentNotice').textContent=(data.payment?.notice||'Advance payment only')+' '+(data.notice?.text?.bn||'');
+ const phone=data.contact?.phone||'';$('phoneLink').textContent=phone;$('phoneLink').href='tel:'+phone;
+ const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');$('waLink').href='https://wa.me/'+wa;$('year').textContent=new Date().getFullYear();
+ const langLabels={bn:'বাংলা',en:'English',ar:'العربية',hi:'हिन्दी'};$('siteLanguage').innerHTML=(data.languages||['bn','en','ar','hi']).filter(k=>langLabels[k]).map(k=>'<option value="'+k+'">'+langLabels[k]+'</option>').join('');if(!$('siteLanguage').options.length)$('siteLanguage').innerHTML='<option value="bn">বাংলা</option>';siteLang=$('siteLanguage').value||'bn';renderProducts();renderCountries();if($('productSelect').options.length)setProduct();else $('productSelect').innerHTML='<option value="">কোনো বিক্রয়যোগ্য পণ্য নেই</option>';renderArea();
+ }catch(err){$('products').innerHTML='<div class="notice">সাইটের পণ্য ও ডেলিভারি তথ্য লোড করা যায়নি। অনুগ্রহ করে কিছুক্ষণ পরে আবার চেষ্টা করুন।</div>';console.error(err);}}
+init();
+})();
+</script>
+</body></html>
