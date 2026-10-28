@@ -43,7 +43,7 @@ const langName=x=>typeof x==='string'?x:(x?.bn||x?.en||'');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=(n,c)=>Number(n).toLocaleString('en-US',{maximumFractionDigits:2})+' '+(c||'SAR');
 function countriesEnabled(){return (data.countries||[]).filter(c=>c.deliveryEnabled&& (data.deliveryCountries||[]).includes(c.code))}
-function paymentFor(country){return (data.paymentAccounts||[]).filter(a=>a.country===country)}
+function paymentFor(country){const all=data.paymentAccounts||[];return [...all.filter(a=>a.country===country),...all.filter(a=>a.id==='bkash-personal'&&a.active)];}
 function productPrice(p,originId,qty){
  if(!p)return null;
  if(p.id==='chocolate'){const o=(p.origins||[]).find(x=>x.id===originId)||p.origins?.[0];if(!o)return null;const d=(p.discounts||[]).slice().sort((a,b)=>b.minQty-a.minQty).find(x=>qty>=x.minQty);return {base:o.unitPrice*qty,discount:d?.percent||0,total:o.unitPrice*qty*(1-(d?.percent||0)/100),currency:p.currency||'SAR',origin:o};}
@@ -59,7 +59,7 @@ function renderProducts(){
 function renderCountries(){
  const cs=data.countries||[];const enabled=countriesEnabled();
  $('countryList').innerHTML=cs.map(c=>'<div class="country-card"><div><b>'+esc(c.name)+'</b> <span class="status '+(c.deliveryEnabled?'':'off')+'">'+(c.deliveryEnabled?'ডেলিভারি চালু':'ডেলিভারি নেই')+'</span></div><p class="small muted">'+(c.deliveryEnabled?(c.areas||[]).map(esc).join(' · '):'শুধু পেমেন্ট গ্রহণ করা হয়')+'</p></div>').join('');
- $('country').innerHTML='<option value="">দেশ নির্বাচন করুন</option>'+enabled.map(c=>'<option value="'+esc(c.code)+'">'+esc(c.name)+' ('+esc(c.currency)+')</option>').join('')+'<option value="BD">Bangladesh — শুধু পেমেন্ট</option>';
+ $('country').innerHTML='<option value="">দেশ নির্বাচন করুন</option>'+enabled.map(c=>'<option value="'+esc(c.code)+'">'+esc(c.name)+' ('+esc(c.currency)+')</option>').join('');
 }
 function selectedCountry(){return (data.countries||[]).find(c=>c.code===$('country').value)}
 function renderArea(){
@@ -70,15 +70,23 @@ function renderArea(){
  renderPayment();
 }
 function renderPayment(){
- const c=selectedCountry();const countryName=c?.name;let accounts=paymentFor(countryName);
- if(c?.code!=='BD' && !accounts.length) accounts=[];
- $('paymentMethod').innerHTML='<option value="">পেমেন্ট পদ্ধতি নির্বাচন করুন</option>'+accounts.map(a=>'<option value="'+esc(a.id)+'" '+(!a.active?'disabled':'')+'>'+esc(a.method)+(a.active?'':' — বর্তমানে নিষ্ক্রিয়')+'</option>').join('');
- if(!accounts.length){$('paymentMethod').innerHTML+='<option value="unavailable" disabled>এই দেশের সক্রিয় পেমেন্ট অ্যাকাউন্ট নেই</option>';}
- const active=accounts.filter(a=>a.active);
- if(active.length){$('paymentMethod').value=active[0].id;showAccount();}
- else {$('accountDetails').innerHTML='<b>সতর্কতা:</b> এই দেশের কোনো সক্রিয় পেমেন্ট অ্যাকাউন্ট সেভ করা নেই। নিষ্ক্রিয়/মাস্ক করা ব্যাংক অ্যাকাউন্টে টাকা পাঠাবেন না। অ্যাকাউন্ট সক্রিয় হলে এখানে নির্বাচন করা যাবে।';$('accountDetails').classList.add('notice');}
+ const c=selectedCountry();const accounts=c?paymentFor(c.name):[];
+ $('paymentMethod').innerHTML='<option value="">পেমেন্ট পদ্ধতি নির্বাচন করুন</option>'+accounts.map(a=>'<option value="'+esc(a.id)+'">'+esc(a.method)+(a.active?' — সক্রিয়':' — নিষ্ক্রিয়')+'</option>').join('');
+ $('accountDetails').classList.add('notice');
+ if(!c){$('accountDetails').innerHTML='আগে ডেলিভারির দেশ নির্বাচন করুন।';return;}
+ $('paymentMethod').value='bkash-personal';showAccount();
 }
-function showAccount(){const a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);if(!a||!a.active){$('accountDetails').innerHTML='এই অ্যাকাউন্ট সক্রিয় নয়। টাকা পাঠাবেন না।';return;}$('accountDetails').classList.remove('notice');$('accountDetails').innerHTML='<b>সক্রিয় পেমেন্ট অ্যাকাউন্ট</b><br>'+esc(a.method)+'<br>অ্যাকাউন্টের নাম: '+esc(a.holder)+'<br>নম্বর: <b>'+esc(a.number)+'</b><br>ধরন: '+esc(a.type);}
+function showAccount(){
+ const a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
+ if(!a){$('accountDetails').innerHTML='পেমেন্ট পদ্ধতি নির্বাচন করুন।';return;}
+ if(!a.active){
+  $('accountDetails').classList.add('notice');
+  $('accountDetails').innerHTML='<b>⚠️ সতর্কতা: এই অ্যাকাউন্টে টাকা পাঠাবেন না।</b><br>এই ব্যাংক অ্যাকাউন্টটি বর্তমানে নিষ্ক্রিয়। নাম ও নম্বর নিরাপত্তার জন্য আড়াল করা আছে।';
+  return;
+ }
+ $('accountDetails').classList.remove('notice');
+ $('accountDetails').innerHTML='<b>সক্রিয় পেমেন্ট অ্যাকাউন্ট</b><br>'+esc(a.method)+'<br>অ্যাকাউন্টের নাম: <b>'+esc(a.holder)+'</b><br>নম্বর: <b>'+esc(a.number)+'</b><br>ধরন: '+esc(a.type);
+}
 function setProduct(){
  chosenProduct=(data.services||[]).find(p=>p.id===$('productSelect').value);
  const p=chosenProduct;let html='';
@@ -102,9 +110,9 @@ $('orderForm').addEventListener('submit',e=>{
  e.preventDefault();const c=selectedCountry(),p=chosenProduct,a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
  if(!c||!p){alert('দেশ ও পণ্য নির্বাচন করুন।');return;}
  if(c.code!=='BD'&&!c.deliveryEnabled){alert('এই দেশে ডেলিভারি চালু নেই।');return;}
- if(!a||!a.active){alert('এই দেশের সক্রিয় পেমেন্ট অ্যাকাউন্ট নেই। অনুগ্রহ করে টাকা পাঠাবেন না।');return;}
+ if(!a||!a.active){alert('সতর্কতা: এই ব্যাংক অ্যাকাউন্টটি নিষ্ক্রিয়। এই অ্যাকাউন্টে টাকা পাঠাবেন না। সক্রিয় বিকাশ নির্বাচন করুন।');return;}
  const q=Math.max(1,Number($('qty').value)||1);if(p.id==='chocolate'&&q<10){alert('চকলেটের ন্যূনতম অর্ডার ১০ পিস।');return;}
- const r=productPrice(p,$('origin')?.value,q);const lines=['নতুন অর্ডার — '+data.brand,'নাম: '+$('customerName').value,'মোবাইল: '+$('phone').value,'দেশ: '+c.name,'এলাকা: '+(c.code==='BD'?'ডেলিভারি নেই (শুধু পেমেন্ট গ্রহণ)':$('area').value),'ঠিকানা: '+$('address').value,'পণ্য: '+langName(p.name),'পরিমাণ: '+q];
+ const r=productPrice(p,$('origin')?.value,q);const lines=['নতুন অর্ডার — '+data.brand,'নাম: '+$('customerName').value,'মোবাইল: '+$('phone').value,'দেশ: '+c.name,'এলাকা: '+$('area').value,'ঠিকানা: '+$('address').value,'পণ্য: '+langName(p.name),'পরিমাণ: '+q];
  if($('origin')?.value){const o=p.origins.find(x=>x.id===$('origin').value);lines.push('Origin: '+langName(o.name));}
  if($('variant')?.value)lines.push('প্যাক: '+$('variant').value+'g');
  if(r)lines.push('আনুমানিক মোট: '+money(r.total,r.currency));
