@@ -1,17 +1,749 @@
 {
-  "brand":"Kamrul Eagle Prime",
-  "whatsapp":"+8801625453876",
-  "contact":{"phone":"01907486593","whatsapp":"+8801625453876","imo":"","messenger":"https://www.facebook.com/messages/"},
-  "heroTitle":"Premium Products. Advance Payment. Fast Delivery.",
-  "heroText":"Once your advance payment is confirmed, we aim to deliver to your location within 40–45 minutes.",
-  "languages":["bn","en","ar","hi"],
-  "exchangeRates":{"BDT":1,"SAR":0.0307,"QAR":0.0298,"OMR":0.0031,"AED":0.0299,"BHD":0.0031,"KWD":0.0025,"MYR":0.038},
-  "payment":{"method":"Advance payment only","cashOnDelivery":false,"notice":"Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment."},
-  "delivery":{"free":true,"notice":"Delivery is available in Saudi Arabia, Qatar, Oman, Bahrain, Kuwait, Malaysia and United Arab Emirates. Bangladesh is payment-only and has no delivery."},
-  "deliveryCountries":["SA","QA","OM","BH","KW","MY","AE"],
-  "notice":{"title":"Customer Notice","text":"Only active payment accounts shown for a country may be used. Inactive accounts must not receive money.","active":true},
-  "countries":[{"name":"Bangladesh","code":"BD","currency":"BDT","deliveryEnabled":false,"areas":[]},{"name":"Saudi Arabia","code":"SA","currency":"SAR","deliveryEnabled":true,"areas":["Riyadh","Jeddah","Makkah","Madinah","Dammam"]},{"name":"Qatar","code":"QA","currency":"QAR","deliveryEnabled":true,"areas":["Doha","Al Rayyan","Al Wakrah"]},{"name":"Oman","code":"OM","currency":"OMR","deliveryEnabled":true,"areas":["Muscat","Seeb","Sohar"]},{"name":"Bahrain","code":"BH","currency":"BHD","deliveryEnabled":true,"areas":["Manama","Muharraq","Riffa"]},{"name":"United Arab Emirates","code":"AE","currency":"AED","deliveryEnabled":true,"areas":["Abu Dhabi","Dubai","Sharjah"]},{"name":"Malaysia","code":"MY","currency":"MYR","deliveryEnabled":true,"areas":["Kuala Lumpur","Putrajaya","Johor Bahru"]},{"name":"Kuwait","code":"KW","currency":"KWD","deliveryEnabled":true,"areas":["Kuwait City","Hawalli","Salmiya"]}],
-  "services":[{"id":"sugar-tier-template","name":{"bn":"প্রিমিয়াম চিনি","en":"Premium Sugar","ar":"سكر فاخر","hi":"प्रीमियम चीनी"},"price":"","image":"","description":{"bn":"চিনির প্যাক সাইজ/টিয়ার টেমপ্লেট।","en":"Editable sugar pack-size tier template.","ar":"قالب قابل للتعديل لأحجام عبوات السكر.","hi":"संपादन योग्य चीनी पैक-साइज़ टियर टेम्पलेट।"},"variations":[{"name":{"bn":"1 গ্রাম","en":"1g","ar":"1 غرام","hi":"1 ग्राम"},"price":""},{"name":{"bn":"2 গ্রাম","en":"2g","ar":"2 غرام","hi":"2 ग्राम"},"price":""},{"name":{"bn":"3 গ্রাম","en":"3g","ar":"3 غرام","hi":"3 ग्राम"},"price":""},{"name":{"bn":"5 গ্রাম","en":"5g","ar":"5 غرام","hi":"5 ग्राम"},"price":""},{"name":{"bn":"10 গ্রাম","en":"10g","ar":"10 غرام","hi":"10 ग्राम"},"price":""},{"name":{"bn":"20 গ্রাম","en":"20g","ar":"20 غرام","hi":"20 ग्राम"},"price":""},{"name":{"bn":"30 গ্রাম","en":"30g","ar":"30 غرام","hi":"30 ग्राम"},"price":""}],"countryPrices":{"SA":"","QA":"","OM":"","BH":"","KW":"","MY":"","AE":""}},{"id":"chocolate","name":{"bn":"চকলেট","en":"Chocolate","ar":"شوكولاتة","hi":"चॉकलेट"},"price":"","image":"","description":{"bn":"Original ও W চকলেট। ন্যূনতম অর্ডার ১০ পিস। ২০ পিসে ২০% এবং ৩০ পিস বা তার বেশি হলে ৩০% ছাড়।","en":"Original and W chocolate. Minimum order 10 pieces. 20 pieces get 20% off; 30 pieces or more get 30% off.","ar":"شوكولاتة Original وW. الحد الأدنى 10 قطع. خصم 20٪ عند 20 قطعة و30٪ عند 30 قطعة أو أكثر.","hi":"Original और W चॉकलेट। न्यूनतम ऑर्डर 10 पीस। 20 पीस पर 20% और 30 या अधिक पीस पर 30% छूट।"},"whatsappOrder":true,"currency":"SAR","origins":[{"id":"original","name":{"bn":"Original","en":"Original","ar":"Original","hi":"Original"},"flag":"🍫","unitPrice":30,"moq":10},{"id":"w","name":{"bn":"W","en":"W","ar":"W","hi":"W"},"flag":"🍫","unitPrice":20,"moq":10}],"discounts":[{"minQty":30,"percent":30},{"minQty":20,"percent":20},{"minQty":10,"percent":0}]}],
-  "paymentAccounts":[{"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bkash-sa","country":"Saudi Arabia","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-sa-1","country":"Saudi Arabia","method":"Saudi Bank Account 01","holder":"S**** B****","number":"SA42 **** **** 1289","type":"Bank Account","active":false},{"id":"bank-sa-2","country":"Saudi Arabia","method":"Saudi Bank Account 02","holder":"A**** M****","number":"SA15 **** **** 4582","type":"Bank Account","active":false},{"id":"bank-sa-3","country":"Saudi Arabia","method":"Saudi Bank Account 03","holder":"K**** H****","number":"SA77 **** **** 9031","type":"Bank Account","active":false},{"id":"bkash-qa","country":"Qatar","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-qa-1","country":"Qatar","method":"Qatar Bank Account 01","holder":"S**** A****","number":"QA **** **** 4589","type":"Bank Account","active":false},{"id":"bank-qa-2","country":"Qatar","method":"Qatar Bank Account 02","holder":"M**** R****","number":"QA **** **** 7314","type":"Bank Account","active":false},{"id":"bank-qa-3","country":"Qatar","method":"Qatar Bank Account 03","holder":"N**** K****","number":"QA **** **** 2057","type":"Bank Account","active":false},{"id":"bkash-om","country":"Oman","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-om-1","country":"Oman","method":"Oman Bank Account 01","holder":"A**** S****","number":"OM **** **** 6721","type":"Bank Account","active":false},{"id":"bank-om-2","country":"Oman","method":"Oman Bank Account 02","holder":"H**** M****","number":"OM **** **** 1946","type":"Bank Account","active":false},{"id":"bank-om-3","country":"Oman","method":"Oman Bank Account 03","holder":"R**** A****","number":"OM **** **** 8350","type":"Bank Account","active":false},{"id":"bkash-bh","country":"Bahrain","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-bh-1","country":"Bahrain","method":"Bahrain Bank Account 01","holder":"M**** A****","number":"BH **** **** 7412","type":"Bank Account","active":false},{"id":"bank-bh-2","country":"Bahrain","method":"Bahrain Bank Account 02","holder":"S**** H****","number":"BH **** **** 3168","type":"Bank Account","active":false},{"id":"bank-bh-3","country":"Bahrain","method":"Bahrain Bank Account 03","holder":"K**** R****","number":"BH **** **** 5094","type":"Bank Account","active":false},{"id":"bkash-kw","country":"Kuwait","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-kw-1","country":"Kuwait","method":"Kuwait Bank Account 01","holder":"A**** K****","number":"KW **** **** 3158","type":"Bank Account","active":false},{"id":"bank-kw-2","country":"Kuwait","method":"Kuwait Bank Account 02","holder":"F**** M****","number":"KW **** **** 6841","type":"Bank Account","active":false},{"id":"bank-kw-3","country":"Kuwait","method":"Kuwait Bank Account 03","holder":"R**** S****","number":"KW **** **** 9270","type":"Bank Account","active":false},{"id":"bkash-my","country":"Malaysia","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-my-1","country":"Malaysia","method":"Malaysia Bank Account 01","holder":"N**** A****","number":"MY **** **** 5521","type":"Bank Account","active":false},{"id":"bank-my-2","country":"Malaysia","method":"Malaysia Bank Account 02","holder":"S**** R****","number":"MY **** **** 8036","type":"Bank Account","active":false},{"id":"bank-my-3","country":"Malaysia","method":"Malaysia Bank Account 03","holder":"H**** K****","number":"MY **** **** 1749","type":"Bank Account","active":false},{"id":"bkash-ae","country":"United Arab Emirates","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},{"id":"bank-ae-1","country":"United Arab Emirates","method":"UAE Bank Account 01","holder":"M**** A****","number":"AE **** **** 9034","type":"Bank Account","active":false},{"id":"bank-ae-2","country":"United Arab Emirates","method":"UAE Bank Account 02","holder":"S**** H****","number":"AE **** **** 6172","type":"Bank Account","active":false},{"id":"bank-ae-3","country":"United Arab Emirates","method":"UAE Bank Account 03","holder":"K**** R****","number":"AE **** **** 2845","type":"Bank Account","active":false},{"id":"nagad","country":"বাংলাদেশ","method":"নগদ (Nagad)","holder":"","number":"","type":"Mobile Account","active":false},{"id":"rocket","country":"বাংলাদেশ","method":"রকেট (Rocket)","holder":"","number":"","type":"Mobile Account","active":false},{"id":"dbbl","country":"বাংলাদেশ","method":"ডাচ-বাংলা ব্যাংক (DBBL)","holder":"","number":"","type":"Bank Account","active":false},{"id":"islami-bank","country":"বাংলাদেশ","method":"ইসলামী ব্যাংক বাংলাদেশ","holder":"","number":"","type":"Bank Account","active":false},{"id":"sonali-bank","country":"বাংলাদেশ","method":"সোনালী ব্যাংক","holder":"","number":"","type":"Bank Account","active":false}],
-  "gccBankAccounts":[{"country":"Saudi Arabia","flag":"🇸🇦","bank":"Saudi Arabia Bank Account","account":"SA42 **** **** 1289","active":false},{"country":"Qatar","flag":"🇶🇦","bank":"Qatar Bank Account","account":"QA **** **** 4589","active":false},{"country":"Oman","flag":"🇴🇲","bank":"Oman Bank Account","account":"OM **** **** 6721","active":false},{"country":"United Arab Emirates","flag":"🇦🇪","bank":"UAE Bank Account","account":"AE **** **** 9034","active":false},{"country":"Bahrain","flag":"🇧🇭","bank":"Bahrain Bank Account","account":"BH **** **** 7412","active":false},{"country":"Kuwait","flag":"🇰🇼","bank":"Kuwait Bank Account","account":"KW **** **** 3158","active":false}]
+  "brand": "Kamrul Eagle Prime",
+  "whatsapp": "+8801625453876",
+  "contact": {
+    "phone": "01907486593",
+    "whatsapp": "+8801625453876",
+    "imo": "",
+    "messenger": "https://www.facebook.com/messages/"
+  },
+  "heroTitle": "Premium Products. Advance Payment. Fast Delivery.",
+  "heroText": "Once your advance payment is confirmed, we aim to deliver to your location within 40–45 minutes.",
+  "languages": [
+    "bn",
+    "en",
+    "ar",
+    "hi"
+  ],
+  "exchangeRates": {
+    "BDT": 1,
+    "SAR": 0.0307,
+    "QAR": 0.0298,
+    "OMR": 0.0031,
+    "AED": 0.0299,
+    "BHD": 0.0031,
+    "KWD": 0.0025,
+    "MYR": 0.038
+  },
+  "payment": {
+    "method": "Advance payment only",
+    "cashOnDelivery": false,
+    "notice": "Full payment is required in advance. We do not offer Cash on Delivery or pay-at-the-door payment."
+  },
+  "delivery": {
+    "free": true,
+    "notice": "Delivery is available in Saudi Arabia, Qatar, Oman, Bahrain, Kuwait, Malaysia and United Arab Emirates. Bangladesh is payment-only and has no delivery."
+  },
+  "deliveryCountries": [
+    "SA",
+    "QA",
+    "OM",
+    "BH",
+    "KW",
+    "MY",
+    "AE"
+  ],
+  "notice": {
+    "title": {
+      "bn": "⚠️ জরুরি পেমেন্ট সতর্কতা",
+      "en": "⚠️ Important Payment Warning",
+      "ar": "⚠️ تحذير مهم للدفع",
+      "hi": "⚠️ महत्वपूर्ण भुगतान चेतावनी"
+    },
+    "text": {
+      "bn": "⚠️ ব্যাংক অ্যাকাউন্টগুলো বর্তমানে বন্ধ/নিষ্ক্রিয়। এসব অ্যাকাউন্টে টাকা পাঠাবেন না। শুধু সক্রিয় bKash ব্যবহার করুন।",
+      "en": "⚠️ Bank accounts are currently closed/inactive. Do NOT send money to these accounts. Use active bKash only.",
+      "ar": "⚠️ الحسابات البنكية مغلقة أو غير نشطة حاليًا. لا ترسل الأموال إليها. استخدم bKash النشط فقط.",
+      "hi": "⚠️ बैंक खाते अभी बंद/निष्क्रिय हैं। इन खातों में पैसे न भेजें। केवल सक्रिय bKash का उपयोग करें।"
+    },
+    "active": true
+  },
+  "countries": [
+    {
+      "name": "Bangladesh",
+      "code": "BD",
+      "currency": "BDT",
+      "deliveryEnabled": false,
+      "areas": []
+    },
+    {
+      "name": "Saudi Arabia",
+      "code": "SA",
+      "currency": "SAR",
+      "deliveryEnabled": true,
+      "areas": [
+        "Riyadh",
+        "Jeddah",
+        "Makkah",
+        "Madinah",
+        "Dammam"
+      ]
+    },
+    {
+      "name": "Qatar",
+      "code": "QA",
+      "currency": "QAR",
+      "deliveryEnabled": true,
+      "areas": [
+        "Doha",
+        "Al Rayyan",
+        "Al Wakrah"
+      ]
+    },
+    {
+      "name": "Oman",
+      "code": "OM",
+      "currency": "OMR",
+      "deliveryEnabled": true,
+      "areas": [
+        "Muscat",
+        "Seeb",
+        "Sohar"
+      ]
+    },
+    {
+      "name": "Bahrain",
+      "code": "BH",
+      "currency": "BHD",
+      "deliveryEnabled": true,
+      "areas": [
+        "Manama",
+        "Muharraq",
+        "Riffa"
+      ]
+    },
+    {
+      "name": "United Arab Emirates",
+      "code": "AE",
+      "currency": "AED",
+      "deliveryEnabled": true,
+      "areas": [
+        "Abu Dhabi",
+        "Dubai",
+        "Sharjah"
+      ]
+    },
+    {
+      "name": "Malaysia",
+      "code": "MY",
+      "currency": "MYR",
+      "deliveryEnabled": true,
+      "areas": [
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Johor Bahru"
+      ]
+    },
+    {
+      "name": "Kuwait",
+      "code": "KW",
+      "currency": "KWD",
+      "deliveryEnabled": true,
+      "areas": [
+        "Kuwait City",
+        "Hawalli",
+        "Salmiya"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": "sugar-tier-template",
+      "name": {
+        "bn": "প্রিমিয়াম চিনি",
+        "en": "Premium Sugar",
+        "ar": "سكر فاخر",
+        "hi": "प्रीमियम चीनी"
+      },
+      "price": "",
+      "image": "",
+      "description": {
+        "bn": "চিনির প্যাক সাইজ/টিয়ার টেমপ্লেট।",
+        "en": "Editable sugar pack-size tier template.",
+        "ar": "قالب قابل للتعديل لأحجام عبوات السكر.",
+        "hi": "संपादन योग्य चीनी पैक-साइज़ टियर टेम्पलेट।"
+      },
+      "variations": [
+        {
+          "name": {
+            "bn": "1 গ্রাম",
+            "en": "1g",
+            "ar": "1 غرام",
+            "hi": "1 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "2 গ্রাম",
+            "en": "2g",
+            "ar": "2 غرام",
+            "hi": "2 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "3 গ্রাম",
+            "en": "3g",
+            "ar": "3 غرام",
+            "hi": "3 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "5 গ্রাম",
+            "en": "5g",
+            "ar": "5 غرام",
+            "hi": "5 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "10 গ্রাম",
+            "en": "10g",
+            "ar": "10 غرام",
+            "hi": "10 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "20 গ্রাম",
+            "en": "20g",
+            "ar": "20 غرام",
+            "hi": "20 ग्राम"
+          },
+          "price": ""
+        },
+        {
+          "name": {
+            "bn": "30 গ্রাম",
+            "en": "30g",
+            "ar": "30 غرام",
+            "hi": "30 ग्राम"
+          },
+          "price": ""
+        }
+      ],
+      "countryPrices": {
+        "SA": "",
+        "QA": "",
+        "OM": "",
+        "BH": "",
+        "KW": "",
+        "MY": "",
+        "AE": ""
+      }
+    },
+    {
+      "id": "chocolate",
+      "name": {
+        "bn": "চকলেট",
+        "en": "Chocolate",
+        "ar": "شوكولاتة",
+        "hi": "चॉकलेट"
+      },
+      "price": "",
+      "image": "",
+      "description": {
+        "bn": "মিয়ানমার ও ভারত Origin। ন্যূনতম অর্ডার ১০ পিস। ২০+ পিসে ১০%, ৩০+ পিসে ৩০% এবং ৪০+ পিসে ৪০% ছাড়।",
+        "en": "Myanmar and India origins. Minimum order 10 pieces. 10% off at 20+, 30% at 30+, and 40% at 40+ pieces.",
+        "ar": "منشأ ميانمار والهند. الحد الأدنى 10 قطع. خصم 10٪ عند 20 قطعة، و30٪ عند 30، و40٪ عند 40 قطعة.",
+        "hi": "म्यांमार और भारत मूल। न्यूनतम ऑर्डर 10 पीस। 20+ पर 10%, 30+ पर 30% और 40+ पीस पर 40% छूट।"
+      },
+      "whatsappOrder": true,
+      "currency": "SAR",
+      "origins": [
+        {
+          "id": "myanmar",
+          "name": {
+            "bn": "মিয়ানমার Original",
+            "en": "Myanmar Original",
+            "ar": "أصل ميانمار",
+            "hi": "म्यांमार मूल"
+          },
+          "flag": "🇲🇲",
+          "unitPrice": 30,
+          "moq": 10
+        },
+        {
+          "id": "india",
+          "name": {
+            "bn": "ইন্ডিয়া Original",
+            "en": "India Original",
+            "ar": "أصل الهند",
+            "hi": "भारत मूल"
+          },
+          "flag": "🇮🇳",
+          "unitPrice": 20,
+          "moq": 10
+        }
+      ],
+      "discounts": [
+        {
+          "minQty": 40,
+          "percent": 40
+        },
+        {
+          "minQty": 30,
+          "percent": 30
+        },
+        {
+          "minQty": 20,
+          "percent": 10
+        },
+        {
+          "minQty": 10,
+          "percent": 0
+        }
+      ]
+    },
+    {
+      "id": "neem-leaves",
+      "name": {
+        "bn": "নিম পাতা",
+        "en": "Neem Leaves",
+        "ar": "أوراق النيم",
+        "hi": "नीम के पत्ते"
+      },
+      "description": {
+        "bn": "নিম পাতা / ভেষজ পণ্য। পরিমাণ নির্বাচন করলে Origin অনুযায়ী মূল্য হিসাব হবে।",
+        "en": "Neem leaves / herbal product. Select a quantity to calculate the origin-specific price.",
+        "ar": "أوراق النيم / منتج عشبي. اختر الكمية لحساب السعر حسب المنشأ.",
+        "hi": "नीम के पत्ते / हर्बल उत्पाद। मूल के अनुसार कीमत के लिए मात्रा चुनें।"
+      },
+      "currency": "SAR",
+      "whatsappOrder": true,
+      "tiers": [
+        {
+          "grams": 10,
+          "price": 150,
+          "savings": 0
+        },
+        {
+          "grams": 25,
+          "price": 300,
+          "savings": 75
+        },
+        {
+          "grams": 40,
+          "price": 400,
+          "savings": 200
+        },
+        {
+          "grams": 50,
+          "price": 500,
+          "savings": 250
+        }
+      ],
+      "origins": [
+        {
+          "id": "africa",
+          "name": {
+            "bn": "আফ্রিকান Origin",
+            "en": "African Origin",
+            "ar": "منشأ أفريقي",
+            "hi": "अफ्रीकी मूल"
+          },
+          "flag": "🌍",
+          "premiumPercent": 5,
+          "badge": {
+            "bn": "প্রিমিয়াম",
+            "en": "Premium",
+            "ar": "مميز",
+            "hi": "प्रीमियम"
+          }
+        },
+        {
+          "id": "bangladesh",
+          "name": {
+            "bn": "বাংলাদেশ Origin",
+            "en": "Bangladesh Origin",
+            "ar": "منشأ بنغلاديش",
+            "hi": "बांग्लादेश मूल"
+          },
+          "flag": "🇧🇩",
+          "premiumPercent": 0,
+          "badge": {
+            "bn": "স্ট্যান্ডার্ড",
+            "en": "Standard",
+            "ar": "قياسي",
+            "hi": "मानक"
+          }
+        },
+        {
+          "id": "india",
+          "name": {
+            "bn": "ইন্ডিয়া Origin",
+            "en": "India Origin",
+            "ar": "منشأ الهند",
+            "hi": "भारत मूल"
+          },
+          "flag": "🇮🇳",
+          "premiumPercent": 0,
+          "badge": {
+            "bn": "বাজেট",
+            "en": "Budget",
+            "ar": "اقتصادي",
+            "hi": "बजट"
+          }
+        }
+      ]
+    }
+  ],
+  "paymentAccounts": [
+    {
+      "id": "bkash-personal",
+      "country": "Bangladesh",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bkash-sa",
+      "country": "Saudi Arabia",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-sa-1",
+      "country": "Saudi Arabia",
+      "method": "Saudi Bank Account 01",
+      "holder": "S**** B****",
+      "number": "SA42 **** **** 1289",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-sa-2",
+      "country": "Saudi Arabia",
+      "method": "Saudi Bank Account 02",
+      "holder": "A**** M****",
+      "number": "SA15 **** **** 4582",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-sa-3",
+      "country": "Saudi Arabia",
+      "method": "Saudi Bank Account 03",
+      "holder": "K**** H****",
+      "number": "SA77 **** **** 9031",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-qa",
+      "country": "Qatar",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-qa-1",
+      "country": "Qatar",
+      "method": "Qatar Bank Account 01",
+      "holder": "S**** A****",
+      "number": "QA **** **** 4589",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-qa-2",
+      "country": "Qatar",
+      "method": "Qatar Bank Account 02",
+      "holder": "M**** R****",
+      "number": "QA **** **** 7314",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-qa-3",
+      "country": "Qatar",
+      "method": "Qatar Bank Account 03",
+      "holder": "N**** K****",
+      "number": "QA **** **** 2057",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-om",
+      "country": "Oman",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-om-1",
+      "country": "Oman",
+      "method": "Oman Bank Account 01",
+      "holder": "A**** S****",
+      "number": "OM **** **** 6721",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-om-2",
+      "country": "Oman",
+      "method": "Oman Bank Account 02",
+      "holder": "H**** M****",
+      "number": "OM **** **** 1946",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-om-3",
+      "country": "Oman",
+      "method": "Oman Bank Account 03",
+      "holder": "R**** A****",
+      "number": "OM **** **** 8350",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-bh",
+      "country": "Bahrain",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-bh-1",
+      "country": "Bahrain",
+      "method": "Bahrain Bank Account 01",
+      "holder": "M**** A****",
+      "number": "BH **** **** 7412",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-bh-2",
+      "country": "Bahrain",
+      "method": "Bahrain Bank Account 02",
+      "holder": "S**** H****",
+      "number": "BH **** **** 3168",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-bh-3",
+      "country": "Bahrain",
+      "method": "Bahrain Bank Account 03",
+      "holder": "K**** R****",
+      "number": "BH **** **** 5094",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-kw",
+      "country": "Kuwait",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-kw-1",
+      "country": "Kuwait",
+      "method": "Kuwait Bank Account 01",
+      "holder": "A**** K****",
+      "number": "KW **** **** 3158",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-kw-2",
+      "country": "Kuwait",
+      "method": "Kuwait Bank Account 02",
+      "holder": "F**** M****",
+      "number": "KW **** **** 6841",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-kw-3",
+      "country": "Kuwait",
+      "method": "Kuwait Bank Account 03",
+      "holder": "R**** S****",
+      "number": "KW **** **** 9270",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-my",
+      "country": "Malaysia",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-my-1",
+      "country": "Malaysia",
+      "method": "Malaysia Bank Account 01",
+      "holder": "N**** A****",
+      "number": "MY **** **** 5521",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-my-2",
+      "country": "Malaysia",
+      "method": "Malaysia Bank Account 02",
+      "holder": "S**** R****",
+      "number": "MY **** **** 8036",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-my-3",
+      "country": "Malaysia",
+      "method": "Malaysia Bank Account 03",
+      "holder": "H**** K****",
+      "number": "MY **** **** 1749",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bkash-ae",
+      "country": "United Arab Emirates",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "bank-ae-1",
+      "country": "United Arab Emirates",
+      "method": "UAE Bank Account 01",
+      "holder": "M**** A****",
+      "number": "AE **** **** 9034",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-ae-2",
+      "country": "United Arab Emirates",
+      "method": "UAE Bank Account 02",
+      "holder": "S**** H****",
+      "number": "AE **** **** 6172",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "bank-ae-3",
+      "country": "United Arab Emirates",
+      "method": "UAE Bank Account 03",
+      "holder": "K**** R****",
+      "number": "AE **** **** 2845",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "nagad",
+      "country": "Bangladesh",
+      "method": "নগদ (Nagad)",
+      "holder": "",
+      "number": "",
+      "type": "Mobile Account",
+      "active": false
+    },
+    {
+      "id": "rocket",
+      "country": "Bangladesh",
+      "method": "রকেট (Rocket)",
+      "holder": "",
+      "number": "",
+      "type": "Mobile Account",
+      "active": false
+    },
+    {
+      "id": "dbbl",
+      "country": "Bangladesh",
+      "method": "ডাচ-বাংলা ব্যাংক (DBBL)",
+      "holder": "",
+      "number": "",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "islami-bank",
+      "country": "Bangladesh",
+      "method": "ইসলামী ব্যাংক বাংলাদেশ",
+      "holder": "",
+      "number": "",
+      "type": "Bank Account",
+      "active": false
+    },
+    {
+      "id": "sonali-bank",
+      "country": "Bangladesh",
+      "method": "সোনালী ব্যাংক",
+      "holder": "",
+      "number": "",
+      "type": "Bank Account",
+      "active": false
+    }
+  ],
+  "gccBankAccounts": [
+    {
+      "country": "Saudi Arabia",
+      "flag": "🇸🇦",
+      "bank": "Saudi Arabia Bank Account",
+      "account": "SA42 **** **** 1289",
+      "active": false
+    },
+    {
+      "country": "Qatar",
+      "flag": "🇶🇦",
+      "bank": "Qatar Bank Account",
+      "account": "QA **** **** 4589",
+      "active": false
+    },
+    {
+      "country": "Oman",
+      "flag": "🇴🇲",
+      "bank": "Oman Bank Account",
+      "account": "OM **** **** 6721",
+      "active": false
+    },
+    {
+      "country": "United Arab Emirates",
+      "flag": "🇦🇪",
+      "bank": "UAE Bank Account",
+      "account": "AE **** **** 9034",
+      "active": false
+    },
+    {
+      "country": "Bahrain",
+      "flag": "🇧🇭",
+      "bank": "Bahrain Bank Account",
+      "account": "BH **** **** 7412",
+      "active": false
+    },
+    {
+      "country": "Kuwait",
+      "flag": "🇰🇼",
+      "bank": "Kuwait Bank Account",
+      "account": "KW **** **** 3158",
+      "active": false
+    }
+  ]
 }
