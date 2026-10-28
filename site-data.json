@@ -225,5 +225,43 @@
       "image": "",
       "description": "Add your products, photos and country-specific prices here from the admin panel."
     }
+  ],
+  "paymentAccounts": [
+    {
+      "id": "bkash-personal",
+      "country": "বাংলাদেশ",
+      "method": "বিকাশ (bKash)",
+      "holder": "AMBIA KHATUN",
+      "number": "01629625993",
+      "type": "Personal",
+      "active": true
+    },
+    {
+      "id": "nagad",
+      "country": "বাংলাদেশ",
+      "method": "নগদ (Nagad)",
+      "holder": "",
+      "number": "",
+      "type": "",
+      "active": false
+    },
+    {
+      "id": "rocket",
+      "country": "বাংলাদেশ",
+      "method": "রকেট (Rocket)",
+      "holder": "",
+      "number": "",
+      "type": "",
+      "active": false
+    },
+    {
+      "id": "bank-transfer",
+      "country": "বাংলাদেশ",
+      "method": "ব্যাংক ট্রান্সফার",
+      "holder": "",
+      "number": "",
+      "type": "",
+      "active": false
+    }
   ]
 }
