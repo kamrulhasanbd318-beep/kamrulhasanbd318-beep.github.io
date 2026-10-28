@@ -2,7 +2,7 @@
   "brand": "Kamrul Eagle Fimia",
   "whatsapp": "+8801625453876",
   "heroTitle": "Premium Products. Advance Payment. Fast Delivery.",
-  "heroText": "Once your payment is confirmed, please allow up to 1 hour for delivery to your location. We’ll do our best to deliver even sooner.",
+  "heroText": "Once your advance payment is confirmed, we aim to deliver to your location within 40–45 minutes.",
   "languages": [
     "en",
     "ar",
@@ -11,15 +11,15 @@
   "payment": {
     "method": "Advance payment only",
     "cashOnDelivery": false,
-    "notice": "Full payment is required in advance. Cash on Delivery is not available. Please allow up to 1 hour for delivery after payment confirmation; we’ll do our best to deliver sooner."
+    "notice": "Full payment must be made in advance. Cash on Delivery and cash payment upon handover are not available. Delivery is expected within 40–45 minutes after payment confirmation."
   },
   "delivery": {
     "free": true,
-    "notice": "Please allow up to 1 hour for delivery after payment confirmation. We’ll do our best to deliver sooner. Please confirm your location before payment."
+    "notice": "After advance payment is confirmed, delivery is expected within 40–45 minutes. Cash on Delivery and payment in cash upon handover are not available. Please confirm your location before paying."
   },
   "notice": {
     "title": "Customer Notice",
-    "text": "Advance payment only. Cash on Delivery is not available. Please allow up to 1 hour for delivery after payment confirmation—we’ll do our best to arrive sooner.",
+    "text": "Advance payment is required. Cash on Delivery and cash payment upon handover are not available. Delivery is expected within 40–45 minutes after payment confirmation.",
     "active": true
   },
   "countries": [
