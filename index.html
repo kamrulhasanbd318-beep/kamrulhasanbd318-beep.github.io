@@ -92,4 +92,50 @@ const oldFallback=window.fallbackCopy;window.fallbackCopy=function(text,done){co
 document.querySelectorAll("[data-i18n]").forEach(()=>{});applyStatic(document.documentElement.lang||"bn");
 })();
 </script>
-<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body></html>
+
+<script>
+/* Reliable fallback for delivery-area and payment selectors */
+(async function(){
+  const $=id=>document.getElementById(id);
+  const esc2=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const catalog=[
+    {country:"🇧🇩 বাংলাদেশ",methods:["বিকাশ (bKash)","নগদ (Nagad)","রকেট (Rocket)","ব্যাংক ট্রান্সফার"]},
+    {country:"🇸🇦 Saudi Arabia",methods:["Al Rajhi Bank","Saudi National Bank (SNB)","Riyad Bank","Alinma Bank"]},
+    {country:"🇦🇪 UAE",methods:["Emirates NBD","First Abu Dhabi Bank (FAB)","ADCB","Dubai Islamic Bank"]},
+    {country:"🇶🇦 Qatar",methods:["QNB","Qatar Islamic Bank","Commercial Bank","Doha Bank"]},
+    {country:"🇴🇲 Oman",methods:["Bank Muscat","Bank Dhofar","National Bank of Oman","Sohar International"]},
+    {country:"🇧🇭 Bahrain",methods:["National Bank of Bahrain (NBB)","Bank of Bahrain and Kuwait (BBK)","Bahrain Islamic Bank"]},
+    {country:"🇰🇼 Kuwait",methods:["National Bank of Kuwait (NBK)","Kuwait Finance House (KFH)","Boubyan Bank","Gulf Bank"]},
+    {country:"🇲🇾 Malaysia",methods:["Maybank","CIMB Bank","Public Bank","RHB Bank"]}
+  ];
+  try {
+    const response=await fetch("./site-data.json",{cache:"no-store"});
+    if(!response.ok) throw new Error("site-data unavailable");
+    const data=await response.json();
+    const countrySelect=$("countrySelect"), paymentCountry=$("paymentCountry");
+    function showAreas(){
+      const c=data.countries||[], idx=Number(countrySelect.value)||0, country=c[idx];
+      if(!country) return;
+      $("currencyLabel").textContent="Currency: "+(country.currency||"");
+      $("cityList").innerHTML=(country.areas||[]).map(city=>'<span class="city">'+esc2(city)+'</span>').join("")||'<span class="small">কোনো এলাকা পাওয়া যায়নি</span>';
+    }
+    function showPayment(){
+      const accounts=data.paymentAccounts||[], idx=Number(paymentCountry.value)||0, item=catalog[idx]||catalog[0];
+      $("paymentMethods").innerHTML='<article class="payment-country"><h3>'+esc2(item.country)+'</h3>'+item.methods.map(method=>{
+        const account=accounts.find(a=>a.active&&String(a.number||"").trim()&&a.method===method);
+        const status=account?'✅ সক্রিয়':'🔒 বন্ধ / অ্যাকাউন্ট যোগ করা হয়নি';
+        return '<div class="payment-method"><span>🏦 '+esc2(method)+(account?'<br><small>নাম: '+esc2(account.holder)+' · নম্বর: <b dir="ltr">'+esc2(account.number)+'</b></small>':'')+'</span><span class="payment-status '+(account?'active':'')+'">'+status+'</span></div>';
+      }).join("")+'<p class="payment-disclaimer">শুধু সক্রিয় অ্যাকাউন্টে টাকা পাঠান। বন্ধ মাধ্যমে টাকা পাঠাবেন না।</p></article>';
+    }
+    if(countrySelect && data.countries?.length){
+      countrySelect.innerHTML=data.countries.map((c,i)=>'<option value="'+i+'">'+esc2(c.name)+'</option>').join("");
+      countrySelect.addEventListener("change",showAreas); showAreas();
+    }
+    if(paymentCountry){
+      paymentCountry.innerHTML=catalog.map((c,i)=>'<option value="'+i+'">'+esc2(c.country)+'</option>').join("");
+      paymentCountry.addEventListener("change",showPayment); showPayment();
+    }
+  } catch(error) { console.error("Delivery/payment selector fallback:",error); }
+})();
+</script>
+\n<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body></html>
