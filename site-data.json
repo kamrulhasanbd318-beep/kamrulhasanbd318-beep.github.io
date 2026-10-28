@@ -15,14 +15,14 @@
   "delivery": {"free":true,"notice":"Cash on Delivery and pay-at-the-door payment are not available. Advance payment is required to confirm your order. After confirmation, delivery will be made to the location you provide."},
   "notice": {"title":"Customer Notice","text":"⚠️ Important Notice: Our GCC bank accounts are currently temporarily inactive/closed. Please DO NOT transfer any money to these inactive accounts. Currently, payments are only accepted via bKash. We will notify you once the bank accounts are activated.","active":true},
   "countries": [
-    {"name":"Bangladesh","code":"BD","currency":"BDT","areas":["Dhaka","Chattogram","Sylhet","Rajshahi","Khulna","Barishal","Rangpur","Mymensingh","Cumilla","Gazipur","Narayanganj","Cox's Bazar","Jashore","Bogura","Savar","Tongi","Narsingdi","Feni","Noakhali","Brahmanbaria","Tangail","Dinajpur","Pabna","Kushtia","Faridpur","Madaripur","Gopalganj","Moulvibazar","Habiganj","Sunamganj"]},
-    {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":["Riyadh","Jeddah","Makkah","Madinah","Dammam","Al Khobar","Dhahran","Jubail","Taif","Tabuk","Abha","Khamis Mushait","Jazan","Najran","Hail","Al Bahah","Yanbu","Al Qassim","Al Ahsa","Hafar Al Batin","Arar","Sakaka","Al Kharj","Qurayyat","Bisha"]},
-    {"name":"Oman","code":"OM","currency":"OMR","areas":["Muscat","Seeb","Muttrah","Bawshar","Al Amarat","Qurayyat","Sohar","Salalah","Nizwa","Sur","Ibri","Barka","Rustaq","Buraimi","Khasab","Ibra","Duqm","Adam"]},
-    {"name":"Qatar","code":"QA","currency":"QAR","areas":["Doha","Al Rayyan","Al Wakrah","Al Khor","Lusail","Al Daayen","Umm Salal","Al Shamal","Al Shahaniya","Mesaieed","Dukhan","The Pearl","West Bay"]},
-    {"name":"Bahrain","code":"BH","currency":"BHD","areas":["Manama","Muharraq","Riffa","Isa Town","Hamad Town","Sitra","A'ali","Budaiya","Jidhafs","Sanabis","Arad","Hidd","Zallaq","Saar","Juffair","Seef","Tubli"]},
-    {"name":"United Arab Emirates","code":"AE","currency":"AED","areas":["Abu Dhabi","Dubai","Sharjah","Ajman","Al Ain","Ras Al Khaimah","Fujairah","Umm Al Quwain","Khor Fakkan","Kalba","Dibba Al-Fujairah","Jebel Ali","Madinat Zayed","Ruwais","Liwa","Al Dhafra"]},
-    {"name":"Malaysia","code":"MY","currency":"MYR","areas":["Kuala Lumpur","Putrajaya","Cyberjaya","Petaling Jaya","Shah Alam","Klang","Subang Jaya","Kajang","Seremban","Melaka City","Johor Bahru","Batu Pahat","Ipoh","Taiping","George Town","Butterworth","Alor Setar","Kangar","Kota Bharu","Kuala Terengganu","Kuantan","Temerloh","Kota Kinabalu","Sandakan","Tawau","Kuching","Miri","Sibu","Bintulu"]},
-    {"name":"Kuwait","code":"KW","currency":"KWD","areas":["Kuwait City","Hawalli","Salmiya","Farwaniya","Khaitan","Jahra","Ahmadi","Mangaf","Fahaheel","Mahboula","Abu Halifa","Sabah Al Salem","Mubarak Al-Kabeer","Jabriya","Fintas","Ardiya","Shuwaikh","Sabhan"]}
+    {"name":"Bangladesh","code":"BD","currency":"BDT","areas":[]},
+    {"name":"Saudi Arabia","code":"SA","currency":"SAR","areas":[]},
+    {"name":"Oman","code":"OM","currency":"OMR","areas":[]},
+    {"name":"Qatar","code":"QA","currency":"QAR","areas":[]},
+    {"name":"Bahrain","code":"BH","currency":"BHD","areas":[]},
+    {"name":"United Arab Emirates","code":"AE","currency":"AED","areas":[]},
+    {"name":"Malaysia","code":"MY","currency":"MYR","areas":[]},
+    {"name":"Kuwait","code":"KW","currency":"KWD","areas":[]}
   ],
   "deliveryAreas": ["Bangladesh","Saudi Arabia","Oman","Qatar","Bahrain","United Arab Emirates","Malaysia","Kuwait"],
   "services": [{"name":"Product Collection","price":"","image":"","description":"Add your products, photos and country-specific prices here from the admin panel.","variations":[]}],
@@ -30,7 +30,9 @@
     {"id":"bkash-personal","country":"বাংলাদেশ","method":"বিকাশ (bKash)","holder":"AMBIA KHATUN","number":"01629625993","type":"Personal","active":true},
     {"id":"nagad","country":"বাংলাদেশ","method":"নগদ (Nagad)","holder":"","number":"","type":"","active":false},
     {"id":"rocket","country":"বাংলাদেশ","method":"রকেট (Rocket)","holder":"","number":"","type":"","active":false},
-    {"id":"bank-transfer","country":"বাংলাদেশ","method":"ব্যাংক ট্রান্সফার","holder":"","number":"","type":"","active":false}
+    {"id":"dbbl","country":"বাংলাদেশ","method":"ডাচ-বাংলা ব্যাংক (DBBL)","holder":"","number":"","type":"Bank Account","active":false},
+    {"id":"islami-bank","country":"বাংলাদেশ","method":"ইসলামী ব্যাংক বাংলাদেশ","holder":"","number":"","type":"Bank Account","active":false},
+    {"id":"sonali-bank","country":"বাংলাদেশ","method":"সোনালী ব্যাংক","holder":"","number":"","type":"Bank Account","active":false}
   ],
   "gccBankAccounts": [
     {"country":"Saudi Arabia","flag":"🇸🇦","bank":"Saudi Arabia Bank Account","account":"SA42 **** **** **** 1289","active":false},
