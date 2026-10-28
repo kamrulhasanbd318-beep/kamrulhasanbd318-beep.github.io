@@ -10,7 +10,7 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="topin"><div><div class="brand" id="brand">Kamrul Eagle Prime</div><div class="tag">Official customer store</div></div><a class="btn primary" href="#order">অর্ডার করুন</a></div></header>
+<header class="top"><div class="topin"><div><div class="brand" id="brand">Kamrul Eagle Prime</div><div class="tag">Official customer store</div></div><div><label for="siteLanguage" class="small">Language / ভাষা</label><select id="siteLanguage" aria-label="Language"><option value="bn">বাংলা</option><option value="en">English</option><option value="ar">العربية</option><option value="hi">हिन्दी</option></select></div><a class="btn primary" href="#order">অর্ডার করুন</a></div></header>
 <main class="wrap">
 <section class="hero"><span class="pill">International delivery</span><span class="pill">Advance payment only</span><h1 id="heroTitle">Premium Products</h1><p id="heroText" class="muted">Delivery and payment information loading…</p><div class="notice" id="deliveryNotice"></div></section>
 <h2 class="section-title">পণ্যসমূহ / Products</h2><p class="muted small">দাম ও অর্ডারের পরিমাণ পণ্য অনুযায়ী দেখানো হয়েছে। যেসব পণ্যের দাম সেট করা নেই সেগুলো অর্ডারের তালিকায় দেখানো হয়নি।</p>
@@ -38,8 +38,8 @@
 </main><footer class="foot">© <span id="year"></span> <span id="footerBrand">Kamrul Eagle Prime</span>. All rights reserved.</footer>
 <script>
 (function(){
-const $=id=>document.getElementById(id);let data=null;let chosenProduct=null;
-const langName=x=>typeof x==='string'?x:(x?.bn||x?.en||'');
+const $=id=>document.getElementById(id);let data=null;let chosenProduct=null;let siteLang='bn';
+const langName=x=>typeof x==='string'?x:(x?.[siteLang]||x?.bn||x?.en||'');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=(n,c)=>Number(n).toLocaleString('en-US',{maximumFractionDigits:2})+' '+(c||'SAR');
 function countriesEnabled(){return (data.countries||[]).filter(c=>c.deliveryEnabled&& (data.deliveryCountries||[]).includes(c.code))}
@@ -51,8 +51,8 @@ function productPrice(p,originId,qty){
  return null;
 }
 function renderProducts(){
- const ps=(data.services||[]).filter(p=>!p.placeholder&&((p.origins&&p.origins.length)||(p.tiers&&p.tiers.length)||(p.price!==''&&p.price!=null)));
- $('products').innerHTML=ps.map(p=>'<article class="product"><h3>'+esc(langName(p.name))+'</h3><p class="muted">'+esc(langName(p.description))+'</p>'+(p.origins||[]).map(o=>'<span class="pill">'+esc(o.flag||'')+' '+esc(langName(o.name))+(o.unitPrice!=null?' · '+money(o.unitPrice,p.currency||'SAR')+'/piece':'')+'</span>').join('')+(p.tiers||[]).map(t=>'<span class="pill">'+esc(t.grams)+'g · '+money(t.price,p.currency||'SAR')+'</span>').join('')+(p.discounts?'<p class="small gold">পরিমাণভিত্তিক ছাড়: '+p.discounts.slice().sort((a,b)=>a.minQty-b.minQty).map(d=>d.minQty+'+ = '+d.percent+'%').join(' · ')+'</p>':'')+'<button class="primary" type="button" data-product="'+esc(p.id)+'">এই পণ্য অর্ডার করুন</button></article>').join('')||'<div class="panel">এখনো বিক্রির জন্য মূল্যসহ কোনো পণ্য সেট করা নেই।</div>';
+ const ps=(data.services||[]).filter(p=>!p.placeholder&&((p.origins&&p.origins.length)||(p.tiers&&p.tiers.length)||(p.variations&&p.variations.length)||(p.price!==''&&p.price!=null)));
+ $('products').innerHTML=ps.map(p=>'<article class="product"><h3>'+esc(langName(p.name))+'</h3><p class="muted">'+esc(langName(p.description))+'</p>'+(p.origins||[]).map(o=>'<span class="pill">'+esc(o.flag||'')+' '+esc(langName(o.name))+(o.unitPrice!=null?' · '+money(o.unitPrice,p.currency||'SAR')+'/piece':'')+'</span>').join('')+(p.tiers||[]).map(t=>'<span class="pill">'+esc(t.grams)+'g · '+(t.price!==''&&t.price!=null?money(t.price,p.currency||'SAR'):'দাম জানতে যোগাযোগ')+'</span>').join('')+(p.variations||[]).map(v=>'<span class="pill">'+esc(langName(v.name))+(v.price!==''&&v.price!=null?' · '+money(v.price,p.currency||'SAR'):' · দাম জানতে যোগাযোগ')+'</span>').join('')+(p.discounts?'<p class="small gold">পরিমাণভিত্তিক ছাড়: '+p.discounts.slice().sort((a,b)=>a.minQty-b.minQty).map(d=>d.minQty+'+ = '+d.percent+'%').join(' · ')+'</p>':'')+'<button class="primary" type="button" data-product="'+esc(p.id)+'">এই পণ্য অর্ডার করুন</button></article>').join('')||'<div class="panel">এখনো বিক্রির জন্য মূল্যসহ কোনো পণ্য সেট করা নেই।</div>';
  $('productSelect').innerHTML=ps.map(p=>'<option value="'+esc(p.id)+'">'+esc(langName(p.name))+'</option>').join('');
  $('products').querySelectorAll('[data-product]').forEach(b=>b.addEventListener('click',()=>{$('productSelect').value=b.dataset.product;setProduct();$('order').scrollIntoView({behavior:'smooth'});}));
 }
@@ -91,7 +91,7 @@ function setProduct(){
  chosenProduct=(data.services||[]).find(p=>p.id===$('productSelect').value);
  const p=chosenProduct;let html='';
  if(p?.origins?.length)html+='<label for="origin">Origin নির্বাচন করুন</label><select id="origin">'+p.origins.map(o=>'<option value="'+esc(o.id)+'">'+esc(o.flag||'')+' '+esc(langName(o.name))+'</option>').join('')+'</select>';
- if(p?.tiers?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.tiers.map(t=>'<option value="'+t.grams+'">'+t.grams+'g — '+money(t.price,p.currency||'SAR')+'</option>').join('')+'</select>';
+ if(p?.tiers?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.tiers.map(t=>'<option value="'+t.grams+'">'+t.grams+'g — '+(t.price!==''&&t.price!=null?money(t.price,p.currency||'SAR'):'দাম জানতে যোগাযোগ')+'</option>').join('')+'</select>';else if(p?.variations?.length)html+='<label for="variant">প্যাক সাইজ</label><select id="variant">'+p.variations.map((v,i)=>'<option value="'+i+'">'+esc(langName(v.name))+(v.price!==''&&v.price!=null?' — '+money(v.price,p.currency||'SAR'):' — দাম জানতে যোগাযোগ')+'</option>').join('')+'</select>';
  $('variantFields').innerHTML=html;
  if(p?.id==='chocolate')$('qty').min=10;
  else $('qty').min=1;
@@ -105,7 +105,7 @@ function previewPrice(){
  $('pricePreview').innerHTML='<b>আনুমানিক মোট: '+money(r.total,r.currency)+'</b>'+(r.discount?'<br>ছাড়: '+r.discount+'%':'')+(p.id==='chocolate'?'<br>ন্যূনতম অর্ডার: 10 পিস':'')+(p.id==='neem-leaves'?'<br>নির্বাচিত প্যাক: '+r.tier.grams+'g · Origin premium: '+(r.origin.premiumPercent||0)+'%':'');
  }else $('pricePreview').textContent='এই পণ্যের মূল্য এখনো নির্ধারণ করা হয়নি।';
 }
-$('country').addEventListener('change',renderArea);$('paymentMethod').addEventListener('change',showAccount);$('productSelect').addEventListener('change',setProduct);
+$('country').addEventListener('change',renderArea);$('paymentMethod').addEventListener('change',showAccount);$('productSelect').addEventListener('change',setProduct);$('siteLanguage').addEventListener('change',()=>{siteLang=$('siteLanguage').value;renderProducts();if($('productSelect').options.length)setProduct();});
 $('orderForm').addEventListener('submit',e=>{
  e.preventDefault();const c=selectedCountry(),p=chosenProduct,a=(data.paymentAccounts||[]).find(x=>x.id===$('paymentMethod').value);
  if(!c||!p){alert('দেশ ও পণ্য নির্বাচন করুন।');return;}
@@ -114,8 +114,8 @@ $('orderForm').addEventListener('submit',e=>{
  const q=Math.max(1,Number($('qty').value)||1);if(p.id==='chocolate'&&q<10){alert('চকলেটের ন্যূনতম অর্ডার ১০ পিস।');return;}
  const r=productPrice(p,$('origin')?.value,q);const lines=['নতুন অর্ডার — '+data.brand,'নাম: '+$('customerName').value,'মোবাইল: '+$('phone').value,'দেশ: '+c.name,'এলাকা: '+$('area').value,'ঠিকানা: '+$('address').value,'পণ্য: '+langName(p.name),'পরিমাণ: '+q];
  if($('origin')?.value){const o=p.origins.find(x=>x.id===$('origin').value);lines.push('Origin: '+langName(o.name));}
- if($('variant')?.value)lines.push('প্যাক: '+$('variant').value+'g');
- if(r)lines.push('আনুমানিক মোট: '+money(r.total,r.currency));
+ if($('variant')?.value){const vv=p.variations?.[Number($('variant').value)];lines.push('প্যাক: '+(vv?langName(vv.name):$('variant').value+'g'));}
+ if(r)lines.push('আনুমানিক মোট: '+money(r.total,r.currency));if(p.id==='sugar-tier-template'){const sv=p.variations?.[Number($('variant')?.value)||0];if(!sv||sv.price===''||sv.price==null){alert('এই প্যাকের দাম এখনো সেট করা নেই। অর্ডারের আগে WhatsApp-এ মূল্য জেনে নিন।');return;}lines.push('প্যাকের মূল্য: '+money(sv.price,p.currency||'SAR'));}
  lines.push('পেমেন্ট: '+a.method,'অ্যাকাউন্ট: '+a.holder+' / '+a.number,'রেফারেন্স/নোট: '+$('reference').value);
  const wa=(data.contact?.whatsapp||data.whatsapp||'').replace(/\D/g,'');if(!wa){alert('WhatsApp নম্বর সেট করা নেই।');return;}window.open('https://wa.me/'+wa+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
 });
