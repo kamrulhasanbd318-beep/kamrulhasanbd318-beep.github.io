@@ -5,6 +5,45 @@
 .nav-tile{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 10px;border:1px solid #e7c76c;border-radius:12px;background:linear-gradient(135deg,#243c59,#101b2c);box-shadow:inset 0 0 0 1px #ffffff0b;font-weight:800;white-space:nowrap}.family-card{padding:24px;border:1px solid #f2c96d;border-radius:20px;background:linear-gradient(125deg,#37284c,#172b48 55%,#123b3a);box-shadow:0 12px 32px #0005}.family-emoji{font-size:2rem}.family-card p{color:#f1f4f8}.family-en{color:#ffe09a!important}.payment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:20px}.payment-country{padding:17px;border:1px solid #d8b46a;border-radius:16px;background:linear-gradient(145deg,#1a304b,#0b1728);box-shadow:0 8px 24px #0004}.payment-country h3{margin:0 0 12px;color:#ffe09a}.payment-method{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #ffffff20;color:#eaf0f8}.payment-method span:first-child{overflow-wrap:anywhere}.payment-status{font-size:.78rem;font-weight:800;color:#ffaaa6;border:1px solid #ff696955;background:#5a1b234f;padding:3px 7px;border-radius:8px;white-space:nowrap}.payment-foot{margin-top:16px;padding:14px;border:1px solid #4cb6db;border-radius:13px;background:linear-gradient(120deg,#11394a,#172541);color:#dff7ff}@media(max-width:720px){.payment-grid{grid-template-columns:1fr}.nav-tile{font-size:.78rem;padding:7px 8px}}
 .payment-disclaimer{margin:12px 0 0;padding:10px;border:1px dashed #e9a6a6;border-radius:10px;background:#4b202a66;color:#ffd7d7;font-size:.84rem}.top-feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:20px auto 0}.top-feature{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;min-height:108px;padding:14px 9px;border:1px solid #e4c16c;border-radius:17px;background:linear-gradient(145deg,#233b57,#0b1829);box-shadow:0 8px 22px #0004,inset 0 0 0 2px #ffffff08;font-weight:900}.top-feature span{font-size:1.7rem}.top-feature small{font-size:.76rem;color:#cbd8e7;font-weight:600}.top-feature:nth-child(2){border-color:#b7a0ff;background:linear-gradient(145deg,#3b2762,#111b31)}.top-feature:nth-child(3){border-color:#4ce0ae;background:linear-gradient(145deg,#125044,#102337)}.top-feature:nth-child(4){border-color:#5ecbff;background:linear-gradient(145deg,#124f70,#101d32)}@media(max-width:620px){.top-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.top-feature{min-height:94px}}
 .active-payment-wrap{max-width:860px;margin:22px auto;padding:18px;border:2px solid #ef4caa;border-radius:22px;background:radial-gradient(ellipse at top,#51204b,#11192b 70%);box-shadow:0 12px 35px #0006,0 0 22px #f02c9630}.active-payment-heading{padding:11px 14px;border-radius:12px;background:linear-gradient(100deg,#13774f,#073c35);border:1px solid #51edac;color:#eafff5;font-weight:900;text-align:center;margin-bottom:14px}.active-payment-card{padding:18px;border-radius:16px;border:1px solid #f35ab8;background:linear-gradient(140deg,#5b0d45,#1b1731 75%);color:#fff}.active-payment-card h3{margin:0 0 12px;color:#ffd4f0;font-size:1.35rem}.active-payment-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #ffffff24}.active-payment-row:last-of-type{border-bottom:0}.active-payment-row small{display:block;color:#f0cfe6}.active-payment-row strong{overflow-wrap:anywhere;text-align:right}.copy-btn{border:1px solid #ff9bd7;border-radius:10px;padding:8px 12px;background:linear-gradient(135deg,#f7259c,#a80e67);color:white;font:inherit;font-weight:900;cursor:pointer;white-space:nowrap}.copy-btn:active{transform:scale(.97)}.copy-feedback{min-height:1.5em;margin:8px 0 0;color:#a8ffd6;font-size:.9rem}.active-payment-note{margin-top:12px;padding:11px;border-radius:12px;background:linear-gradient(100deg,#7b510b,#3b2b11);border:1px solid #ffd36a;color:#fff0bd;font-size:.9rem}.payment-status.active{color:#9bffce;border-color:#43e5a455;background:#073b2c}.payment-method.disabled{opacity:.9}@media(max-width:560px){.active-payment-row{align-items:flex-start;flex-wrap:wrap}.active-payment-row strong{margin-left:auto}.copy-btn{width:100%}}
+
+/* Final responsive polish: header scrolls away instead of covering page content */
+.nav{position:relative;top:auto;z-index:2}
+.navin{width:min(1120px,calc(100% - 28px));min-width:0}
+.navin>nav{min-width:0;max-width:100%}
+.top-feature-grid{width:100%;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:14px}
+body{overflow-x:hidden}
+img,video,iframe{max-width:100%}
+button,a,select,input{touch-action:manipulation}
+@media(max-width:720px){
+ .navin{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:14px 0}
+ .brand{display:block;font-size:1rem;line-height:1.4}
+ .navin>nav{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:7px;width:100%}
+ .navin>nav>a{font-size:.82rem;padding:8px 9px}
+ .language-switch{display:flex;flex-wrap:wrap;gap:6px;width:100%}
+ .lang-btn{font-size:.8rem;padding:8px 9px}
+ .top-feature-grid{margin:4px auto 0;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .top-feature{min-height:88px;padding:12px 8px;font-size:.9rem}
+ .top-feature small{font-size:.72rem}
+ .wrap{width:calc(100% - 28px)}
+ .heroIn{padding:44px 0}
+ .section{padding:36px 0}
+ .payment-country,.active-payment-wrap,.contactbox{padding:14px}
+ .payment-method{align-items:flex-start;flex-wrap:wrap}
+ .payment-status{white-space:normal}
+ .marketTools label{width:100%;justify-content:space-between}
+ .marketTools select{min-width:0;max-width:100%;flex:1}
+}
+@media(max-width:380px){
+ body{font-size:15px}
+ .wrap{width:calc(100% - 22px)}
+ .navin>nav>a{font-size:.76rem;padding:7px 7px}
+ .top-feature{font-size:.82rem;min-height:82px}
+ .phone-banner strong{font-size:1.55rem}
+ .active-payment-row{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
 </style></head><body>
 <header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Fimia</span></a><nav><a class="nav-tile" href="#family">👨‍👩‍👧 Our Family</a><a class="nav-tile" href="#payment">💳 Payment</a><a class="nav-tile" href="#markets" data-t="delivery">🚚 Delivery</a><a class="nav-tile" href="#contact" data-t="contact">📞 Contact</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🇸🇦 العربية</button></div></nav><div class="top-feature-grid"><a class="top-feature" href="#family"><span>👨‍👩‍👧</span>Our Family<small>আমাদের পরিবার</small></a><a class="top-feature" href="#payment"><span>💳</span>পেমেন্ট<small>Payment · নম্বর গোপন</small></a><a class="top-feature" href="#products"><span>🛍️</span>প্রোডাক্ট<small>Products</small></a><a class="top-feature" href="#markets"><span>🚚</span>ডেলিভারি<small>Delivery</small></a></div></div></header>
 <div class="notice" id="notice"><div class="wrap"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div>
