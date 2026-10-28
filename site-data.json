@@ -1,40 +1,120 @@
 {
-  "brand": "Gulf Business Connect",
+  "brand": "Kamrul Eagle Fimia",
   "whatsapp": "+8801625453876",
-  "heroTitle": "Your Gateway to Gulf Business",
-  "heroText": "A professional point of contact for business inquiries and connections across the Gulf region.",
-  "countries": [
-    "Saudi Arabia",
-    "Qatar",
-    "Oman",
-    "Bahrain",
-    "Kuwait"
+  "heroTitle": "Premium Products. Trusted Gulfwide Delivery.",
+  "heroText": "Discover our collection for customers across the Gulf. Free delivery in listed areas. Advance payment only.",
+  "languages": [
+    "en",
+    "ar",
+    "bn"
   ],
-  "services": [
+  "payment": {
+    "method": "Advance payment only",
+    "cashOnDelivery": false,
+    "notice": "Payment must be completed before dispatch. Cash on Delivery is not available."
+  },
+  "delivery": {
+    "free": true,
+    "notice": "Free delivery in listed service areas. Confirm availability and timing with our team before payment."
+  },
+  "notice": {
+    "title": "Customer Notice",
+    "text": "Free delivery in listed areas. Advance payment only — Cash on Delivery is not available.",
+    "active": true
+  },
+  "countries": [
     {
-      "name": "Business Inquiries",
-      "price": "",
-      "image": "",
-      "description": "Reach out with business questions, proposals or collaboration ideas."
+      "name": "Saudi Arabia",
+      "code": "SA",
+      "currency": "SAR",
+      "areas": [
+        "Riyadh",
+        "Makkah",
+        "Madinah",
+        "Asir",
+        "Tabuk",
+        "Hail",
+        "Najran",
+        "Al Bahah",
+        "Yanbu",
+        "Al Qassim",
+        "Taif"
+      ]
     },
     {
-      "name": "Gulf Market Connections",
-      "price": "",
-      "image": "",
-      "description": "Start a conversation about opportunities in the GCC markets."
+      "name": "Kuwait",
+      "code": "KW",
+      "currency": "KWD",
+      "areas": [
+        "Kuwait City",
+        "Hawalli",
+        "Abu Hanifa",
+        "Mangaf",
+        "Mubarak Al-Kabeer",
+        "Khaitan",
+        "Salmiya",
+        "Al-Riggae",
+        "Al-Salem"
+      ]
     },
     {
-      "name": "Direct Contact",
-      "price": "",
-      "image": "",
-      "description": "Contact us directly on WhatsApp and explain what you need."
+      "name": "Bahrain",
+      "code": "BH",
+      "currency": "BHD",
+      "areas": [
+        "Manama",
+        "Jidhafs",
+        "Sanabis",
+        "Arad",
+        "Northern Governorate",
+        "Budaiya",
+        "Isa Town",
+        "Riffa"
+      ]
+    },
+    {
+      "name": "Qatar",
+      "code": "QA",
+      "currency": "QAR",
+      "areas": [
+        "Doha",
+        "Al Rayyan",
+        "Al Khor",
+        "Al Wakrah",
+        "Al Sadd",
+        "Fereej Abdul Aziz",
+        "Msheireb"
+      ]
+    },
+    {
+      "name": "United Arab Emirates",
+      "code": "AE",
+      "currency": "AED",
+      "areas": [
+        "Dubai",
+        "Abu Dhabi",
+        "Sharjah",
+        "Ajman",
+        "Al Ain",
+        "Ras Al Khaimah",
+        "Fujairah",
+        "Umm Al Quwain"
+      ]
     }
   ],
   "deliveryAreas": [
     "Saudi Arabia",
-    "Qatar",
-    "Oman",
+    "Kuwait",
     "Bahrain",
-    "Kuwait"
+    "Qatar",
+    "United Arab Emirates"
+  ],
+  "services": [
+    {
+      "name": "Product Collection",
+      "price": "",
+      "image": "",
+      "description": "Add your products, photos and country-specific prices here from the admin panel."
+    }
   ]
 }
