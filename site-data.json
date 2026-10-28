@@ -29,5 +29,12 @@
       "image": "",
       "description": "Contact us directly on WhatsApp and explain what you need."
     }
+  ],
+  "deliveryAreas": [
+    "Saudi Arabia",
+    "Qatar",
+    "Oman",
+    "Bahrain",
+    "Kuwait"
   ]
 }
