@@ -305,7 +305,8 @@ function startProductOrder(p,btn){
      renderCountry();renderProducts();renderPayment();
    }
    const paymentCountry=document.getElementById("paymentCountry");
-   if(paymentCountry){const opt=Array.from(paymentCountry.options).find(o=>{const pc=(siteData.countries||[])[Number(o.value)];return pc&&pc.code===selected?.code});if(opt){paymentCountry.value=opt.value;renderPayment()}}
+   const paymentCountryCodes=["BD","SA","AE","QA","OM","BH","KW","MY"];
+   if(paymentCountry){const pi=paymentCountryCodes.indexOf(selected?.code);if(pi>=0&&paymentCountry.value!==String(pi)){paymentCountry.value=String(pi);renderPayment()}}
    updateTotal();
  }
  form.elements.country.addEventListener("change",syncOrderCountry);
