@@ -88,6 +88,17 @@ button,a,select,input{touch-action:manipulation}
 @media(max-width:560px){.hero-shortcuts{width:calc(100% - 20px);gap:7px;margin:12px auto 4px}.hero-shortcut{min-height:58px;padding:9px 5px;gap:5px;border-radius:12px;font-size:.78rem;flex-direction:column;position:relative}.shortcut-icon{font-size:1.15rem}.shortcut-arrow{display:none}}
 @media(prefers-reduced-motion:reduce){.hero-shortcut{transition:none}}
 
+/* Premium service tiles for the main navigation */
+.main-nav{align-items:center;gap:9px}
+.main-nav .nav-tile{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 14px 10px 12px;border:1px solid #d7b86b;border-radius:14px;background:linear-gradient(145deg,#193653,#0a1728);box-shadow:0 5px 15px #0003,inset 0 1px 0 #ffffff16;color:#f8fbff;font-weight:800;letter-spacing:.01em;transition:transform .18s,border-color .18s,box-shadow .18s}
+.main-nav .nav-tile:before{display:grid;place-items:center;width:29px;height:29px;flex:0 0 29px;border-radius:9px;background:#ffffff13;font-size:17px;line-height:1}
+.main-nav .nav-home:before{content:"🏠"}.main-nav .nav-products:before{content:"🛍️"}.main-nav .nav-delivery:before{content:"🚚"}.main-nav .nav-payment:before{content:"💳"}.main-nav .nav-family:before{content:"👨‍👩‍👧"}.main-nav .nav-contact:before{content:"💬"}
+.main-nav .nav-tile:hover{transform:translateY(-2px);border-color:#ffe39a;box-shadow:0 8px 20px #0004,0 0 0 2px #f2c96d17;color:#ffe7a5}
+.main-nav .nav-tile[aria-expanded="true"]{background:linear-gradient(135deg,#ffe8a3,#c59a45);color:#101d30;border-color:#fff0b7}
+.main-nav .nav-tile[aria-expanded="true"]:before{background:#172b4530}
+.language-switch{margin-left:4px;box-shadow:0 5px 15px #0002}
+@media(max-width:720px){.main-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important}.main-nav .nav-tile{width:100%;justify-content:flex-start;min-height:44px;padding:7px 9px;font-size:.82rem;border-radius:12px}.main-nav .nav-tile:before{width:27px;height:27px;flex-basis:27px;font-size:16px}.main-nav .language-switch{grid-column:1/-1;margin:0;display:flex;justify-content:center;gap:5px}.main-nav .lang-btn{flex:1;min-width:0}}
+@media(max-width:360px){.main-nav .nav-tile{font-size:.76rem;gap:5px;padding:6px}.main-nav .nav-tile:before{width:24px;height:24px;flex-basis:24px;font-size:14px}}
 /* Small, discreet right-side quick menu; expands only when tapped */
 .quick-sidebar{position:fixed;right:12px;top:112px;z-index:10001;display:flex;flex-direction:column;align-items:flex-end;gap:8px;pointer-events:none}
 .quick-sidebar-toggle{pointer-events:auto;width:42px;height:42px;display:grid;place-items:center;border:1px solid #d9b45e;border-radius:50%;background:rgba(12,27,46,.88);color:#fff;font-size:21px;box-shadow:0 5px 18px #0003;backdrop-filter:blur(8px);cursor:pointer}
@@ -100,7 +111,7 @@ button,a,select,input{touch-action:manipulation}
 </style>
 </head><body>
 <div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Fimia</span></a><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile" href="#home" data-i18n="navWelcome">🏠 Welcome</a><a class="nav-tile" href="#products" data-t="products">🛍️ প্রোডাক্ট</a><a class="nav-tile" href="#markets" data-t="delivery">🚚 ডেলিভারি</a><a class="nav-tile" href="#payment" data-i18n="navPayment">💳 পেমেন্ট</a><a class="nav-tile" href="#family" data-i18n="navFamily">👨‍👩‍👧 আমাদের পরিবার</a><a class="nav-tile" href="#contact" data-t="contact">📞 যোগাযোগ</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Fimia</span></a><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#home" data-i18n="navWelcome">Welcome</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-contact" href="#contact" data-t="contact">যোগাযোগ</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div></nav></div></header>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
