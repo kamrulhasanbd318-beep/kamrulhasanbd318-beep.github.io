@@ -1,0 +1,58 @@
+name: Compact contact icons
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  compact-contact-icons:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update contact dock CSS only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '/* Compact contact dock: all messaging icons stay together at the bottom */'
+          start = text.find(marker)
+          if start < 0:
+              raise SystemExit('Contact dock CSS marker not found; stopping without changes.')
+          end = text.find('</style>', start)
+          if end < 0:
+              raise SystemExit('Contact dock style closing tag not found; stopping without changes.')
+
+          css = '''/* Compact contact dock: small floating icons only; no page layout space */
+          .quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;transform:none;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:44px;max-width:none;padding:5px;background:rgba(8,20,38,.78);border:1px solid rgba(242,201,109,.55);border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+          .quick-contact:before{display:none;content:none}
+          .quick-contact a{display:flex;align-items:center;justify-content:center;width:34px;min-width:34px;height:34px;min-height:34px;padding:0;border-radius:50%;text-decoration:none;font:700 0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);background:#fff;transition:transform .16s,box-shadow .16s}
+          .quick-contact a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
+          .quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:transparent;font-size:17px;line-height:1}
+          .quick-contact a>span:not(.qc-icon){display:none}
+          .quick-contact .qc-imo{background:#eef5ff;border-color:#55b8ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#66d4ff}.quick-contact .qc-messenger{background:#f4efff;border-color:#c59aff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#33e7a5}
+          @media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:20px}.quick-contact a{width:31px;min-width:31px;height:31px;min-height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
+          @media(prefers-reduced-motion:reduce){.quick-contact a{transition:none}}
+          '''
+          new_text = text[:start] + css + text[end:]
+          if new_text == text:
+              raise SystemExit('No change needed.')
+          path.write_text(new_text, encoding='utf-8')
+          PY
+
+      - name: Commit CSS-only change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'Make contact icons small and floating'
+          git push
