@@ -15,22 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Update contact dock CSS only
+      - name: Inject compact floating contact CSS only
         run: |
           python - <<'PY'
           from pathlib import Path
-          import re
-
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
-          marker = '/* Compact contact dock: all messaging icons stay together at the bottom */'
-          start = text.find(marker)
-          if start < 0:
-              raise SystemExit('Contact dock CSS marker not found; stopping without changes.')
-          end = text.find('</style>', start)
-          if end < 0:
-              raise SystemExit('Contact dock style closing tag not found; stopping without changes.')
-
+          marker = '/* Compact contact dock: small floating icons only; no page layout space */'
           css = '''/* Compact contact dock: small floating icons only; no page layout space */
           .quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;transform:none;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:44px;max-width:none;padding:5px;background:rgba(8,20,38,.78);border:1px solid rgba(242,201,109,.55);border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
           .quick-contact:before{display:none;content:none}
@@ -42,9 +33,12 @@ jobs:
           @media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:20px}.quick-contact a{width:31px;min-width:31px;height:31px;min-height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
           @media(prefers-reduced-motion:reduce){.quick-contact a{transition:none}}
           '''
-          new_text = text[:start] + css + text[end:]
-          if new_text == text:
-              raise SystemExit('No change needed.')
+          if marker in text:
+              raise SystemExit('Compact contact CSS already present.')
+          end = text.find('</style>')
+          if end < 0:
+              raise SystemExit('No style closing tag; stopping without changes.')
+          new_text = text[:end] + css + '\n' + text[end:]
           path.write_text(new_text, encoding='utf-8')
           PY
 
