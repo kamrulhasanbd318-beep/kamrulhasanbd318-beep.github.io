@@ -1,0 +1,83 @@
+name: Add customer current-location order feature
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: ${{ !contains(github.event.head_commit.message, '[location-feature]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Patch current-location feature
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '/* CURRENT-LOCATION-ORDER-FEATURE v1 */'
+          if marker in s:
+              raise SystemExit(0)
+          css = r'''<style>
+          /* CURRENT-LOCATION-ORDER-FEATURE v1 */
+          .current-location-box{margin:4px 0 2px;padding:12px;border:1px solid #4fc6e8;border-radius:14px;background:linear-gradient(135deg,#10384b,#101d31);box-shadow:inset 0 0 0 1px #ffffff08}
+          .current-location-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 14px;border:1px solid #64dcff;border-radius:11px;background:linear-gradient(135deg,#135a72,#16334f);color:#fff;font:inherit;font-weight:900;cursor:pointer}
+          .current-location-btn:disabled{opacity:.65;cursor:wait}
+          .current-location-status{margin:7px 2px 0;color:#cfefff;font-size:.82rem;line-height:1.45}
+          .current-location-status.ok{color:#76f2bd}.current-location-status.warn{color:#ffd68a}.current-location-status.err{color:#ffb0b0}
+          </style>'''
+          js = r'''<script>
+          /* CURRENT-LOCATION-ORDER-FEATURE v1 */
+          (function(){
+            const labels={bn:{button:'📍 বর্তমান লোকেশন নিন',idle:'লোকেশন না দিলেও অর্ডার করা যাবে। এটি একবারের বর্তমান লোকেশন, Live Location নয়।',loading:'📍 বর্তমান লোকেশন নেওয়া হচ্ছে…',ok:'✅ বর্তমান লোকেশন নেওয়া হয়েছে। অর্ডারের সঙ্গে Maps লিংক যাবে।',denied:'⚠️ লোকেশন অনুমতি দেওয়া হয়নি। চাইলে ঠিকানা লিখেই অর্ডার করুন।',unsupported:'⚠️ এই ডিভাইস/ব্রাউজারে লোকেশন সুবিধা পাওয়া যাচ্ছে না। ঠিকানা লিখে অর্ডার করুন।',error:'⚠️ লোকেশন নেওয়া যায়নি। GPS/Location চালু করে আবার চেষ্টা করুন।'},en:{button:'📍 Get current location',idle:'Location is optional. This is a one-time current location, not Live Location.',loading:'📍 Getting your current location…',ok:'✅ Current location captured. A Maps link will be added to the order.',denied:'⚠️ Location permission was not granted. You can still order using your address.',unsupported:'⚠️ Location is not available in this browser/device. You can still order using your address.',error:'⚠️ Could not get location. Turn on GPS/Location and try again.'},ar:{button:'📍 احصل على موقعك الحالي',idle:'الموقع اختياري. هذا موقع حالي لمرة واحدة وليس موقعاً مباشراً.',loading:'📍 جارٍ الحصول على موقعك…',ok:'✅ تم أخذ الموقع الحالي. سيُضاف رابط الخرائط إلى الطلب.',denied:'⚠️ لم يتم السماح بالموقع. يمكنك إكمال الطلب باستخدام العنوان.',unsupported:'⚠️ الموقع غير متاح في هذا المتصفح/الجهاز. يمكنك إكمال الطلب باستخدام العنوان.',error:'⚠️ تعذر الحصول على الموقع. فعّل GPS/الموقع وحاول مرة أخرى.'}};
+            const state=new WeakMap();
+            function lang(){return document.documentElement.lang||'bn'}
+            function text(){return labels[lang()]||labels.en}
+            function addToModal(modal){
+              if(!modal||modal.dataset.currentLocationReady==='1')return;
+              const form=modal.querySelector('.order-form'); if(!form)return;
+              modal.dataset.currentLocationReady='1';
+              const box=document.createElement('div');box.className='current-location-box';box.innerHTML='<button type="button" class="current-location-btn">'+text().button+'</button><div class="current-location-status">'+text().idle+'</div>';
+              const address=form.elements.address;(address?.parentElement||form).after(box);
+              const st={lat:null,lng:null,accuracy:null};state.set(form,st);
+              const btn=box.querySelector('button'),status=box.querySelector('.current-location-status');
+              btn.addEventListener('click',function(){
+                const t=text();
+                if(!navigator.geolocation){status.className='current-location-status err';status.textContent=t.unsupported;return}
+                btn.disabled=true;status.className='current-location-status';status.textContent=t.loading;
+                navigator.geolocation.getCurrentPosition(function(pos){
+                  st.lat=Number(pos.coords.latitude.toFixed(6));st.lng=Number(pos.coords.longitude.toFixed(6));st.accuracy=Number.isFinite(pos.coords.accuracy)?Math.round(pos.coords.accuracy):null;
+                  status.className='current-location-status ok';status.textContent=t.ok+(st.accuracy?' (±'+st.accuracy+' m)':'');btn.disabled=false;
+                },function(err){btn.disabled=false;status.className='current-location-status '+(err&&err.code===1?'warn':'err');status.textContent=err&&err.code===1?t.denied:t.error;},{enableHighAccuracy:true,timeout:12000,maximumAge:0});
+              });
+              form.addEventListener('submit',function(){
+                if(!st.lat||!st.lng)return;
+                const link='https://www.google.com/maps?q='+st.lat+','+st.lng;
+                const old=form.elements.notes?.value||'';
+                const line=(lang()==='bn'?'📍 বর্তমান লোকেশন: ':lang()==='ar'?'📍 الموقع الحالي: ':'📍 Current location: ')+link+(st.accuracy?' ('+(lang()==='bn'?'নির্ভুলতা প্রায় ':lang()==='ar'?'دقة تقريبية ':'accuracy about ')+st.accuracy+' m)':'');
+                if(form.elements.notes)form.elements.notes.value=old?old+'\n'+line:line;
+                setTimeout(function(){if(form.elements.notes)form.elements.notes.value=old},0);
+              },true);
+            }
+            const observer=new MutationObserver(function(){document.querySelectorAll('.order-modal-backdrop').forEach(addToModal)});
+            function boot(){document.querySelectorAll('.order-modal-backdrop').forEach(addToModal);observer.observe(document.body,{childList:true,subtree:true})}
+            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+          })();
+          </script>'''
+          if '</body>' not in s: raise SystemExit('Missing </body>')
+          s=s.replace('</body>',css+js+'\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit and push patch, then remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git rm -f .github/workflows/apply-current-location.yml
+          git commit -m "Add easy current location to customer orders [location-feature]"
+          git push
