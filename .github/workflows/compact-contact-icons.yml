@@ -28,7 +28,11 @@ jobs:
           css_marker = '/* Compact contact dock: small floating icons only; no page layout space */'
           css_start = text.find(css_marker)
           if css_start < 0:
-              raise SystemExit('Contact dock CSS marker not found; stopping without changes.')
+              # The compact dock was already applied in an earlier run; treat it as a no-op.
+              if 'id="quickContact"' in text and 'id="qcToggle"' in text:
+                  print('Compact contact dock is already installed; no changes needed.')
+                  raise SystemExit(0)
+              raise SystemExit('Contact dock CSS marker not found and compact dock is not installed; stopping without changes.')
           style_end = text.find('</style>', css_start)
           if style_end < 0:
               raise SystemExit('Contact dock style closing tag not found; stopping without changes.')
