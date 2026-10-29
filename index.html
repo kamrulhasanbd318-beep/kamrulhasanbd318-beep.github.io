@@ -116,7 +116,7 @@ function startProductOrder(p,btn){
  const countries=siteData.countries||[];
  const countrySelect=document.getElementById("countrySelect");
  const currentCountry=countries[Number(countrySelect?.value)]||countries[0]||{};
- const countryOptions=countries.map((c,i)=>'<option value="'+i+'" '+(c.code===currentCountry.code?"selected":"")+'></option>').join("")+'<option value="other">'+(lang==="bn"?"অন্যান্য দেশ / Other country":lang==="ar"?"دولة أخرى / Other country":"Other country / অন্য দেশ")+"</option>";
+ const countryOptions=countries.map((c,i)=>'<option value="'+i+'" '+(c.code===currentCountry.code?"selected":"")+'>'+escHtml((translations[lang]||translations.en).countryNames?.[i]||c.name)+'</option>').join("")+'<option value="other">'+(lang==="bn"?"অন্যান্য দেশ / Other country":lang==="ar"?"دولة أخرى / Other country":"Other country / অন্য দেশ")+"</option>";;
  const choices=[];
  if(p.id==="sugar-tier-template"&&p.origins?.length){p.origins.forEach(o=>(p.variations||[]).forEach(v=>{const grams=Number(v.grams||String(val(v.name)).match(/\\d+/)?.[0]);const price=Number(o.prices?.[String(grams)])||0;choices.push({id:"sugar-"+o.id+"-"+grams,label:(o.flag||"")+" "+val(o.name)+" — "+grams+" "+tr.gram,price,kind:"sugar",grams,origin:o})}));}else if(p.tiers?.length) p.tiers.forEach((x,i)=>choices.push({id:"tier-"+i,label:String(x.grams)+" "+tr.gram,price:Number(x.price)||0,kind:"tier",grams:Number(x.grams)||0}));
  if(p.variations?.length) p.variations.forEach((x,i)=>choices.push({id:"variation-"+i,label:val(x.name),price:Number(x.price)||0,kind:"variation"}));
