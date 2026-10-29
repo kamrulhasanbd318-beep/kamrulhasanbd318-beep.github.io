@@ -15,38 +15,83 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Inject compact floating contact CSS only
+      - name: Build expandable contact dock without touching site data
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+
           path = Path('index.html')
           text = path.read_text(encoding='utf-8')
-          marker = '/* Compact contact dock: small floating icons only; no page layout space */'
-          css = '''/* Compact contact dock: small floating icons only; no page layout space */
-          .quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;transform:none;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:44px;max-width:none;padding:5px;background:rgba(8,20,38,.78);border:1px solid rgba(242,201,109,.55);border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
-          .quick-contact:before{display:none;content:none}
-          .quick-contact a{display:flex;align-items:center;justify-content:center;width:34px;min-width:34px;height:34px;min-height:34px;padding:0;border-radius:50%;text-decoration:none;font:700 0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);background:#fff;transition:transform .16s,box-shadow .16s}
-          .quick-contact a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
-          .quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:transparent;font-size:17px;line-height:1}
-          .quick-contact a>span:not(.qc-icon){display:none}
+
+          # Replace only the contact-dock CSS block.
+          css_marker = '/* Compact contact dock: small floating icons only; no page layout space */'
+          css_start = text.find(css_marker)
+          if css_start < 0:
+              raise SystemExit('Contact dock CSS marker not found; stopping without changes.')
+          style_end = text.find('</style>', css_start)
+          if style_end < 0:
+              raise SystemExit('Contact dock style closing tag not found; stopping without changes.')
+
+          css = '''/* Compact contact dock: one button; methods expand only when clicked */
+          .quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;z-index:10000;display:flex;flex-direction:column;align-items:center;gap:7px;width:46px;padding:5px;background:rgba(8,20,38,.82);border:1px solid rgba(242,201,109,.6);border-radius:24px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+          .quick-contact .qc-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid #f2c96d;border-radius:50%;background:linear-gradient(135deg,#ffe8a3,#c59a45);color:#101d30;font:700 18px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.22);transition:transform .16s,box-shadow .16s}
+          .quick-contact .qc-toggle:hover{transform:scale(1.06);box-shadow:0 6px 16px rgba(0,0,0,.28)}
+          .quick-contact .qc-items{display:flex;flex-direction:column;align-items:center;gap:7px;max-height:0;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(6px);transition:max-height .2s ease,opacity .16s ease,transform .2s ease}
+          .quick-contact.is-open .qc-items{max-height:190px;opacity:1;pointer-events:auto;transform:none}
+          .quick-contact .qc-items a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border-radius:50%;text-decoration:none;font:0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);transition:transform .16s,box-shadow .16s}
+          .quick-contact .qc-items a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
+          .quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;font-size:17px;line-height:1}
+          .quick-contact .qc-items a>span:not(.qc-icon){display:none}
           .quick-contact .qc-imo{background:#eef5ff;border-color:#55b8ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#66d4ff}.quick-contact .qc-messenger{background:#f4efff;border-color:#c59aff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#33e7a5}
-          @media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:20px}.quick-contact a{width:31px;min-width:31px;height:31px;min-height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
-          @media(prefers-reduced-motion:reduce){.quick-contact a{transition:none}}
+          @media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:21px}.quick-contact .qc-toggle{width:32px;height:32px;font-size:16px}.quick-contact .qc-items{gap:5px}.quick-contact .qc-items a{width:31px;height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
+          @media(prefers-reduced-motion:reduce){.quick-contact .qc-items,.quick-contact .qc-toggle,.quick-contact .qc-items a{transition:none}}
           '''
-          if marker in text:
-              raise SystemExit('Compact contact CSS already present.')
-          end = text.find('</style>')
-          if end < 0:
-              raise SystemExit('No style closing tag; stopping without changes.')
-          new_text = text[:end] + css + '\n' + text[end:]
-          path.write_text(new_text, encoding='utf-8')
+          text = text[:css_start] + css + text[style_end:]
+
+          # Replace only the existing four-link contact aside with a collapsed menu.
+          old = '''<aside class="quick-contact" aria-label="Quick contact methods">
+          <a class="qc-imo" id="contactImo1" aria-label="IMO" title="IMO" href="https://imo.im/" target="_blank" rel="noopener"><span class="qc-icon">📱</span><span>IMO</span></a>
+          <a class="qc-telegram" id="contactTelegram" aria-label="Telegram" title="Telegram" href="https://telegram.org/" target="_blank" rel="noopener"><span class="qc-icon">✈️</span><span>Telegram</span></a>
+          <a class="qc-messenger" id="contactMessenger" aria-label="Messenger" title="Messenger" href="https://www.facebook.com/messages/" target="_blank" rel="noopener"><span class="qc-icon">✉️</span><span>Messenger</span></a>
+          <a class="qc-whatsapp" id="contactWA" aria-label="WhatsApp" title="WhatsApp" href="https://wa.me/8801625453876" target="_blank" rel="noopener"><span class="qc-icon">💬</span><span>WhatsApp</span></a>
+          </aside>'''
+          new = '''<aside class="quick-contact" id="quickContact" aria-label="Quick contact methods">
+          <button class="qc-toggle" id="qcToggle" type="button" aria-expanded="false" aria-controls="qcItems" aria-label="Open contact options" title="Contact">💬</button>
+          <div class="qc-items" id="qcItems">
+          <a class="qc-imo" id="contactImo1" aria-label="IMO" title="IMO" href="https://imo.im/" target="_blank" rel="noopener"><span class="qc-icon">📱</span><span>IMO</span></a>
+          <a class="qc-telegram" id="contactTelegram" aria-label="Telegram" title="Telegram" href="https://telegram.org/" target="_blank" rel="noopener"><span class="qc-icon">✈️</span><span>Telegram</span></a>
+          <a class="qc-messenger" id="contactMessenger" aria-label="Messenger" title="Messenger" href="https://www.facebook.com/messages/" target="_blank" rel="noopener"><span class="qc-icon">✉️</span><span>Messenger</span></a>
+          <a class="qc-whatsapp" id="contactWA" aria-label="WhatsApp" title="WhatsApp" href="https://wa.me/8801625453876" target="_blank" rel="noopener"><span class="qc-icon">💬</span><span>WhatsApp</span></a>
+          </div>
+          </aside>
+          <script>
+          (()=>{
+            const dock=document.getElementById('quickContact');
+            const toggle=document.getElementById('qcToggle');
+            if(!dock||!toggle)return;
+            const close=()=>{dock.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open contact options');};
+            toggle.addEventListener('click',()=>{
+              const open=!dock.classList.contains('is-open');
+              dock.classList.toggle('is-open',open);
+              toggle.setAttribute('aria-expanded',String(open));
+              toggle.setAttribute('aria-label',open?'Close contact options':'Open contact options');
+            });
+            document.addEventListener('click',e=>{if(!dock.contains(e.target))close();});
+            document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+          })();
+          </script>'''
+          if old not in text:
+              raise SystemExit('Existing contact links not found; stopping without changes.')
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
           PY
 
-      - name: Commit CSS-only change
+      - name: Commit CSS/HTML-only change
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m 'Make contact icons small and floating'
+          git commit -m 'Collapse contact methods behind one floating icon'
           git push
