@@ -260,9 +260,9 @@ function startProductOrder(p,btn){
     tr.token+": "+token,tr.product+": "+val(p.name),
     tr.variant+": "+(x.choice.label||val(p.name))+(origin&&p.id==="neem-leaves"?" / "+val(origin.name):""),
     tr.qty+": "+x.qty,
-    x.known?tr.price+": "+x.total+" "+((((p.countryPrices&&p.countryPrices[x.country.code])||(p.prices&&p.prices[x.country.code]))?(x.country.currency||"SAR"):"SAR"))+(x.discount?" ("+tr.discount+" "+x.discount+"%)":""):tr.unknown,
+    x.known?tr.price+": "+x.total+" "+(x.country.currency||"SAR")+(x.discount?" ("+tr.discount+" "+x.discount+"%)":""):tr.unknown,
     tr.name+": "+customer,tr.phone+": "+mobile,
-    tr.country+": "+countryName,tr.address+": "+address,
+    tr.country+": "+countryName,((document.getElementById("countrySelect")&&((siteData.countries||[])[Number(document.getElementById("countrySelect").value)]||{}).code===x.country.code&&document.getElementById("citySelect")?.value)?"শহর/এলাকা: "+document.getElementById("citySelect").value:""),tr.address+": "+address,
     form.elements.notes.value.trim()?tr.notes+": "+form.elements.notes.value.trim():"",
     tr.request
    ].filter(Boolean).join("\n");
