@@ -139,13 +139,15 @@ button,a,select,input{touch-action:manipulation}
 <section class="section" id="family"><div class="wrap"><div class="kicker" data-i18n="familyKicker">💛 আমাদের পরিবার</div><h2 data-i18n="familyTitle">আমাদের পরিবার</h2><div class="family-card"><span class="family-emoji">🤝 🌍 💛</span><p data-i18n="familyBn">আমাদের প্রতিটি গ্রাহকই আমাদের পরিবারের অংশ। আপনার বিশ্বাস, নিরাপদ পেমেন্ট এবং নির্ভরযোগ্য ডেলিভারিই আমাদের অগ্রাধিকার।</p><p class="family-en" data-i18n="familyEn">Every customer is part of our family. Your trust, secure payment, and reliable delivery matter to us.</p></div></div></section>
 <section class="section contact" id="contact"><div class="wrap"><div class="kicker" data-t="contact">Contact</div><h2 data-t="contactTitle">Ready to enquire?</h2><div class="contactbox"><p data-t="contactIntro">Choose your preferred messaging app from the quick-contact panel on the right. No contact phone number is displayed on this website.</p></div></div></section>
 <style>
-/* Compact contact dock: all messaging icons stay together at the bottom */
-.quick-contact{position:fixed;right:12px;left:auto;bottom:12px;transform:none;z-index:10000;display:flex;align-items:center;justify-content:center;gap:7px;width:max-content;max-width:calc(100% - 20px);padding:8px;background:rgba(255,255,255,.96);border:1px solid #e1e7ef;border-radius:18px;box-shadow:0 10px 30px rgba(14,29,49,.22);backdrop-filter:blur(10px)}
-.quick-contact:before{content:"🟢 24/7";display:flex;align-items:center;justify-content:center;padding:0 9px;border-radius:10px;background:#073f2a;color:#d8ffe9;border:1px solid #32d583;font:900 11px/1 Arial,sans-serif;white-space:nowrap}.quick-contact a{display:flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:42px;padding:7px 10px;border-radius:12px;text-decoration:none;font:700 12px/1.2 Arial,"Noto Sans Bengali",sans-serif;color:#233044;border:1px solid #e5eaf0;background:#f8fafc;transition:transform .16s,box-shadow .16s}
-.quick-contact a:hover{transform:translateY(-2px);box-shadow:0 4px 12px #12233a18}
-.quick-contact .qc-icon{display:grid;place-items:center;width:25px;height:25px;flex:0 0 25px;border-radius:9px;background:#fff;font-size:17px}
-.quick-contact .qc-imo{background:#eef5ff;border-color:#d5e6ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#ccecff}.quick-contact .qc-messenger{background:#f4efff;border-color:#e2d6ff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#d0f0dc}
-@media(max-width:520px){.quick-contact{bottom:8px;gap:5px;padding:6px;border-radius:15px}.quick-contact a{min-width:40px;min-height:40px;padding:5px;gap:0}.quick-contact a>span:not(.qc-icon){display:none}.quick-contact .qc-icon{width:27px;height:27px;flex-basis:27px;font-size:18px}}
+/* Compact contact dock: small floating icons only; no page layout space */
+.quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;transform:none;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:44px;max-width:none;padding:5px;background:rgba(8,20,38,.78);border:1px solid rgba(242,201,109,.55);border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+.quick-contact:before{display:none;content:none}
+.quick-contact a{display:flex;align-items:center;justify-content:center;width:34px;min-width:34px;height:34px;min-height:34px;padding:0;border-radius:50%;text-decoration:none;font:700 0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);background:#fff;transition:transform .16s,box-shadow .16s}
+.quick-contact a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
+.quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:transparent;font-size:17px;line-height:1}
+.quick-contact a>span:not(.qc-icon){display:none}
+.quick-contact .qc-imo{background:#eef5ff;border-color:#55b8ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#66d4ff}.quick-contact .qc-messenger{background:#f4efff;border-color:#c59aff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#33e7a5}
+@media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:20px}.quick-contact a{width:31px;min-width:31px;height:31px;min-height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.quick-contact a{transition:none}}
 </style>
 <aside class="quick-contact" aria-label="Quick contact methods">
