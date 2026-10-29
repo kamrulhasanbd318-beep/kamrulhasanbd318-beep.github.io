@@ -286,7 +286,7 @@ function startProductOrder(p,btn){
    const originWrap=document.createElement("label");originWrap.innerHTML=escHtml(originLabel)+'<select name="origin">'+p.origins.map((o,i)=>'<option value="'+escHtml(o.id??String(i))+'">'+escHtml((o.flag||"")+" "+val(o.name))+'</option>').join("")+'</select>';
    variantSelect.parentElement.after(originWrap);form.dataset.neemOrigin=originWrap.querySelector("select").value;originWrap.querySelector("select").addEventListener("change",e=>{form.dataset.neemOrigin=e.target.value;updateTotal()});
  }
- function updateTotal(){const x=calc();const country=countries[Number(form.elements.country.value)]||currentCountry;if(x.choice.kind==="origin"&&p.id==="chocolate"&&x.qty<x.minimum){totalEl.style.color="#ffb6b6"}else{totalEl.style.color=""}}
+ function updateTotal(){const x=calc();const country=countries[Number(form.elements.country.value)]||currentCountry;if(x.choice.kind==="origin"&&isChocolate&&x.qty<x.minimum){totalEl.style.color="#ffb6b6"}else{totalEl.style.color=""}}
  variantSelect.addEventListener("change",updateTotal);qtyInput.addEventListener("input",updateTotal);form.elements.country.addEventListener("change",()=>{form.elements.otherCountry.hidden=form.elements.country.value!=="other";form.elements.otherCountry.required=form.elements.country.value==="other";updateTotal()});updateTotal();
  form.addEventListener("submit",e=>{
    e.preventDefault();
