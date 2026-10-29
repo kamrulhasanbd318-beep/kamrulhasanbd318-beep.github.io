@@ -1,0 +1,33 @@
+name: Backup site data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site-data.json'
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Save immutable data backup
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p backups/site-data
+          stamp="$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA:0:7}"
+          cp site-data.json "backups/site-data/site-data-${stamp}.json"
+          cp site-data.json backups/site-data/latest.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backups/site-data
+          git diff --cached --quiet && exit 0
+          git commit -m "Backup site data ${stamp}"
+          git push
