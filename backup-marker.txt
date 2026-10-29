@@ -1,0 +1,1 @@
+Temporary safety marker for current-location update. Existing site data must remain unchanged.
