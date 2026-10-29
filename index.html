@@ -139,23 +139,45 @@ button,a,select,input{touch-action:manipulation}
 <section class="section" id="family"><div class="wrap"><div class="kicker" data-i18n="familyKicker">💛 আমাদের পরিবার</div><h2 data-i18n="familyTitle">আমাদের পরিবার</h2><div class="family-card"><span class="family-emoji">🤝 🌍 💛</span><p data-i18n="familyBn">আমাদের প্রতিটি গ্রাহকই আমাদের পরিবারের অংশ। আপনার বিশ্বাস, নিরাপদ পেমেন্ট এবং নির্ভরযোগ্য ডেলিভারিই আমাদের অগ্রাধিকার।</p><p class="family-en" data-i18n="familyEn">Every customer is part of our family. Your trust, secure payment, and reliable delivery matter to us.</p></div></div></section>
 <section class="section contact" id="contact"><div class="wrap"><div class="kicker" data-t="contact">Contact</div><h2 data-t="contactTitle">Ready to enquire?</h2><div class="contactbox"><p data-t="contactIntro">Choose your preferred messaging app from the quick-contact panel on the right. No contact phone number is displayed on this website.</p></div></div></section>
 <style>
-/* Compact contact dock: small floating icons only; no page layout space */
-.quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;transform:none;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:44px;max-width:none;padding:5px;background:rgba(8,20,38,.78);border:1px solid rgba(242,201,109,.55);border-radius:22px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
-.quick-contact:before{display:none;content:none}
-.quick-contact a{display:flex;align-items:center;justify-content:center;width:34px;min-width:34px;height:34px;min-height:34px;padding:0;border-radius:50%;text-decoration:none;font:700 0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);background:#fff;transition:transform .16s,box-shadow .16s}
-.quick-contact a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
-.quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:transparent;font-size:17px;line-height:1}
-.quick-contact a>span:not(.qc-icon){display:none}
+/* Compact contact dock: one button; methods expand only when clicked */
+.quick-contact{position:fixed;right:12px;bottom:12px;left:auto;top:auto;z-index:10000;display:flex;flex-direction:column;align-items:center;gap:7px;width:46px;padding:5px;background:rgba(8,20,38,.82);border:1px solid rgba(242,201,109,.6);border-radius:24px;box-shadow:0 8px 22px rgba(0,0,0,.28);backdrop-filter:blur(8px)}
+.quick-contact .qc-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid #f2c96d;border-radius:50%;background:linear-gradient(135deg,#ffe8a3,#c59a45);color:#101d30;font:700 18px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.22);transition:transform .16s,box-shadow .16s}
+.quick-contact .qc-toggle:hover{transform:scale(1.06);box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.quick-contact .qc-items{display:flex;flex-direction:column;align-items:center;gap:7px;max-height:0;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(6px);transition:max-height .2s ease,opacity .16s ease,transform .2s ease}
+.quick-contact.is-open .qc-items{max-height:190px;opacity:1;pointer-events:auto;transform:none}
+.quick-contact .qc-items a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border-radius:50%;text-decoration:none;font:0/1 Arial,sans-serif;color:transparent;border:1px solid rgba(255,255,255,.35);transition:transform .16s,box-shadow .16s}
+.quick-contact .qc-items a:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(18,35,58,.28)}
+.quick-contact .qc-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;font-size:17px;line-height:1}
+.quick-contact .qc-items a>span:not(.qc-icon){display:none}
 .quick-contact .qc-imo{background:#eef5ff;border-color:#55b8ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#66d4ff}.quick-contact .qc-messenger{background:#f4efff;border-color:#c59aff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#33e7a5}
-@media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:20px}.quick-contact a{width:31px;min-width:31px;height:31px;min-height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
-@media(prefers-reduced-motion:reduce){.quick-contact a{transition:none}}
+@media(max-width:520px){.quick-contact{right:8px;bottom:8px;gap:5px;width:40px;padding:4px;border-radius:21px}.quick-contact .qc-toggle{width:32px;height:32px;font-size:16px}.quick-contact .qc-items{gap:5px}.quick-contact .qc-items a{width:31px;height:31px}.quick-contact .qc-icon{width:25px;height:25px;flex-basis:25px;font-size:16px}}
+@media(prefers-reduced-motion:reduce){.quick-contact .qc-items,.quick-contact .qc-toggle,.quick-contact .qc-items a{transition:none}}
 </style>
-<aside class="quick-contact" aria-label="Quick contact methods">
+<aside class="quick-contact" id="quickContact" aria-label="Quick contact methods">
+<button class="qc-toggle" id="qcToggle" type="button" aria-expanded="false" aria-controls="qcItems" aria-label="Open contact options" title="Contact">💬</button>
+<div class="qc-items" id="qcItems">
 <a class="qc-imo" id="contactImo1" aria-label="IMO" title="IMO" href="https://imo.im/" target="_blank" rel="noopener"><span class="qc-icon">📱</span><span>IMO</span></a>
 <a class="qc-telegram" id="contactTelegram" aria-label="Telegram" title="Telegram" href="https://telegram.org/" target="_blank" rel="noopener"><span class="qc-icon">✈️</span><span>Telegram</span></a>
 <a class="qc-messenger" id="contactMessenger" aria-label="Messenger" title="Messenger" href="https://www.facebook.com/messages/" target="_blank" rel="noopener"><span class="qc-icon">✉️</span><span>Messenger</span></a>
 <a class="qc-whatsapp" id="contactWA" aria-label="WhatsApp" title="WhatsApp" href="https://wa.me/8801625453876" target="_blank" rel="noopener"><span class="qc-icon">💬</span><span>WhatsApp</span></a>
+</div>
 </aside>
+<script>
+(()=>{
+  const dock=document.getElementById('quickContact');
+  const toggle=document.getElementById('qcToggle');
+  if(!dock||!toggle)return;
+  const close=()=>{dock.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open contact options');};
+  toggle.addEventListener('click',()=>{
+    const open=!dock.classList.contains('is-open');
+    dock.classList.toggle('is-open',open);
+    toggle.setAttribute('aria-expanded',String(open));
+    toggle.setAttribute('aria-label',open?'Close contact options':'Open contact options');
+  });
+  document.addEventListener('click',e=>{if(!dock.contains(e.target))close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
+</script>
 </main>
 <footer class="footer"><div id="footerBrand">Kamrul Eagle Fimia</div><div class="admin"><a href="/admin/"><span data-i18n="adminLabel">ওয়েবসাইট অ্যাডমিন</span></a></div></footer>
 <script>
