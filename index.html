@@ -431,4 +431,47 @@ initCurrencyConverter();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
 </script>
-</body></html>
+<style>
+#kep-livechat-widget{position:fixed;left:14px;bottom:18px;z-index:9998;font-family:inherit;color:#18283c}
+#kep-livechat-toggle{border:1px solid #f4d58a;border-radius:999px;background:linear-gradient(135deg,#f5d88f,#c49a43);color:#102033;padding:12px 17px;font-weight:900;box-shadow:0 5px 22px #0005;cursor:pointer}
+#kep-livechat-panel{display:none;width:min(350px,calc(100vw - 28px));height:min(470px,68vh);background:#fff;border:1px solid #d5b15d;border-radius:17px;box-shadow:0 12px 42px #0006;margin-bottom:9px;overflow:hidden;flex-direction:column}
+#kep-livechat-panel.open{display:flex}
+#kep-livechat-head{background:#10243a;color:#ffe5a1;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:900}
+#kep-livechat-close{background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer}
+#kep-livechat-messages{flex:1;overflow:auto;padding:12px;background:#f5f7fa;display:flex;flex-direction:column;gap:8px}
+.kep-lc-bubble{max-width:88%;align-self:flex-start;background:#fff;border:1px solid #e1e7ef;border-radius:13px;padding:9px 11px;overflow-wrap:anywhere;color:#17283b}
+.kep-lc-bubble.admin{align-self:flex-end;background:#fff0c7;border-color:#ead08d}
+#kep-livechat-form{display:flex;gap:6px;padding:9px;border-top:1px solid #e5e7eb;background:#fff}
+#kep-livechat-input{flex:1;min-width:0;border:1px solid #cbd5e1;border-radius:9px;padding:10px;font:inherit;color:#17283b}
+#kep-livechat-form button{border:0;border-radius:9px;padding:9px 12px;background:#cda64e;color:#102033;font-weight:900}
+#kep-livechat-name{width:calc(100% - 20px);margin:10px 10px 0;padding:9px;border:1px solid #dbe2e9;border-radius:9px;font:inherit;color:#17283b}
+#kep-livechat-status{padding:0 11px 8px;font-size:12px;color:#64748b}
+@media(max-width:520px){#kep-livechat-widget{left:9px;bottom:82px}#kep-livechat-panel{height:min(440px,62vh)}}
+</style>
+<div id="kep-livechat-widget">
+ <section id="kep-livechat-panel">
+  <div id="kep-livechat-head"><span>💬 Kamrul Eagle Prime — Live Chat</span><button id="kep-livechat-close" aria-label="Close">×</button></div>
+  <input id="kep-livechat-name" maxlength="60" placeholder="আপনার নাম (ঐচ্ছিক)">
+  <div id="kep-livechat-messages"><div class="kep-lc-bubble">স্বাগতম! আপনার মেসেজ লিখুন, আমরা উত্তর দেব।</div></div>
+  <div id="kep-livechat-status">সরাসরি অ্যাডমিনের সঙ্গে কথা বলুন।</div>
+  <form id="kep-livechat-form"><input id="kep-livechat-input" maxlength="4000" placeholder="মেসেজ লিখুন…" autocomplete="off"><button type="submit">পাঠান</button></form>
+ </section>
+ <button id="kep-livechat-toggle">💬 Live Chat</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* KEP CUSTOMER LIVE CHAT */
+(function(){
+ const URL="https://zmvmpfvlrmtiizbyjoln.supabase.co",KEY="sb_publishable_rE_i5WtZZxOLk6KwlkW5gg_t41773H1";
+ const $=id=>document.getElementById(id);let client=null,conversationId=localStorage.getItem("kep_lc_conversation")||"",visitorToken=localStorage.getItem("kep_lc_token")||"",lastId=0,poll=null,busy=false,closed=false;
+ function status(t){$("kep-livechat-status").textContent=t}
+ function addMessage(m){const box=$("kep-livechat-messages");const div=document.createElement("div");div.className="kep-lc-bubble "+(m.sender_role==="admin"?"admin":"");div.textContent=m.body;box.appendChild(div);box.scrollTop=box.scrollHeight;lastId=Math.max(lastId,Number(m.id)||0)}
+ async function ensure(){if(!window.supabase?.createClient)throw new Error("চ্যাট লোড হচ্ছে। একটু পরে আবার চেষ্টা করুন।");if(!client)client=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true}});const s=await client.auth.getSession();if(s.error)throw s.error;if(!s.data.session){const a=await client.auth.signInAnonymously();if(a.error)throw a.error}}
+ async function invoke(action,extra={}){await ensure();const r=await client.functions.invoke("site-live-chat",{body:{action,...extra}});if(r.error)throw r.error;if(r.data?.error)throw new Error(r.data.error);return r.data}
+ async function start(forceNew=false){if(forceNew||!visitorToken){visitorToken=crypto.randomUUID()+crypto.randomUUID();conversationId="";lastId=0;localStorage.setItem("kep_lc_token",visitorToken);localStorage.removeItem("kep_lc_conversation")}const name=$("kep-livechat-name").value.trim()||"Guest";const r=await invoke("start",{visitorToken,name});conversationId=r.conversation.id;closed=r.conversation.status==="closed";localStorage.setItem("kep_lc_conversation",conversationId);return r.conversation}
+ async function refresh(){if(!conversationId||!visitorToken)return;const r=await invoke("customer_read",{conversationId,visitorToken,after:lastId});(r.messages||[]).forEach(addMessage);closed=r.status==="closed";if(closed)status("এই চ্যাটটি বন্ধ। নতুন মেসেজ পাঠালে নতুন চ্যাট শুরু হবে।")}
+ $("kep-livechat-toggle").onclick=async()=>{$("kep-livechat-panel").classList.add("open");$("kep-livechat-toggle").style.display="none";try{await start();await refresh();if(poll)clearInterval(poll);poll=setInterval(()=>refresh().catch(()=>{}),3500)}catch(e){status(e.message)}};
+ $("kep-livechat-close").onclick=()=>{$("kep-livechat-panel").classList.remove("open");$("kep-livechat-toggle").style.display="inline-block";if(poll)clearInterval(poll)};
+ $("kep-livechat-form").onsubmit=async e=>{e.preventDefault();const input=$("kep-livechat-input"),body=input.value.trim();if(!body||busy)return;busy=true;try{await start(closed);await invoke("customer_send",{conversationId,visitorToken,body});input.value="";await refresh();status("মেসেজ পাঠানো হয়েছে। উত্তরের জন্য অপেক্ষা করুন।")}catch(err){status(err.message)}finally{busy=false}};
+})();
+</script></body></html>
