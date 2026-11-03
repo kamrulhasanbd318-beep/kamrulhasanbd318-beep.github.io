@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
   const url = Deno.env.get("SUPABASE_URL")!;
   const anon = Deno.env.get("SUPABASE_ANON_KEY")!;
   const service = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-  const publicKey = Deno.env.get("VAPID_PUBLIC_KEY") || "";
+  const publicKey = "BDLXEuWMMqR3_4ilUKFAtWuEhBCK9cZbhvebYYtOBQzkifmLyBFIydf0vZWbWxVsSr_hEHC0frbhRjWxKETVK9o";
   const privateKey = Deno.env.get("VAPID_PRIVATE_KEY") || "";
   const auth = req.headers.get("Authorization") || "";
   if (!auth.startsWith("Bearer ")) return json({ error: "Sign-in required" }, 401);
