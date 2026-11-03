@@ -43,3 +43,14 @@ grant usage, select on sequence public.push_subscriptions_id_seq to authenticate
 
 -- Push delivery requires a deployed Supabase Edge Function with VAPID secrets.
 -- Never place the VAPID private key or service-role key in browser code.
+
+-- Realtime roster updates so newly joined customers appear in the recipient list.
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'room_members'
+  ) then
+    alter publication supabase_realtime add table public.room_members;
+  end if;
+end $$;
