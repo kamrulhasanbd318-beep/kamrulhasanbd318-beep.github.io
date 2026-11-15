@@ -1140,10 +1140,10 @@
     {
       "id": "A4 Id",
       "name": {
-        "bn": "",
-        "en": "",
-        "ar": "",
-        "hi": ""
+        "bn": "A4 Id Paper ",
+        "en": "A4 Id Paper ",
+        "ar": "A4 Id Paper ",
+        "hi": "A4 Id Paper "
       },
       "category": "A4 Full Size Available ",
       "price": "220",
@@ -1155,15 +1155,16 @@
         "hi": ""
       },
       "countryPrices": {},
-      "variations": []
+      "variations": [],
+      "placeholder": false
     },
     {
       "id": "Cysltel Ice Ganja A4",
       "name": {
-        "bn": "",
-        "en": "",
-        "ar": "",
-        "hi": ""
+        "bn": "Weed ice",
+        "en": "Weed ice",
+        "ar": "Weed ice",
+        "hi": "Weed ice"
       },
       "category": "Drug",
       "price": "150",
@@ -1175,7 +1176,8 @@
         "hi": ""
       },
       "countryPrices": {},
-      "variations": []
+      "variations": [],
+      "placeholder": false
     },
     {
       "id": "product-1794747796686",
@@ -1201,10 +1203,10 @@
     {
       "id": "product-1794747797262",
       "name": {
-        "bn": "",
-        "en": "",
-        "ar": "",
-        "hi": ""
+        "bn": "Xxx Medecen",
+        "en": "Xxx Medecen",
+        "ar": "Xxx Medecen",
+        "hi": "Xxx Medecen"
       },
       "category": "",
       "price": "",
@@ -1216,7 +1218,8 @@
         "hi": ""
       },
       "countryPrices": {},
-      "variations": []
+      "variations": [],
+      "placeholder": false
     },
     {
       "id": "product-1794747797823",
@@ -1242,10 +1245,10 @@
     {
       "id": "Ice Ganja Yahaba Cbd A4",
       "name": {
-        "bn": "",
-        "en": "",
-        "ar": "",
-        "hi": ""
+        "bn": "Xxx",
+        "en": "Xxx",
+        "ar": "Xxx",
+        "hi": "Xxx"
       },
       "category": "পণ্যের মূল্য ও অর্ডার সংক্রান্ত বিস্তারিত জানতে অনুগ্রহ করে অ্যাডমিনের সাথে যোগাযোগ করুন।  For product prices and order details, please contact the admin directly.",
       "price": "90",
@@ -1257,7 +1260,8 @@
         "hi": ""
       },
       "countryPrices": {},
-      "variations": []
+      "variations": [],
+      "placeholder": false
     }
   ],
   "paymentAccounts": [
