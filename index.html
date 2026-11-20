@@ -477,4 +477,8 @@ initCurrencyConverter();
  $("kep-livechat-close").onclick=()=>{$("kep-livechat-panel").classList.remove("open");$("kep-livechat-toggle").style.display="inline-block";if(poll)clearInterval(poll)};
  $("kep-livechat-form").onsubmit=async e=>{e.preventDefault();const input=$("kep-livechat-input"),body=input.value.trim();if(!body||busy)return;busy=true;try{await start(closed);await invoke("customer_send",{conversationId,visitorToken,body});input.value="";await refresh();status((chatLabels[document.documentElement.lang]||chatLabels.bn).sent)}catch(err){status(err.message)}finally{busy=false}};
 })();
-</script></body></html>
+</script><script>
+/* KEP SUPABASE LIVE CONFIG SYNC */
+(()=>{const url="https://zmvmpfvlrmtiizbyjoln.supabase.co/rest/v1/kep_site_config?id=eq.main&select=updated_at";const key="sb_publishable_rE_i5WtZZxOLk6KwlkW5gg_t41773H1";let last=window.__kepCloudUpdatedAt||"";let busy=false;async function check(){if(busy||document.visibilityState==="hidden")return;busy=true;try{const r=await fetch(url,{cache:"no-store",headers:{apikey:key,Authorization:"Bearer "+key}});if(!r.ok)return;const rows=await r.json();const stamp=rows[0]?.updated_at||"";if(stamp&&last&&stamp!==last){const a=document.activeElement;if(!(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))&&!document.querySelector(".order-modal-backdrop"))location.reload()}if(stamp)last=stamp}catch(e){}finally{busy=false}}setInterval(check,8000)})();
+</script>
+</body></html>
