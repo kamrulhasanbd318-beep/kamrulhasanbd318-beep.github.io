@@ -236,6 +236,65 @@ footer,.footer{border-top:1px solid #d9b45e44}
  .navin>.language-switch .lang-btn{min-height:35px!important;padding:7px 11px!important;font-size:13px!important}
 }
 
+
+/* Final balanced header: brand and language selector share a clean top row */
+.navin{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr) minmax(270px,auto)!important;
+ grid-template-areas:"brand languages" "notice notice" "menu menu"!important;
+ align-items:center!important;column-gap:18px!important;row-gap:10px!important;
+ padding:12px 0!important;
+}
+.navin>.brand{
+ grid-area:brand!important;justify-self:start!important;align-self:center!important;
+ display:inline-flex!important;align-items:center!important;gap:9px!important;
+ width:max-content!important;max-width:100%!important;min-width:0!important;
+ white-space:normal!important;line-height:1.2!important;
+ padding:7px 12px!important;min-height:44px!important;
+ font-size:clamp(.92rem,1.7vw,1.08rem)!important;
+ border:1.5px solid #e8c66f!important;border-radius:13px!important;
+ background:linear-gradient(120deg,#142b45,#0b182b 65%,#342711)!important;
+ box-shadow:0 4px 14px #0006,inset 0 1px 0 #fff2!important;
+}
+.navin>.brand b{flex:0 0 30px!important;width:30px!important;height:30px!important}
+.navin>.language-switch{
+ grid-area:languages!important;justify-self:end!important;align-self:center!important;
+ width:auto!important;max-width:100%!important;min-width:0!important;
+ display:flex!important;flex-wrap:wrap!important;justify-content:center!important;
+ gap:6px!important;padding:7px 9px!important;
+}
+.navin>.language-switch:before{
+ content:"🌐 Change language / ভাষা পরিবর্তন"!important;
+ flex:0 0 100%!important;text-align:center!important;
+ font-size:12px!important;line-height:1.2!important;
+}
+.navin>.language-switch .lang-btn{
+ flex:0 1 auto!important;min-width:0!important;min-height:34px!important;
+ padding:6px 10px!important;font-size:12px!important;
+}
+.navin>#notice{grid-area:notice!important;width:100%!important;min-width:0!important}
+.navin>.main-nav{grid-area:menu!important;width:100%!important;min-width:0!important}
+@media(max-width:720px){
+ .navin{
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"brand" "languages" "notice" "menu"!important;
+  justify-items:stretch!important;row-gap:10px!important;padding:11px 0!important;
+ }
+ .navin>.brand{justify-self:center!important;max-width:100%!important;font-size:1rem!important}
+ .navin>.language-switch{
+  justify-self:center!important;width:min(100%,390px)!important;
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:6px!important;padding:8px!important;
+ }
+ .navin>.language-switch:before{grid-column:1/-1!important;font-size:13px!important}
+ .navin>.language-switch .lang-btn{width:100%!important;padding:7px 4px!important;font-size:12px!important}
+ .navin>#notice,.navin>.main-nav{width:100%!important}
+}
+@media(max-width:360px){
+ .navin>.brand{font-size:.91rem!important;padding:6px 9px!important}
+ .navin>.language-switch .lang-btn{font-size:11px!important}
+}
+
 </style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
