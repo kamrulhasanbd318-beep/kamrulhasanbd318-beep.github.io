@@ -450,7 +450,7 @@ initCurrencyConverter();
   const btn=box.querySelector('.current-location-btn'),status=box.querySelector('.current-location-status'),mapEl=box.querySelector('.kep-gps-map'),radius=box.querySelector('[name="landmark_radius_km"]');
   const st={map:null,marker:null,circle:null,layer:null,abort:null,lat:null,lng:null};
   function setStatus(message,kind){status.textContent=message;status.className='current-location-status'+(kind?' '+kind:'')}
-  function currentCountryCenter(){const c=window.countries?.[Number(form.elements.country.value)]?.code||'SA';return centers[c]||centers.SA}
+  function currentCountryCenter(){const codes=['SA','OM','QA','BH','AE','MY','KW','BD'];const c=codes[Number(form.elements.country.value)]||'SA';return centers[c]||centers.SA}
   function setPin(lat,lng){
    st.lat=Number(lat);st.lng=Number(lng);hiddenLat.value=st.lat.toFixed(6);hiddenLng.value=st.lng.toFixed(6);
    if(st.marker)st.marker.setLatLng([st.lat,st.lng]);
