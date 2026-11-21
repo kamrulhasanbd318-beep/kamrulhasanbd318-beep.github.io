@@ -186,8 +186,9 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(prefers-reduced-motion:reduce){.quick-sidebar *{transition:none!important}}
 </style>
 </head><body>
-<div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
 <header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
+
+<div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
@@ -829,6 +830,15 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>.language-switch{gap:4px;padding:4px}
  .navin>.language-switch .lang-btn{font-size:.75rem;padding:6px 7px}
 }
+
+/* KEP owner header above the customer notice */
+.nav{position:relative;z-index:4}
+.navin{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand languages" "menu menu"!important}
+.navin>.brand{grid-area:brand!important}
+.navin>.language-switch{grid-area:languages!important}
+.navin>.main-nav{grid-area:menu!important}
+#notice{position:relative;z-index:2}
+@media(max-width:700px){.navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "languages" "menu"!important}.navin>.brand,.navin>.language-switch{justify-self:center!important}.navin>.language-switch{width:min(100%,390px)!important;justify-content:center!important}}
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
