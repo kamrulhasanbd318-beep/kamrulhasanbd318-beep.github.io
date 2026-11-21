@@ -234,9 +234,17 @@ footer,.footer{border-top:1px solid #d9b45e44}
 .quick-contact .qc-imo{background:#eef5ff;border-color:#55b8ff}.quick-contact .qc-telegram{background:#edf8ff;border-color:#66d4ff}.quick-contact .qc-messenger{background:#f4efff;border-color:#c59aff}.quick-contact .qc-whatsapp{background:#effbf4;border-color:#33e7a5}
 @media(max-width:520px){.quick-contact{right:6px;bottom:6px;left:6px;max-width:none;justify-content:center;gap:4px;padding:5px;border-radius:14px}.quick-contact .qc-items{width:100%;gap:4px}.quick-contact .qc-items a{flex:1;min-width:0;height:37px;padding:0 3px;gap:3px;border-radius:10px;font-size:10px}.quick-contact .qc-icon{width:19px;height:19px;flex-basis:19px;font-size:15px}}
 @media(prefers-reduced-motion:reduce){.quick-contact .qc-items,.quick-contact .qc-items a{transition:none}}
+/* KEP 24/7 compact contact launcher */
+.quick-contact{right:14px!important;bottom:14px!important;left:auto!important;top:auto!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:9px!important;width:auto!important;max-width:calc(100vw - 24px)!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+.quick-contact .qc-toggle{display:flex!important;align-items:center;gap:9px;min-height:48px;padding:11px 16px;border:1px solid #ffe5a0;border-radius:999px;background:linear-gradient(135deg,#ffe8a5,#c99a3e);color:#14243a;font:900 14px/1.1 Arial,sans-serif;box-shadow:0 8px 24px #0007;cursor:pointer}
+.quick-contact .qc-toggle>span:first-child{font-size:19px}.quick-contact .qc-chevron{font-size:18px;transition:transform .18s}.quick-contact.open .qc-chevron{transform:rotate(180deg)}
+.quick-contact .qc-items{display:flex;flex-direction:column;align-items:stretch;gap:7px;width:190px;max-width:calc(100vw - 28px);padding:9px;border:1px solid #d9b45e;border-radius:16px;background:linear-gradient(150deg,#172e49f7,#071321fa);box-shadow:0 12px 32px #0008}
+.quick-contact .qc-items[hidden]{display:none!important}.quick-contact .qc-items a{justify-content:flex-start;min-height:42px;padding:0 11px;font-size:13px}
+@media(max-width:520px){.quick-contact{right:10px!important;bottom:12px!important;left:auto!important;width:auto!important;max-width:calc(100vw - 20px)!important}.quick-contact .qc-toggle{min-height:46px;padding:10px 14px}.quick-contact .qc-items{width:180px}}
 </style>
-<aside class="quick-contact" id="quickContact" aria-label="Quick contact methods">
-<div class="qc-items" id="qcItems">
+<aside class="quick-contact" id="quickContact" aria-label="24/7 যোগাযোগ">
+<button class="qc-toggle" id="qcToggle" type="button" aria-expanded="false" aria-controls="qcItems"><span aria-hidden="true">💬</span><span>২৪/৭ যোগাযোগ</span><span class="qc-chevron" aria-hidden="true">⌃</span></button>
+<div class="qc-items" id="qcItems" hidden>
 <a class="qc-imo" id="contactImo1" aria-label="IMO" title="IMO" href="https://s.imoim.net/Vx0QN9" target="_blank" rel="noopener"><span class="qc-icon">📱</span><span>IMO</span></a>
 <a class="qc-messenger" id="contactMessenger" aria-label="Messenger" title="Messenger" href="https://m.me/61593413706636" target="_blank" rel="noopener"><span class="qc-icon">✉️</span><span>Messenger</span></a>
 <a class="qc-telegram" id="contactTelegram" aria-label="Telegram" title="Telegram" href="https://t.me/KAMRULHASANUAE?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%86%E0%A6%AA%E0%A6%A8%E0%A6%BE%E0%A6%B0%20%E0%A6%93%E0%A7%9F%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%AF%E0%A7%8B%E0%A6%97%20%E0%A6%95%E0%A6%B0%E0%A6%9B%E0%A6%BF%E0%A5%A4" target="_blank" rel="noopener"><span class="qc-icon">✈️</span><span>Telegram</span></a>
@@ -244,7 +252,7 @@ footer,.footer{border-top:1px solid #d9b45e44}
 </div>
 </aside>
 <script>
-(()=>{const dock=document.getElementById('quickContact');if(!dock)return;})();
+(()=>{const dock=document.getElementById('quickContact'),btn=document.getElementById('qcToggle'),items=document.getElementById('qcItems');if(!dock||!btn||!items)return;const close=()=>{dock.classList.remove('open');items.hidden=true;btn.setAttribute('aria-expanded','false')};btn.addEventListener('click',()=>{const open=items.hidden;items.hidden=!open;dock.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open))});document.addEventListener('click',e=>{if(!dock.contains(e.target))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});})();
 </script>
 </main>
 <footer class="footer"><div id="footerBrand">Kamrul Eagle Prime</div><div class="admin"><a href="/admin/"><span data-i18n="adminLabel">ওয়েবসাইট অ্যাডমিন</span></a></div></footer>
