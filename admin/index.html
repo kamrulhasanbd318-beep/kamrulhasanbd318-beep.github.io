@@ -2,7 +2,55 @@
 <html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#071426"><title>Kamrul Eagle Prime — Live Admin</title>
 <style>
 :root{color-scheme:dark;--bg:#071426;--panel:#10243a;--gold:#f2c96d;--muted:#b9c8da}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b3452,#071426 55%,#090b15);color:#f7f1e5;font:15px/1.6 Arial,"Noto Sans Bengali",sans-serif}.wrap{width:min(980px,calc(100% - 24px));margin:auto}.head{padding:22px 0;border-bottom:1px solid var(--gold)}h1{font-size:1.4rem;color:#ffe09a;margin:0}h2{font-size:1.12rem;color:#ffe09a;margin:0 0 12px}.muted{color:var(--muted);font-size:.88rem}.card{background:#fff;color:#17283b;border-radius:16px;padding:17px;margin:16px 0;box-shadow:0 10px 28px #0004}.card h2{color:#8b650d}.field{margin:12px 0}.field label{display:block;font-weight:800;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;font:inherit;padding:11px;border:1px solid #cbd5e1;border-radius:9px;background:#f8fafc;color:#17283b}.field textarea{min-height:90px}.btn{border:0;border-radius:10px;padding:11px 15px;background:#10243a;color:#fff;font:inherit;font-weight:850;cursor:pointer}.gold{background:#d7b263;color:#102033}.soft{background:#e9eef3;color:#16283b}.row{display:flex;gap:9px;flex-wrap:wrap}.row .btn{flex:1}.status{padding:10px;border-radius:10px;background:#edf2f7;color:#334155;margin-top:10px;overflow-wrap:anywhere}.ok{background:#e3f7e8;color:#165a2c}.err{background:#fde8e8;color:#842727}.hide{display:none!important}.tabs{display:flex;gap:7px;overflow:auto;padding:8px 0}.tabs button{white-space:nowrap}.tab{background:#e9eef3;color:#17283b}.tab.active{background:#d7b263}.product{border:1px solid #dbe3ec;border-radius:13px;padding:13px;margin:12px 0}.product h3{margin:0 0 8px;color:#243b53}.preview{width:100%;max-width:140px;height:110px;object-fit:contain;background:#eef2f6;border-radius:8px;display:block}.danger{background:#8c2730;color:white}#trackingMap{height:clamp(300px,55vh,520px);width:100%;border-radius:12px;border:1px solid #d7b263;z-index:1;margin:10px 0}.track-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.track-item .customer-meta{color:#475569;font-size:.9rem;overflow-wrap:anywhere}.track-item button{margin:4px 4px 4px 0}@media(max-width:540px){.track-grid{grid-template-columns:1fr}}.track-item{border:1px solid #dbe3ec;border-radius:12px;padding:12px;margin:10px 0}.track-item a{color:#805b08;overflow-wrap:anywhere}.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:540px){.track-grid{grid-template-columns:1fr}}@media(max-width:540px){.card{padding:14px}.row .btn{min-width:100%}}
-button[data-tab="ai"],[data-page="ai"]{display:none!important}</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head><body><header class="head"><div class="wrap"><h1>Kamrul Eagle Prime — Live Admin</h1><div class="muted">সহজ ম্যানেজমেন্ট · Save করলেই লাইভ সাইটে আপডেট</div><p><a href="/" style="color:#ffe09a">কাস্টমার ওয়েবসাইট দেখুন ↗</a></p></div></header>
+button[data-tab="ai"],[data-page="ai"]{display:none!important}
+/* KEP premium admin experience refresh — visual layer only */
+:root{color-scheme:dark;--bg:#071426;--panel:#10243a;--gold:#f2c96d;--muted:#b9c8da;--line:#e7c56a55}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{background:radial-gradient(ellipse at 50% -15%,#294a6b 0,#0a1728 43%,#060d18 100%);color:#f7f1e5;font:15px/1.65 Arial,"Noto Sans Bengali","Segoe UI",sans-serif}
+.wrap{width:min(1220px,calc(100% - 28px))}
+.head{position:sticky;top:0;z-index:20;padding:15px 0;background:#071321ed;backdrop-filter:blur(16px);border-bottom:1px solid #eac76c88;box-shadow:0 10px 30px #0005}
+.head h1{font-size:clamp(1.15rem,3vw,1.65rem);letter-spacing:.01em}
+.head .muted{color:#c4d0df}
+.head p{margin:6px 0 0}
+#auth,.card{background:linear-gradient(150deg,#172d47,#0c1b2e 78%);color:#f6f1e5;border:1px solid #d9b45e66;border-radius:19px;padding:clamp(15px,2.3vw,23px);margin:16px 0;box-shadow:0 16px 40px #0004}
+.card h2,#auth h2{color:#ffe09a;font-size:1.16rem;letter-spacing:.005em}
+.muted{color:#bdcadb}
+.field{margin:13px 0}
+.field label{color:#f5e5bd;font-weight:750}
+.field input,.field textarea,.field select{width:100%;min-height:45px;padding:11px 13px;border:1px solid #c9a34f88;border-radius:11px;background:#09182a;color:#fff;font:inherit}
+.field textarea{min-height:100px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#8fa0b5}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid #f2c96d;outline-offset:2px}
+.btn{min-height:44px;padding:10px 15px;border:1px solid #ffffff18;border-radius:12px;background:linear-gradient(135deg,#1b3552,#10243a);color:#fff;font-weight:800;box-shadow:0 6px 16px #0002;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn.gold,.gold{background:linear-gradient(135deg,#ffe9ad,#d0a044);color:#172438;border-color:#ffe6a0}
+.btn.soft,.soft,.tab{background:#1a3049;color:#e9eff8;border-color:#ffffff24}
+.btn.danger,.danger{background:linear-gradient(135deg,#a83a43,#72232d);color:#fff}
+.row{gap:10px;align-items:center}
+.status{padding:12px 14px;border-radius:12px;background:#0a192b;color:#d9e4f1;border:1px solid #ffffff18}
+.status.ok{background:#103a32;color:#b9f3d8;border-color:#36bd8d66}
+.status.err{background:#451f2a;color:#ffd1d6;border-color:#e16c7a66}
+.tabs{position:sticky;top:105px;z-index:15;display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;padding:10px;margin:12px 0 18px;border:1px solid #d9b45e55;border-radius:16px;background:#081625ed;backdrop-filter:blur(14px);box-shadow:0 10px 28px #0004;scrollbar-width:thin}
+.tabs .btn{flex:0 0 auto;white-space:nowrap}
+.tabs .tab{background:#142a43;color:#dce7f4}
+.tabs .tab.active{background:linear-gradient(135deg,#ffe9ad,#d0a044);color:#172438;border-color:#ffe6a0}
+.product,.track-item,.country{background:linear-gradient(145deg,#142b45,#0b1a2d);color:#f4f0e7;border:1px solid #d9b45e55;border-radius:15px;padding:15px;margin:13px 0}
+.product h3,.country h3{color:#ffe09a}
+.product .small,.small{color:#b8c7d9}
+.preview{background:#0b192b;border:1px solid #ffffff22;border-radius:12px}
+.track-item .customer-meta{color:#c4d0df}
+.track-item a{color:#ffe09a}
+#trackingMap{border:1px solid #d7b263;border-radius:15px;overflow:hidden}
+.track-grid{gap:12px}
+input[type=checkbox],input[type=radio]{accent-color:#e4bd61}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f2c96d;outline-offset:2px}
+a{overflow-wrap:anywhere}
+@media(min-width:900px){#panel{display:grid;grid-template-columns:1fr;gap:0}.tabs{top:104px}.track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.head{padding:12px 0}.head .row{align-items:flex-start}.tabs{top:95px;margin-inline:-2px;border-radius:12px}.row .btn{flex:1 1 auto;min-width:calc(50% - 8px)}.wrap{width:calc(100% - 20px)}#auth,.card{padding:15px;border-radius:16px}.field input,.field textarea,.field select{font-size:16px}}
+@media(max-width:420px){.row .btn{min-width:100%}.tabs .btn{font-size:.88rem;padding:9px 12px}.track-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head><body><header class="head"><div class="wrap"><h1>Kamrul Eagle Prime — Live Admin</h1><div class="muted">সহজ ম্যানেজমেন্ট · Save করলেই লাইভ সাইটে আপডেট</div><p><a href="/" style="color:#ffe09a">কাস্টমার ওয়েবসাইট দেখুন ↗</a></p></div></header>
 <main class="wrap">
 <section id="auth" class="card"><h2>নিরাপদ অ্যাডমিন লগইন</h2><p class="muted">অনুমোদিত ইমেইল: Superking99973@gmail.com। প্রথমবার অ্যাকাউন্ট তৈরি করে ইমেইল ভেরিফাই করুন।</p><div class="field"><label>ইমেইল</label><input id="email" type="email" value="Superking99973@gmail.com" autocomplete="username"></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" autocomplete="current-password" placeholder="আপনার পাসওয়ার্ড"></div><div class="row"><button class="btn gold" id="login">লগইন</button><button class="btn soft" id="signup">প্রথমবার অ্যাকাউন্ট তৈরি</button></div><div class="status" id="authStatus">শুধু নির্ধারিত ইমেইল দিয়ে অ্যাক্সেস করা যাবে।</div></section>
 <section id="panel" class="hide">
