@@ -167,6 +167,44 @@ footer,.footer{border-top:1px solid #d9b45e44}
  .main-nav>.nav-tile.nav-products{border-radius:15px!important}
 }
 
+
+/* Fine-tune brand and language control sizes */
+.navin>.brand{
+ padding:7px 13px!important;min-height:44px!important;
+ font-size:clamp(.98rem,2vw,1.16rem)!important;
+}
+.navin>.brand b{width:31px!important;height:31px!important;font-size:.94rem!important}
+.navin>.language-switch{padding:5px!important;gap:5px!important}
+.navin>.language-switch .lang-btn{
+ padding:7px 11px!important;font-size:clamp(12px,1.6vw,14px)!important;
+}
+@media(max-width:720px){
+ .navin>.brand{padding:6px 11px!important;min-height:42px!important;font-size:1rem!important}
+ .navin>.brand b{width:29px!important;height:29px!important}
+ .navin>.language-switch .lang-btn{padding:6px 10px!important;font-size:12px!important}
+}
+/* Unique jewel-tone product button with layered dual-color border */
+.main-nav>.nav-tile.nav-products{
+ border:2px solid transparent!important;border-radius:17px!important;
+ background:
+  linear-gradient(115deg,#241447 0%,#3b216b 48%,#102e50 100%) padding-box,
+  linear-gradient(110deg,#ff83d5 0%,#ffd978 48%,#65eaff 100%) border-box!important;
+ color:#fff8ff!important;
+ box-shadow:0 0 0 2px #c17bff30,0 8px 24px #16072caa,inset 0 1px 0 #ffffff35!important;
+ text-shadow:0 1px 3px #170b2b!important;
+}
+.main-nav>.nav-tile.nav-products:before{
+ background:linear-gradient(145deg,#ffe4f8,#b8f4ff)!important;
+ color:#342052!important;border:1px solid #fff6d8!important;
+ box-shadow:0 2px 9px #10051f88!important;
+}
+.main-nav>.nav-tile.nav-products:hover{
+ background:
+  linear-gradient(115deg,#382064 0%,#56318b 48%,#17466b 100%) padding-box,
+  linear-gradient(110deg,#ffa1e2 0%,#fff0a8 48%,#8af1ff 100%) border-box!important;
+ box-shadow:0 0 0 3px #d69aff45,0 11px 28px #16072cbb,inset 0 1px 0 #ffffff45!important;
+}
+
 </style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
