@@ -705,12 +705,14 @@ async function checkCustomerSiteData(){
   const editing=!!(active&&/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName));
   const orderOpen=!!document.querySelector(".order-modal-backdrop");
   if(editing||orderOpen)return;
-  const cloudUrl="https://zmvmpfvlrmtiizbyjoln.supabase.co/rest/v1/kep_site_config?id=eq.main&select=updated_at";
+  const cloudUrl="https://zmvmpfvlrmtiizbyjoln.supabase.co/rest/v1/kep_site_config?id=eq.main&select=data,updated_at";
   const key="sb_publishable_rE_i5WtZZxOLk6KwlkW5gg_t41773H1";
   const cloud=await fetch(cloudUrl,{cache:"no-store",headers:{apikey:key,Authorization:"Bearer "+key},signal:AbortSignal.timeout(4500)});
   if(cloud.ok){
    const rows=await cloud.json();
    const latest=rows[0]?.updated_at||"";
+   const latestData=rows[0]?.data;
+   if(latestData&&JSON.stringify(latestData)!==JSON.stringify(siteData)){location.reload();return;}
    if(latest&&window.__kepCloudUpdatedAt&&latest!==window.__kepCloudUpdatedAt){location.reload();return;}
   }
   const response=await fetch("./site-data.json?__refresh="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}});
