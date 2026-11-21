@@ -205,6 +205,37 @@ footer,.footer{border-top:1px solid #d9b45e44}
  box-shadow:0 0 0 3px #d69aff45,0 11px 28px #16072cbb,inset 0 1px 0 #ffffff45!important;
 }
 
+
+/* Make the language changer unmistakable for visitors */
+.navin>.language-switch{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex-wrap:wrap!important;gap:7px!important;padding:8px 11px!important;
+ border:2px solid transparent!important;border-radius:15px!important;
+ background:
+  linear-gradient(135deg,#102b43,#17294a) padding-box,
+  linear-gradient(110deg,#64e8dc,#f3cf70,#83b9ff) border-box!important;
+ box-shadow:0 5px 16px #0006,0 0 0 2px #74dcd522!important;
+}
+.navin>.language-switch:before{
+ content:"🌐 ভাষা পরিবর্তন / Change Language";
+ display:block!important;flex:0 0 100%!important;text-align:center!important;
+ color:#ffe7a2!important;font-size:clamp(13px,1.8vw,15px)!important;
+ line-height:1.25!important;font-weight:900!important;letter-spacing:.01em!important;
+}
+.navin>.language-switch .lang-btn{
+ min-height:36px!important;padding:8px 13px!important;
+ border:1.5px solid #e8c66f!important;border-radius:10px!important;
+ font-size:clamp(13px,1.6vw,15px)!important;font-weight:900!important;
+}
+.navin>.language-switch .lang-btn.active{
+ border-color:#fff3bd!important;box-shadow:0 0 0 2px #f5d57b44,0 3px 10px #0005!important;
+}
+@media(max-width:720px){
+ .navin>.language-switch{padding:8px 9px!important;gap:6px!important}
+ .navin>.language-switch:before{font-size:13px!important}
+ .navin>.language-switch .lang-btn{min-height:35px!important;padding:7px 11px!important;font-size:13px!important}
+}
+
 </style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
