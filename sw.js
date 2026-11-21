@@ -1,4 +1,4 @@
-const CACHE_NAME="kamrul-eagle-v19";
+const CACHE_NAME="kamrul-eagle-v20";
 const CORE=["./index.html","./manifest.webmanifest"];
 
 self.addEventListener("install",event=>{
@@ -6,7 +6,7 @@ self.addEventListener("install",event=>{
     const cache=await caches.open(CACHE_NAME);
     await Promise.all(CORE.map(async url=>{
       try{
-        const response=await fetch(url,{cache:"reload"});
+        const response=await fetch(url,{cache:"reload",signal:AbortSignal.timeout(4500)});
         if(response.ok)await cache.put(url,response);
       }catch(e){}
     }));
@@ -30,26 +30,37 @@ self.addEventListener("activate",event=>{
   })());
 });
 
-async function refresh(request,cacheKey){
+async function networkFirst(request,cacheKey,timeout=4500){
+  const cache=await caches.open(CACHE_NAME);
   try{
-    const timeout=request.url.includes("/site-data.json")?20000:4500;
     const response=await fetch(request,{cache:"no-store",signal:AbortSignal.timeout(timeout)});
     if(response.ok){
-      const cache=await caches.open(CACHE_NAME);
+      const copy=response.clone();
       if(cacheKey==="./site-data.json"){
-        const copy=response.clone();
         const headers=new Headers(copy.headers);
         headers.set("x-kep-cached-at",String(Date.now()));
-        const body=await copy.arrayBuffer();
-        await cache.put(cacheKey,new Response(body,{status:copy.status,statusText:copy.statusText,headers}));
+        await cache.put(cacheKey,new Response(await copy.arrayBuffer(),{
+          status:copy.status,statusText:copy.statusText,headers
+        }));
       }else{
-        await cache.put(cacheKey||request,response.clone());
+        await cache.put(cacheKey||request,copy);
       }
     }
     return response;
   }catch(e){
-    return null;
+    return (cacheKey?await cache.match(cacheKey):await cache.match(request))||Response.error();
   }
+}
+
+async function staleWhileRevalidate(request){
+  const cache=await caches.open(CACHE_NAME);
+  const cached=await cache.match(request);
+  const update=networkFirst(request,null,4500);
+  if(cached){
+    // Keep static assets instant while refreshing them for the next visit.
+    return cached;
+  }
+  return await update;
 }
 
 self.addEventListener("fetch",event=>{
@@ -59,42 +70,23 @@ self.addEventListener("fetch",event=>{
   if(url.origin!==self.location.origin)return;
 
   if(url.pathname.endsWith("/site-data.json")){
-    event.respondWith((async()=>{
-      const cache=await caches.open(CACHE_NAME);
-      const key="./site-data.json";
-      const cached=await cache.match(key);
-      if(cached){
-        const cachedAt=Number(cached.headers.get("x-kep-cached-at")||0);
-        if(!cachedAt||Date.now()-cachedAt>120000)event.waitUntil(refresh(request,key));
-        return cached;
-      }
-      return (await refresh(request,key))||Response.error();
-    })());
+    event.respondWith(networkFirst(request,"./site-data.json",6000));
     return;
   }
 
   if(request.mode==="navigate"&&(url.pathname==="/"||url.pathname==="/index.html")){
-    event.respondWith((async()=>{
-      const cache=await caches.open(CACHE_NAME);
-      const cached=await cache.match("./index.html");
-      if(cached){
-        event.waitUntil(refresh(request,"./index.html"));
-        return cached;
-      }
-      return (await refresh(request,"./index.html"))||Response.error();
-    })());
+    event.respondWith(networkFirst(request,"./index.html",4500));
     return;
   }
 
   event.respondWith((async()=>{
     const cache=await caches.open(CACHE_NAME);
     const cached=await cache.match(request);
-    const update=refresh(request);
     if(cached){
-      event.waitUntil(update);
+      event.waitUntil(networkFirst(request,null,4500));
       return cached;
     }
-    return (await update)||Response.error();
+    return await networkFirst(request,null,4500);
   })());
 });
 
