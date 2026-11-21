@@ -1,4 +1,4 @@
-const CACHE_NAME="kamrul-eagle-v20";
+const CACHE_NAME="kamrul-eagle-v21";
 const CORE=["./index.html","./manifest.webmanifest"];
 
 self.addEventListener("install",event=>{
@@ -6,7 +6,7 @@ self.addEventListener("install",event=>{
     const cache=await caches.open(CACHE_NAME);
     await Promise.all(CORE.map(async url=>{
       try{
-        const response=await fetch(url,{cache:"reload",signal:AbortSignal.timeout(4500)});
+        const response=await fetch(url,{cache:"reload",signal:AbortSignal.timeout(3000)});
         if(response.ok)await cache.put(url,response);
       }catch(e){}
     }));
@@ -30,7 +30,7 @@ self.addEventListener("activate",event=>{
   })());
 });
 
-async function networkFirst(request,cacheKey,timeout=4500){
+async function networkFirst(request,cacheKey,timeout=3000){
   const cache=await caches.open(CACHE_NAME);
   try{
     const response=await fetch(request,{cache:"no-store",signal:AbortSignal.timeout(timeout)});
@@ -55,7 +55,7 @@ async function networkFirst(request,cacheKey,timeout=4500){
 async function staleWhileRevalidate(request){
   const cache=await caches.open(CACHE_NAME);
   const cached=await cache.match(request);
-  const update=networkFirst(request,null,4500);
+  const update=networkFirst(request,null,3000);
   if(cached){
     // Keep static assets instant while refreshing them for the next visit.
     return cached;
@@ -70,12 +70,12 @@ self.addEventListener("fetch",event=>{
   if(url.origin!==self.location.origin)return;
 
   if(url.pathname.endsWith("/site-data.json")){
-    event.respondWith(networkFirst(request,"./site-data.json",6000));
+    event.respondWith(networkFirst(request,"./site-data.json",3000));
     return;
   }
 
   if(request.mode==="navigate"&&(url.pathname==="/"||url.pathname==="/index.html")){
-    event.respondWith(networkFirst(request,"./index.html",4500));
+    event.respondWith(networkFirst(request,"./index.html",3000));
     return;
   }
 
