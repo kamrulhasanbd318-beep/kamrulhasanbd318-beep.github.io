@@ -295,6 +295,18 @@ footer,.footer{border-top:1px solid #d9b45e44}
  .navin>.language-switch .lang-btn{font-size:11px!important}
 }
 
+
+/* Remove the outer language-switcher box; keep the label and language buttons */
+.navin>.language-switch{
+ border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+ padding:0!important;
+}
+.navin>.language-switch:before{margin-bottom:2px!important}
+@media(max-width:720px){
+ .navin>.language-switch{padding:0!important}
+}
+
 </style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
