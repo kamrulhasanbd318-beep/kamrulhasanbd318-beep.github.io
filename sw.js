@@ -1,4 +1,4 @@
-const CACHE_NAME="kamrul-eagle-v18";
+const CACHE_NAME="kamrul-eagle-v19";
 const CORE=["./index.html","./manifest.webmanifest"];
 
 self.addEventListener("install",event=>{
@@ -17,6 +17,14 @@ self.addEventListener("install",event=>{
 self.addEventListener("activate",event=>{
   event.waitUntil((async()=>{
     const keys=await caches.keys();
+    const current=await caches.open(CACHE_NAME);
+    for(const key of keys.filter(key=>key.startsWith("kamrul-eagle-")&&key!==CACHE_NAME)){
+      try{
+        const previous=await caches.open(key);
+        const saved=await previous.match("./site-data.json");
+        if(saved&&!await current.match("./site-data.json"))await current.put("./site-data.json",saved);
+      }catch(e){}
+    }
     await Promise.all(keys.filter(key=>key.startsWith("kamrul-eagle-")&&key!==CACHE_NAME).map(key=>caches.delete(key)));
     await self.clients.claim();
   })());
@@ -24,7 +32,8 @@ self.addEventListener("activate",event=>{
 
 async function refresh(request,cacheKey){
   try{
-    const response=await fetch(request,{cache:"no-store",signal:AbortSignal.timeout(4500)});
+    const timeout=request.url.includes("/site-data.json")?20000:4500;
+    const response=await fetch(request,{cache:"no-store",signal:AbortSignal.timeout(timeout)});
     if(response.ok){
       const cache=await caches.open(CACHE_NAME);
       if(cacheKey==="./site-data.json"){
