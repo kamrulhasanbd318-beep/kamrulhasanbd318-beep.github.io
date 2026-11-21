@@ -186,9 +186,8 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(prefers-reduced-motion:reduce){.quick-sidebar *{transition:none!important}}
 </style>
 </head><body>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
 
-<div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
@@ -871,6 +870,22 @@ input,select,textarea{accent-color:#d9ae59}
  .main-nav .nav-tile.nav-products:before{
   width:30px!important;height:30px!important;flex-basis:30px!important;font-size:19px!important;
  }
+}
+
+
+/* Place the existing welcome notice directly below the customer brand */
+.navin{
+ grid-template-columns:minmax(0,1fr) auto!important;
+ grid-template-areas:"brand ." "notice notice" ". languages" "menu menu"!important;
+}
+.navin>#notice{grid-area:notice!important;width:100%;margin:0!important}
+.navin>.language-switch{grid-area:languages!important}
+.navin>.main-nav{grid-area:menu!important}
+@media(max-width:700px){
+ .navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "notice" "languages" "menu"!important}
+ .navin>#notice{width:100%!important}
+ .navin>.brand{justify-self:center!important}
+ .navin>.language-switch{justify-self:center!important}
 }
 
 /* KEP owner header above the customer notice */
