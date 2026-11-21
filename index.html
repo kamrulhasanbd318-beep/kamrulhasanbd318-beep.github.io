@@ -444,6 +444,44 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(max-width:700px){.family-service-steps{grid-template-columns:1fr}.family-service-step{padding:15px}.family-service-foot{align-items:flex-start;flex-direction:column}}
 
 <section class="section currency-converter" id="currency-converter"><div class="wrap"><div class="kicker" data-t="converterNav">কারেন্সি কনভার্টার</div><h2 data-t="converterTitle">আন্তর্জাতিক কারেন্সি কনভার্টার</h2><p class="converter-intro" data-t="converterIntro">সমর্থিত মুদ্রার সর্বশেষ রেফারেন্স রেটে হিসাব করুন।</p><div class="converter-card"><div class="converter-field"><label for="currencyAmount" data-t="converterAmount">পরিমাণ</label><input id="currencyAmount" type="number" min="0" step="any" value="1" inputmode="decimal"></div><div class="converter-currency-grid"><div class="converter-field"><label for="currencyFrom" data-t="converterFrom">কোন দেশ থেকে</label><select id="currencyFrom"></select></div><button type="button" class="converter-swap" id="currencySwap" data-t="converterSwap">⇄ মুদ্রা বদল</button><div class="converter-field"><label for="currencyTo" data-t="converterTo">কোন দেশে</label><select id="currencyTo"></select></div></div><button type="button" class="converter-button" id="currencyConvert" data-t="converterButton">কনভার্ট করুন</button><div class="converter-result" aria-live="polite"><span data-t="converterResult">রূপান্তরিত পরিমাণ</span><strong id="currencyResult">—</strong><small id="currencyRateDate" data-t="converterLoading">বিনিময় হার লোড হচ্ছে…</small></div><p class="converter-disclaimer" data-t="converterDisclaimer">রেফারেন্স রেট; ব্যাংক/রেমিট্যান্সের রেট ও ফি আলাদা হতে পারে।</p><p id="currencyStatus" class="converter-status" role="status"></p></div></div></section>
+<script id="kep-currency-converter-independent-v1">
+(function(){
+ function start(){
+  var amount=document.getElementById("currencyAmount"),from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo"),button=document.getElementById("currencyConvert"),swap=document.getElementById("currencySwap"),result=document.getElementById("currencyResult"),status=document.getElementById("currencyStatus"),date=document.getElementById("currencyRateDate");
+  if(!amount||!from||!to||!button||!result||!status)return;
+  if(button.dataset.independentFxReady==="1")return;
+  button.dataset.independentFxReady="1";
+  var rates=null, symbols={SAR:"ر.س",OMR:"ر.ع.",AED:"د.إ",QAR:"ر.ق",BHD:"د.ب",KWD:"د.ك",MYR:"RM",NPR:"रु",INR:"₹",PKR:"Rs",PHP:"₱",BDT:"৳"};
+  var codes=["SAR","OMR","AED","QAR","BHD","KWD","MYR","NPR","INR","PKR","PHP","BDT"];
+  function convert(){
+   if(!rates)return;
+   var n=Number(amount.value),a=rates[from.value],b=rates[to.value];
+   if(!Number.isFinite(n)||n<0||!a||!b){result.textContent="—";status.textContent="সঠিক পরিমাণ লিখুন।";return;}
+   result.textContent=new Intl.NumberFormat(document.documentElement.lang||"bn",{maximumFractionDigits:6}).format(n*b/a)+" "+(symbols[to.value]||to.value);
+   status.textContent="";
+  }
+  function populate(){
+   [from,to].forEach(function(el){var old=el.value;el.innerHTML=codes.filter(function(c){return Number(rates[c])>0;}).map(function(c){return '<option value="'+c+'">'+c+'</option>';}).join("");el.value=(codes.indexOf(old)>=0&&rates[old]>0)?old:(el===from?"OMR":"BDT");});
+   convert();
+  }
+  status.textContent="বিনিময় হার লোড হচ্ছে…";
+  button.addEventListener("click",function(){if(rates)convert();else load();});
+  amount.addEventListener("input",convert);from.addEventListener("change",convert);to.addEventListener("change",convert);
+  if(swap)swap.addEventListener("click",function(){var v=from.value;from.value=to.value;to.value=v;convert();});
+  function load(){
+   status.textContent="বিনিময় হার লোড হচ্ছে…";
+   fetch("https://open.er-api.com/v6/latest/USD",{cache:"no-store"}).then(function(r){if(!r.ok)throw Error("HTTP "+r.status);return r.json();}).then(function(data){
+    var raw=data.conversion_rates||data.rates;if(!raw)throw Error("Rate data missing");
+    rates=raw;rates.USD=1;
+    if(!codes.every(function(c){return Number(rates[c])>0;}))throw Error("Required currencies missing");
+    populate();if(date)date.textContent="লাইভ রেফারেন্স রেট";status.textContent="";
+   }).catch(function(e){status.textContent="বিনিময় হার লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।";result.textContent="—";console.error("Independent currency converter:",e);});
+  }
+  load();
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start);else start();
+})();
+</script>
 <section class="section contact" id="contact"><div class="wrap"><div class="kicker" data-t="contact">Contact</div><h2 data-t="contactTitle">Ready to enquire?</h2><div class="contactbox"><p data-t="contactIntro">Choose your preferred messaging app from the quick-contact panel on the right. No contact phone number is displayed on this website.</p></div></div></section>
 <style>
 /* Always-visible quick contact bar: contact methods are directly tappable */
