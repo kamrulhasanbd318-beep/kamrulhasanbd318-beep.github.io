@@ -182,6 +182,8 @@ footer,.footer{border-top:1px solid #d9b45e44}
 .quick-sidebar.open .quick-sidebar-menu{display:flex}
 .quick-sidebar-menu a{padding:9px 11px;border:1px solid #ffffff20;border-radius:10px;background:#ffffff0b;color:#fff;font-weight:700;font-size:.88rem}
 .quick-sidebar-menu a:hover{border-color:#e7c66e;color:#ffe09a}
+.quick-sidebar-menu .quick-sidebar-chat{padding:9px 11px;border:1px solid #ffffff20;border-radius:10px;background:#ffffff0b;color:#fff;font-weight:700;font-size:.88rem;text-align:left;cursor:pointer}
+.quick-sidebar-menu .quick-sidebar-chat:hover{border-color:#e7c66e;color:#ffe09a}
 @media(max-width:720px){.quick-sidebar{top:12px;left:10px;right:auto;align-items:flex-start}.quick-sidebar-toggle{width:36px;height:36px;font-size:18px}.quick-sidebar-menu{width:158px}.navin{padding-right:0!important;padding-left:42px}}
 @media(prefers-reduced-motion:reduce){.quick-sidebar *{transition:none!important}}
 </style>
@@ -193,6 +195,7 @@ footer,.footer{border-top:1px solid #d9b45e44}
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
 <nav class="quick-sidebar-menu" id="quickSidebarMenu" aria-label="দ্রুত নেভিগেশন">
 <a href="#markets" data-t="delivery">🚚 ডেলিভারি</a><a href="#payment" data-i18n="navPayment">💳 পেমেন্ট</a><a href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a href="./tracking.html" data-t="trackOrderButton">📦 অর্ডার ট্র্যাকিং</a>
+<button type="button" id="quickSidebarChat" class="quick-sidebar-chat">💬 লাইভ চ্যাট</button>
 </nav></aside>
 <main id="home">
 <section class="hero"><div class="wrap heroIn"><div class="copy"><div class="eyebrow" data-t="eyebrow">Premium Gulf Collection</div><h1 id="heroTitle">Premium Products. Trusted Gulfwide Delivery.</h1><p id="heroText">Discover our collection for customers across the Gulf.</p><div class="actions"><a class="btn outline" href="#products" data-t="browse">Browse Products</a></div></div></div></section>
@@ -961,10 +964,10 @@ input,select,textarea{accent-color:#d9ae59}
 }
 
 
-/* Unified bottom action dock: tracking, live chat, and contact */
+/* Bottom action dock: order tracking and contact */
 #kep-bottom-action-dock{
  position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);
- z-index:10010;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
+ z-index:10010;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
  width:min(620px,calc(100vw - 24px));padding:8px;
  border:1px solid #e9c66f;border-radius:18px;
  background:rgba(7,18,33,.96);box-shadow:0 9px 28px #0009;
@@ -998,16 +1001,22 @@ input,select,textarea{accent-color:#d9ae59}
 </a>
 
 <nav id="kep-bottom-action-dock" aria-label="দ্রুত সেবা">
- <a class="dock-track" href="./tracking.html"><span class="dock-icon" aria-hidden="true">📦</span><span>ডেলিভারি ট্র্যাকিং</span></a>
- <button type="button" id="kep-dock-chat"><span class="dock-icon" aria-hidden="true">💬</span><span>লাইভ চ্যাট</span></button>
+ <a class="dock-track" href="./tracking.html"><span class="dock-icon" aria-hidden="true">📦</span><span>অর্ডার ট্র্যাকিং</span></a>
  <button type="button" id="kep-dock-contact"><span class="dock-icon" aria-hidden="true">☎️</span><span>যোগাযোগ</span></button>
 </nav>
 <script>
 (function(){
- const chat=document.getElementById("kep-dock-chat");
  const contact=document.getElementById("kep-dock-contact");
- chat?.addEventListener("click",function(){document.getElementById("kep-livechat-toggle")?.click()});
  contact?.addEventListener("click",function(){document.getElementById("qcToggle")?.click()});
+ const chatMenu=document.getElementById("quickSidebarChat");
+ chatMenu?.addEventListener("click",function(){
+  document.getElementById("kep-livechat-toggle")?.click();
+  const sidebar=document.getElementById("quickSidebar");
+  const toggle=document.getElementById("quickSidebarToggle");
+  sidebar?.classList.remove("open");
+  toggle?.setAttribute("aria-expanded","false");
+  if(toggle){toggle.textContent="☰";toggle.setAttribute("aria-label","মেনু খুলুন")}
+ });
 })();
 </script>
 
