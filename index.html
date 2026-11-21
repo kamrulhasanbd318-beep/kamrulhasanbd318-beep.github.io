@@ -1007,7 +1007,18 @@ input,select,textarea{accent-color:#d9ae59}
 <script>
 (function(){
  const contact=document.getElementById("kep-dock-contact");
- contact?.addEventListener("click",function(){document.getElementById("qcToggle")?.click()});
+ const contactPanel=document.getElementById("quickContact");
+ const contactItems=document.getElementById("qcItems");
+ const contactToggle=document.getElementById("qcToggle");
+ contact?.addEventListener("click",function(event){
+  event.stopPropagation();
+  if(!contactPanel||!contactItems||!contactToggle)return;
+  const open=contactItems.hidden;
+  contactItems.hidden=!open;
+  contactPanel.classList.toggle("open",open);
+  contactToggle.setAttribute("aria-expanded",String(open));
+  if(open)contactItems.scrollIntoView({behavior:"smooth",block:"nearest"});
+ });
  const chatMenu=document.getElementById("quickSidebarChat");
  chatMenu?.addEventListener("click",function(){
   document.getElementById("kep-livechat-toggle")?.click();
