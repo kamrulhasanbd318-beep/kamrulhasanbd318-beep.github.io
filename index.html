@@ -748,7 +748,17 @@ async function loadCurrencyConverter(forceRefresh=false){
  status.textContent=t.converterError+(lastError?.message?" ("+lastError.message+")":"");
  const result=document.getElementById("currencyResult");if(result)result.textContent="—";
 }
-function initCurrencyConverter(){const from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo");if(!from||!to)return;document.getElementById("currencyConvert")?.addEventListener("click",()=>currencyConverterRates?updateCurrencyConversion():loadCurrencyConverter(true));document.getElementById("currencyAmount")?.addEventListener("input",updateCurrencyConversion);from.addEventListener("change",updateCurrencyConversion);to.addEventListener("change",updateCurrencyConversion);document.getElementById("currencySwap")?.addEventListener("click",()=>{const old=from.value;from.value=to.value;to.value=old;updateCurrencyConversion()});loadCurrencyConverter()}
+function initCurrencyConverter(){
+ const from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo"),btn=document.getElementById("currencyConvert");
+ if(!from||!to||!btn)return;
+ if(btn.dataset.fxReady==="1")return;
+ btn.dataset.fxReady="1";
+ btn.addEventListener("click",()=>{if(currencyConverterRates)updateCurrencyConversion();else loadCurrencyConverter(true)});
+ document.getElementById("currencyAmount")?.addEventListener("input",updateCurrencyConversion);
+ from.addEventListener("change",updateCurrencyConversion);to.addEventListener("change",updateCurrencyConversion);
+ document.getElementById("currencySwap")?.addEventListener("click",()=>{const old=from.value;from.value=to.value;to.value=old;updateCurrencyConversion()});
+ loadCurrencyConverter(true);
+}
 
 document.querySelectorAll("[data-i18n]").forEach(()=>{});applyStatic(document.documentElement.lang||"bn");
 initCurrencyConverter();
