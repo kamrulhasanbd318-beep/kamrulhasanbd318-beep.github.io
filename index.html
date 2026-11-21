@@ -960,9 +960,55 @@ input,select,textarea{accent-color:#d9ae59}
  .main-nav>.nav-tile.nav-products{grid-column:1/-1!important;min-height:60px!important;font-size:1.08rem!important}
 }
 
+
+/* Unified bottom action dock: tracking, live chat, and contact */
+#kep-bottom-action-dock{
+ position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);
+ z-index:10010;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
+ width:min(620px,calc(100vw - 24px));padding:8px;
+ border:1px solid #e9c66f;border-radius:18px;
+ background:rgba(7,18,33,.96);box-shadow:0 9px 28px #0009;
+ backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+#kep-bottom-action-dock a,#kep-bottom-action-dock button{
+ min-width:0;min-height:48px;padding:8px 7px;display:flex;align-items:center;justify-content:center;gap:6px;
+ border:1px solid #dcb75d;border-radius:12px;text-decoration:none;cursor:pointer;
+ background:linear-gradient(145deg,#263e59,#12243a);color:#fff2c9!important;
+ font:800 13px/1.15 Arial,sans-serif;white-space:nowrap;
+}
+#kep-bottom-action-dock .dock-icon{font-size:19px;line-height:1}
+#kep-bottom-action-dock .dock-track{background:linear-gradient(135deg,#ffe7a0,#c99a3e);color:#15243a!important;border-color:#fff0bd}
+#kep-bottom-action-dock button:active,#kep-bottom-action-dock a:active{transform:scale(.98)}
+.kep-tracking-shortcut,#kep-livechat-toggle{display:none!important}
+#kep-livechat-widget{left:12px!important;bottom:76px!important}
+#quickContact{right:12px!important;bottom:76px!important}
+#quickContact .qc-toggle{display:none!important}
+@media(max-width:520px){
+ #kep-bottom-action-dock{width:calc(100vw - 16px);bottom:max(8px,env(safe-area-inset-bottom));gap:5px;padding:6px;border-radius:15px}
+ #kep-bottom-action-dock a,#kep-bottom-action-dock button{min-height:46px;padding:7px 3px;gap:4px;font-size:11px;border-radius:10px}
+ #kep-bottom-action-dock .dock-icon{font-size:17px}
+ #kep-livechat-widget{left:8px!important;bottom:68px!important}
+ #quickContact{right:8px!important;bottom:68px!important}
+}
+
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
  <span class="track-copy"><span data-t="trackOrderButton">অর্ডার ট্র্যাক করুন</span><small data-t="trackOrderSub">ট্র্যাকিং নম্বর দিয়ে দেখুন</small></span>
 </a>
+
+<nav id="kep-bottom-action-dock" aria-label="দ্রুত সেবা">
+ <a class="dock-track" href="./tracking.html"><span class="dock-icon" aria-hidden="true">📦</span><span>ডেলিভারি ট্র্যাকিং</span></a>
+ <button type="button" id="kep-dock-chat"><span class="dock-icon" aria-hidden="true">💬</span><span>লাইভ চ্যাট</span></button>
+ <button type="button" id="kep-dock-contact"><span class="dock-icon" aria-hidden="true">☎️</span><span>যোগাযোগ</span></button>
+</nav>
+<script>
+(function(){
+ const chat=document.getElementById("kep-dock-chat");
+ const contact=document.getElementById("kep-dock-contact");
+ chat?.addEventListener("click",function(){document.getElementById("kep-livechat-toggle")?.click()});
+ contact?.addEventListener("click",function(){document.getElementById("qcToggle")?.click()});
+})();
+</script>
+
 </body></html>
