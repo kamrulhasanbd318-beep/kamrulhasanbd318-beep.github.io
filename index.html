@@ -1407,7 +1407,7 @@ input,select,textarea{accent-color:#d9ae59}
 
 
 <script>
-/* KEP: stable Products opening — render first, scroll once, prevent delayed page jump */
+/* KEP: Products panel — scroll only at click time; never scroll after async data loads */
 (()=>{
  const productLink=document.querySelector('.main-nav .nav-tile[href="#products"]');
  if(!productLink)return;
@@ -1416,6 +1416,10 @@ input,select,textarea{accent-color:#d9ae59}
   const panel=document.getElementById('products'),cards=document.getElementById('cards');
   if(panel)document.querySelectorAll('.interactive-panel').forEach(item=>item.hidden=item!==panel);
   document.querySelectorAll('.main-nav .nav-tile[aria-controls]').forEach(tab=>tab.setAttribute('aria-expanded',String(tab===productLink)));
+  if(panel){
+   const top=panel.getBoundingClientRect().top+window.scrollY-12;
+   window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+  }
   if(!siteData){
    try{
     const cached=localStorage.getItem('kep-site-data-fast-cache');
@@ -1426,10 +1430,7 @@ input,select,textarea{accent-color:#d9ae59}
   Promise.resolve(window.__kepInitPromise).then(()=>{
    if(siteData){renderCountry();renderProducts();}
    else if(cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';
-  }).catch(()=>{if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';})
-   .finally(()=>{
-    if(panel)requestAnimationFrame(()=>requestAnimationFrame(()=>panel.scrollIntoView({behavior:'auto',block:'start'})));
-   });
+  }).catch(()=>{if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';});
  },true);
 })();
 </script>
