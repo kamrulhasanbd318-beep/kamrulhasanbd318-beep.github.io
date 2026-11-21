@@ -307,8 +307,8 @@ function startProductOrder(p,btn){
    const selectedOrderCountry=countries[Number(form.elements.country.value)]||currentCountry;
    if(selectedOrderCountry.deliveryEnabled===false){alert(lang==="bn"?"এই দেশে ডেলিভারি নেই। অন্য দেশ নির্বাচন করুন।":"Delivery is not available in this country.");return}
    if((selectedOrderCountry.areas||[]).length&&!form.elements.area.value){alert(lang==="bn"?"অর্ডারের আগে আপনার শহর/এলাকা নির্বাচন করুন।":lang==="ar"?"يرجى اختيار المدينة/المنطقة قبل الطلب.":"Please choose your city/area before ordering.");form.elements.area.focus();return}
-   const gpsLat=Number(form.elements.gps_lat?.value),gpsLng=Number(form.elements.gps_lng?.value);
-   if(!Number.isFinite(gpsLat)||!Number.isFinite(gpsLng)){alert(lang==="bn"?"📍 ম্যাপে আপনার GPS লোকেশন নির্বাচন করুন।":lang==="ar"?"يرجى تحديد موقع GPS على الخريطة.":"Please select your GPS location on the map.");form.querySelector(".current-location-btn")?.focus();return}
+   const gpsLatRaw=form.elements.gps_lat?.value,gpsLngRaw=form.elements.gps_lng?.value,gpsLat=Number(gpsLatRaw),gpsLng=Number(gpsLngRaw);
+   if(!gpsLatRaw||!gpsLngRaw||!Number.isFinite(gpsLat)||!Number.isFinite(gpsLng)){alert(lang==="bn"?"📍 ম্যাপে আপনার GPS লোকেশন নির্বাচন করুন।":lang==="ar"?"يرجى تحديد موقع GPS على الخريطة.":"Please select your GPS location on the map.");form.querySelector(".current-location-btn")?.focus();return}
    const x=calc();
    if(isChocolate&&x.qty<x.minimum){alert(tr.min+": "+x.minimum+" "+tr.pieces);return}
    const digits=String(siteData.contact?.whatsapp||siteData.whatsapp||"").replace(/\D/g,"");
