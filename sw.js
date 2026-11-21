@@ -1,4 +1,4 @@
-const CACHE_NAME="kamrul-eagle-v17";
+const CACHE_NAME="kamrul-eagle-v18";
 const CORE=["./index.html","./manifest.webmanifest"];
 
 self.addEventListener("install",event=>{
