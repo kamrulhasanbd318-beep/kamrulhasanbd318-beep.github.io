@@ -888,15 +888,53 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>.language-switch{justify-self:center!important}
 }
 
-/* Keep the original header layout: brand, notice, languages, then menu */
-.nav{position:relative;z-index:4}
-.navin{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand brand" "notice notice" ". languages" "menu menu"!important}
-.navin>.brand{grid-area:brand!important;justify-self:center!important}
-.navin>#notice{grid-area:notice!important;display:block!important;width:100%!important;margin:0!important}
-.navin>.language-switch{grid-area:languages!important;justify-self:center!important}
-.navin>.main-nav{grid-area:menu!important}
-#notice{position:relative;z-index:2}
-@media(max-width:700px){.navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "notice" "languages" "menu"!important}.navin>.brand,.navin>.language-switch{justify-self:center!important}.navin>#notice{width:100%!important}.navin>.language-switch{width:min(100%,390px)!important;justify-content:center!important}}
+/* Header-only correction: stack brand, notice, language controls, and menu */
+.navin{
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:stretch!important;
+ justify-content:flex-start!important;
+ gap:12px!important;
+ padding-top:12px!important;
+ padding-bottom:12px!important;
+}
+.navin>.brand{
+ order:1!important;
+ align-self:center!important;
+ text-align:center!important;
+}
+.navin>#notice{
+ order:2!important;
+ display:block!important;
+ width:100%!important;
+ max-width:none!important;
+ margin:0!important;
+}
+.navin>#notice>.wrap{
+ width:min(100%,1120px)!important;
+ max-width:1120px!important;
+ margin:0 auto!important;
+}
+.navin>.language-switch{
+ order:3!important;
+ align-self:center!important;
+ justify-self:auto!important;
+ width:auto!important;
+ max-width:100%!important;
+ margin:0!important;
+}
+.navin>.main-nav{
+ order:4!important;
+ width:100%!important;
+ justify-content:center!important;
+}
+@media(max-width:700px){
+ .navin{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important}
+ .navin>.brand,.navin>.language-switch{align-self:center!important}
+ .navin>#notice{width:100%!important}
+ .navin>.language-switch{justify-content:center!important;flex-wrap:wrap!important}
+ .navin>.main-nav{width:100%!important;justify-content:center!important}
+}
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
