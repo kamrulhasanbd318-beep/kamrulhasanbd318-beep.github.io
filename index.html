@@ -186,7 +186,7 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(prefers-reduced-motion:reduce){.quick-sidebar *{transition:none!important}}
 </style>
 </head><body>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
 
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
@@ -889,12 +889,14 @@ input,select,textarea{accent-color:#d9ae59}
 }
 
 
-/* One wide product button replaces the former product + delivery pair */
-.main-nav{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+/* Product and delivery buttons sit side by side in one menu row */
+.main-nav{grid-template-columns:repeat(6,minmax(0,1fr))!important}
 .main-nav .nav-products{grid-column:span 2!important;min-height:60px!important;padding:13px 20px!important;font-size:1.12rem!important;font-weight:950!important;border:2px solid #ffe18a!important;border-radius:16px!important;background:linear-gradient(135deg,#79500a 0%,#f0bd43 48%,#9a650c 100%)!important;color:#fff9e8!important;box-shadow:0 0 0 3px #ffd45e35,0 8px 24px #d99c1880,inset 0 1px 0 #fff8d6!important;text-shadow:0 1px 2px #432900}
+.main-nav .nav-delivery{grid-column:span 1!important;min-height:60px!important;justify-content:center!important}
 @media(max-width:720px){
  .main-nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}
- .main-nav .nav-products{grid-column:span 2!important;min-height:58px!important;justify-content:center!important;font-size:1.05rem!important}
+ .main-nav .nav-products{grid-column:span 1!important;min-height:56px!important;justify-content:center!important;font-size:1rem!important;padding:10px 8px!important}
+ .main-nav .nav-delivery{grid-column:span 1!important;min-height:56px!important;justify-content:center!important}
 }
 /* Header order: brand, language controls, notice, then menu */
 .navin{
