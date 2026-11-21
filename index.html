@@ -167,7 +167,7 @@ footer,.footer{border-top:1px solid #d9b45e44}
 </style>
 </head><body>
 <div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Prime</span></a><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Prime</span></a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
@@ -745,6 +745,51 @@ input,select,textarea{accent-color:#d9ae59}
  .main-nav .nav-tile{min-height:42px;font-size:.82rem}
  .main-nav .language-switch{width:100%;justify-content:flex-start}
  .quick-sidebar-menu{width:min(220px,calc(100vw - 28px))}
+}
+
+/* KEP language selector moved to the top row; language controls and IDs preserved */
+.navin{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;
+ gap:12px 18px;
+ padding-top:11px;
+ padding-bottom:12px;
+}
+.navin>.brand{grid-column:1;grid-row:1;align-self:center}
+.navin>.language-switch{
+ grid-column:2;
+ grid-row:1;
+ justify-self:end;
+ margin:0;
+ padding:5px 7px;
+ border:1px solid #d9b45e99;
+ border-radius:13px;
+ background:linear-gradient(135deg,#172b43,#091525);
+ box-shadow:0 5px 16px #0005;
+}
+.navin>.main-nav{
+ grid-column:1/-1;
+ grid-row:2;
+ width:100%;
+ justify-content:center;
+}
+.navin>.main-nav .language-switch{display:none}
+@media(max-width:700px){
+ .navin{grid-template-columns:1fr;gap:10px;padding-top:10px;padding-bottom:10px}
+ .navin>.brand{grid-column:1;grid-row:1;justify-self:center}
+ .navin>.language-switch{
+  grid-column:1;
+  grid-row:2;
+  justify-self:center;
+  max-width:100%;
+ }
+ .navin>.main-nav{grid-column:1;grid-row:3}
+ .navin>.language-switch .lang-btn{font-size:.82rem;padding:7px 9px}
+}
+@media(max-width:380px){
+ .navin>.language-switch{gap:4px;padding:4px}
+ .navin>.language-switch .lang-btn{font-size:.75rem;padding:6px 7px}
 }
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
