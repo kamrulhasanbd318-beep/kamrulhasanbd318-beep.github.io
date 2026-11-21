@@ -839,6 +839,40 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>.language-switch .lang-btn{font-size:.75rem;padding:6px 7px}
 }
 
+
+/* Customer product navigation highlight — final override */
+.main-nav .nav-tile.nav-products{
+ min-height:58px!important;
+ padding:12px 19px!important;
+ border:2px solid #ffe18a!important;
+ border-radius:16px!important;
+ background:linear-gradient(135deg,#79500a 0%,#f0bd43 48%,#9a650c 100%)!important;
+ color:#fff9e8!important;
+ font-size:1.08rem!important;
+ font-weight:950!important;
+ letter-spacing:.02em;
+ box-shadow:0 0 0 3px #ffd45e35,0 8px 24px #d99c1880,inset 0 1px 0 #fff8d6!important;
+ text-shadow:0 1px 2px #432900;
+}
+.main-nav .nav-tile.nav-products:before{
+ width:34px!important;height:34px!important;flex-basis:34px!important;
+ background:#fff3c933!important;font-size:21px!important;
+}
+.main-nav .nav-tile.nav-products:hover{
+ transform:translateY(-2px)!important;
+ border-color:#fff4c7!important;
+ box-shadow:0 0 0 4px #ffd45e55,0 11px 28px #d99c18a0!important;
+}
+@media(max-width:720px){
+ .main-nav .nav-tile.nav-products{
+  min-height:56px!important;padding:10px 11px!important;
+  font-size:1rem!important;border-radius:14px!important;
+ }
+ .main-nav .nav-tile.nav-products:before{
+  width:30px!important;height:30px!important;flex-basis:30px!important;font-size:19px!important;
+ }
+}
+
 /* KEP owner header above the customer notice */
 .nav{position:relative;z-index:4}
 .navin{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand languages" "menu menu"!important}
