@@ -122,6 +122,22 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(max-width:420px){.cards{grid-template-columns:1fr}.contact-options{grid-template-columns:1fr}.wrap{width:calc(100% - 22px)}h2{font-size:1.65rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
+
+/* KEP header layout: owner brand and language selector on the top row */
+.navin{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand languages" "menu menu"!important;align-items:center!important;gap:10px 16px!important}
+.navin>.brand{grid-area:brand!important;justify-self:start!important;white-space:nowrap}
+.navin>.language-switch{grid-area:languages!important;display:flex!important;justify-self:end!important;align-items:center!important;width:auto!important;margin:0!important;gap:6px!important}
+.navin>.main-nav{grid-area:menu!important;width:100%!important}
+#quickSidebar{position:fixed!important;left:12px!important;right:auto!important;top:150px!important;align-items:flex-start!important}
+#quickSidebar:not(.open) #quickSidebarMenu{display:none!important}
+@media(max-width:720px){
+ .navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "languages" "menu"!important;justify-items:center!important;padding:12px 0!important}
+ .navin>.brand{justify-self:center!important}
+ .navin>.language-switch{justify-self:center!important;width:100%!important;justify-content:center!important}
+ .navin>.language-switch .lang-btn{flex:1!important;min-width:0!important}
+ .navin>.main-nav{width:100%!important}
+ #quickSidebar{top:145px!important;left:8px!important;right:auto!important}
+}
 </style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -171,7 +187,7 @@ footer,.footer{border-top:1px solid #d9b45e44}
 </style>
 </head><body>
 <div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Prime</span></a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
