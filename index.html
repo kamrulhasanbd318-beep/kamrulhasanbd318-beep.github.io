@@ -929,18 +929,17 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>.main-nav{width:100%!important;justify-content:center!important}
 }
 
-/* Customer menu: one highlighted Product button on top, all other buttons individually below */
+/* Product button alone gets a full-width highlighted row; other menu buttons keep their previous grid layout */
 .main-nav{
  display:grid!important;
- grid-template-columns:minmax(0,1fr)!important;
+ grid-template-columns:repeat(7,minmax(0,1fr))!important;
  grid-auto-flow:row!important;
  gap:10px!important;
  width:100%!important;
 }
 .main-nav>.nav-tile{
- grid-column:1/-1!important;
  width:100%!important;
- min-height:52px!important;
+ min-height:50px!important;
  justify-content:center!important;
  box-sizing:border-box!important;
 }
@@ -956,9 +955,9 @@ input,select,textarea{accent-color:#d9ae59}
  box-shadow:0 0 0 3px #ffd45e35,0 8px 24px #d99c1880,inset 0 1px 0 #fff8d6!important;
 }
 @media(max-width:720px){
- .main-nav{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .main-nav{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
  .main-nav>.nav-tile{min-height:50px!important}
- .main-nav>.nav-tile.nav-products{min-height:60px!important;font-size:1.08rem!important}
+ .main-nav>.nav-tile.nav-products{grid-column:1/-1!important;min-height:60px!important;font-size:1.08rem!important}
 }
 
 </style>
