@@ -760,8 +760,8 @@ function initCurrencyConverter(){
  loadCurrencyConverter(true);
 }
 
-document.querySelectorAll("[data-i18n]").forEach(()=>{});applyStatic(document.documentElement.lang||"bn");
-initCurrencyConverter();
+try{initCurrencyConverter()}catch(e){console.error("Currency converter initialization failed:",e);const status=document.getElementById("currencyStatus");if(status)status.textContent="কারেন্সি কনভার্টার চালু করা যায়নি। পেজ রিফ্রেশ করুন।"}
+document.querySelectorAll("[data-i18n]").forEach(()=>{});try{applyStatic(document.documentElement.lang||"bn")}catch(e){console.error("Static translation failed:",e)}
 })();
 </script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script><style>
