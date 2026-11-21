@@ -704,8 +704,51 @@ let currencyConverterRates=null,currencyConverterMeta=null;
 function currencyName(code){const regions={SAR:"SA",OMR:"OM",AED:"AE",QAR:"QA",BHD:"BH",KWD:"KW",MYR:"MY",NPR:"NP",INR:"IN",PKR:"PK",PHP:"PH",BDT:"BD"};try{return new Intl.DisplayNames([document.documentElement.lang||"bn"],{type:"region"}).of(regions[code])||code}catch(e){return ({SAR:"সৌদি আরব",OMR:"ওমান",AED:"সংযুক্ত আরব আমিরাত",QAR:"কাতার",BHD:"বাহরাইন",KWD:"কুয়েত",MYR:"মালয়েশিয়া",NPR:"নেপাল",INR:"ভারত",PKR:"পাকিস্তান",PHP:"ফিলিপাইন",BDT:"বাংলাদেশ"})[code]||code}}
 function renderCurrencyOptions(){const from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo");if(!from||!to||!currencyConverterRates)return;const allowed=["SAR","OMR","AED","QAR","BHD","KWD","MYR","NPR","INR","PKR","PHP","BDT"];const codes=allowed.filter(c=>Number(currencyConverterRates[c])>0);const fill=(el,defaultCode)=>{const old=el.value;el.innerHTML=codes.map(c=>'<option value="'+esc(c)+'">'+esc(currencyName(c))+'</option>').join("");el.value=codes.includes(old)?old:(codes.includes(defaultCode)?defaultCode:(codes[0]||""))};fill(from,"OMR");fill(to,"BDT");if(from.value===to.value&&codes.includes("BDT"))to.value="BDT"}
 function updateCurrencyConversion(){const amount=Number(document.getElementById("currencyAmount")?.value),from=document.getElementById("currencyFrom")?.value,to=document.getElementById("currencyTo")?.value,result=document.getElementById("currencyResult"),date=document.getElementById("currencyRateDate"),status=document.getElementById("currencyStatus");if(!result||!date||!status||!currencyConverterRates)return;if(!Number.isFinite(amount)||amount<0){result.textContent="—";status.textContent=document.documentElement.lang==="bn"?"সঠিক পরিমাণ লিখুন।":"Enter a valid amount.";return}const a=Number(currencyConverterRates[from]),b=Number(currencyConverterRates[to]);if(!(a>0&&b>0)){result.textContent="—";status.textContent=(translations[document.documentElement.lang]||translations.en).converterError;return}const converted=amount*b/a;try{result.textContent=new Intl.NumberFormat(document.documentElement.lang||"en",{maximumFractionDigits:6}).format(converted)+" "+({"SAR":"ر.س","OMR":"ر.ع.","AED":"د.إ","QAR":"ر.ق","BHD":"د.ب","KWD":"د.ك","MYR":"RM","NPR":"रु","INR":"₹","PKR":"Rs","PHP":"₱","BDT":"৳"}[to]||to)}catch(e){result.textContent=converted.toFixed(4)+" "+to}const stamp=currencyConverterMeta?.updatedAt||currencyConverterMeta?.date||"";date.textContent=stamp?((translations[document.documentElement.lang]||translations.en).converterRateDate+": "+stamp):"";status.textContent=""}
-async function loadCurrencyConverter(){const status=document.getElementById("currencyStatus");if(!status)return;const t=translations[document.documentElement.lang]||translations.en;try{const cached=JSON.parse(localStorage.getItem(CURRENCY_CONVERTER_CACHE_KEY)||"null");if(cached?.rates&&Object.keys(cached.rates).length>20&&Date.now()-Number(cached.fetchedAt)<21600000){currencyConverterRates=cached.rates;currencyConverterMeta=cached.meta||{};renderCurrencyOptions();updateCurrencyConversion();return}}catch(e){}status.textContent=t.converterLoading;try{const response=await fetch("https://open.er-api.com/v6/latest/USD",{cache:"no-store"});if(!response.ok)throw new Error("HTTP "+response.status);const body=await response.json(),rates=body.conversion_rates||body.rates;if(body.result!=="success"||!rates||!rates.USD||!rates.BDT||!rates.SAR)throw new Error("Invalid exchange-rate response");currencyConverterRates=rates;currencyConverterMeta={date:body.time_last_update_utc||body.time_last_update_unix||"",updatedAt:body.time_last_update_utc||""};try{localStorage.setItem(CURRENCY_CONVERTER_CACHE_KEY,JSON.stringify({rates,meta:currencyConverterMeta,fetchedAt:Date.now()}))}catch(e){}renderCurrencyOptions();updateCurrencyConversion();status.textContent=""}catch(e){status.textContent=t.converterError;document.getElementById("currencyResult").textContent="—"}}
-function initCurrencyConverter(){const from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo");if(!from||!to)return;document.getElementById("currencyConvert")?.addEventListener("click",updateCurrencyConversion);document.getElementById("currencyAmount")?.addEventListener("input",updateCurrencyConversion);from.addEventListener("change",updateCurrencyConversion);to.addEventListener("change",updateCurrencyConversion);document.getElementById("currencySwap")?.addEventListener("click",()=>{const old=from.value;from.value=to.value;to.value=old;updateCurrencyConversion()});loadCurrencyConverter()}
+async function loadCurrencyConverter(forceRefresh=false){
+ const status=document.getElementById("currencyStatus");
+ if(!status)return;
+ const t=translations[document.documentElement.lang]||translations.en;
+ let cached=null;
+ try{cached=JSON.parse(localStorage.getItem(CURRENCY_CONVERTER_CACHE_KEY)||"null")}catch(e){}
+ const validRates=r=>r&&["USD","BDT","SAR","OMR","AED","QAR","BHD","KWD","MYR"].every(c=>Number(r[c])>0);
+ if(!forceRefresh&&validRates(cached?.rates)&&Date.now()-Number(cached.fetchedAt)<21600000){
+  currencyConverterRates=cached.rates;currencyConverterMeta=cached.meta||{};
+  renderCurrencyOptions();updateCurrencyConversion();return;
+ }
+ status.textContent=t.converterLoading;
+ const endpoints=[
+  "https://open.er-api.com/v6/latest/USD",
+  "https://api.exchangerate-api.com/v4/latest/USD"
+ ];
+ let lastError=null;
+ for(const url of endpoints){
+  try{
+   const controller=typeof AbortController!=="undefined"?new AbortController():null;
+   const timeout=controller?setTimeout(()=>controller.abort(),12000):null;
+   let response;
+   try{response=await fetch(url,{cache:"no-store",signal:controller?.signal})}
+   finally{if(timeout)clearTimeout(timeout)}
+   if(!response.ok)throw new Error("HTTP "+response.status);
+   const body=await response.json();
+   const rates=body.conversion_rates||body.rates;
+   if(!validRates(rates))throw new Error("Incomplete exchange-rate data");
+   currencyConverterRates=rates;
+   currencyConverterMeta={date:body.time_last_update_utc||body.date||"",updatedAt:body.time_last_update_utc||body.date||""};
+   try{localStorage.setItem(CURRENCY_CONVERTER_CACHE_KEY,JSON.stringify({rates,meta:currencyConverterMeta,fetchedAt:Date.now()}))}catch(e){}
+   renderCurrencyOptions();updateCurrencyConversion();status.textContent="";
+   return;
+  }catch(error){lastError=error}
+ }
+ if(validRates(cached?.rates)){
+  currencyConverterRates=cached.rates;currencyConverterMeta=cached.meta||{};
+  renderCurrencyOptions();updateCurrencyConversion();
+  status.textContent=document.documentElement.lang==="bn"?"ইন্টারনেট সংযোগ না থাকায় সংরক্ষিত বিনিময় হার দেখানো হচ্ছে।":"Offline: showing the last saved exchange rates.";
+  return;
+ }
+ status.textContent=t.converterError+(lastError?.message?" ("+lastError.message+")":"");
+ const result=document.getElementById("currencyResult");if(result)result.textContent="—";
+}
+function initCurrencyConverter(){const from=document.getElementById("currencyFrom"),to=document.getElementById("currencyTo");if(!from||!to)return;document.getElementById("currencyConvert")?.addEventListener("click",()=>currencyConverterRates?updateCurrencyConversion():loadCurrencyConverter(true));document.getElementById("currencyAmount")?.addEventListener("input",updateCurrencyConversion);from.addEventListener("change",updateCurrencyConversion);to.addEventListener("change",updateCurrencyConversion);document.getElementById("currencySwap")?.addEventListener("click",()=>{const old=from.value;from.value=to.value;to.value=old;updateCurrencyConversion()});loadCurrencyConverter()}
 
 document.querySelectorAll("[data-i18n]").forEach(()=>{});applyStatic(document.documentElement.lang||"bn");
 initCurrencyConverter();
