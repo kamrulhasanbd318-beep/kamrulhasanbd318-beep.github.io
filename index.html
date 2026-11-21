@@ -1324,4 +1324,73 @@ input,select,textarea{accent-color:#d9ae59}
  background:#5f2fc0!important;
 }
 </style>
+
+<script id="kep-currency-converter-live-fix">
+(function(){
+"use strict";
+const ids=["currencyAmount","currencyFrom","currencyTo","currencySwap","currencyConvert","currencyResult","currencyRateDate","currencyStatus"];
+function el(id){return document.getElementById(id)}
+if(!ids.every(id=>el(id)))return;
+const allowed=["SAR","OMR","AED","QAR","BHD","KWD","MYR","NPR","INR","PKR","PHP","BDT"];
+const labels={SAR:"Saudi Riyal (SAR) — সৌদি রিয়াল",OMR:"Omani Rial (OMR) — ওমানি রিয়াল",AED:"UAE Dirham (AED) — দিরহাম",QAR:"Qatari Riyal (QAR) — কাতারি রিয়াল",BHD:"Bahraini Dinar (BHD) — বাহরাইনি দিনার",KWD:"Kuwaiti Dinar (KWD) — কুয়েতি দিনার",MYR:"Malaysian Ringgit (MYR) — মালয়েশিয়ান রিঙ্গিত",NPR:"Nepalese Rupee (NPR)",INR:"Indian Rupee (INR)",PKR:"Pakistani Rupee (PKR)",PHP:"Philippine Peso (PHP)",BDT:"Bangladeshi Taka (BDT) — বাংলাদেশি টাকা"};
+const cacheKey="kep-currency-converter-rates-v1";
+let rates=null,meta=null;
+const lang=()=>({bn:"bn",ar:"ar"}[document.documentElement.lang]||"en");
+const msg={bn:{loading:"বিনিময় হার লোড হচ্ছে…",error:"বিনিময় হার লোড করা যায়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",updated:"রেট আপডেট"},en:{loading:"Loading exchange rates…",error:"Could not load exchange rates. Check your connection and try again.",updated:"Rates updated"},ar:{loading:"جارٍ تحميل أسعار الصرف…",error:"تعذر تحميل أسعار الصرف. تحقق من الاتصال وحاول مرة أخرى.",updated:"تم تحديث الأسعار"}};
+function status(s){el("currencyStatus").textContent=s}
+function valid(r){return r&&["USD",...allowed].every(c=>Number.isFinite(Number(r[c]))&&Number(r[c])>0)}
+function fill(){
+ const a=el("currencyFrom"),b=el("currencyTo"),oldA=a.value,oldB=b.value;
+ const html=allowed.filter(c=>Number(rates[c])>0).map(c=>'<option value="'+c+'">'+labels[c]+'</option>').join("");
+ a.innerHTML=html;b.innerHTML=html;
+ a.value=allowed.includes(oldA)&&rates[oldA]?oldA:(rates.OMR?"OMR":"USD");
+ b.value=allowed.includes(oldB)&&rates[oldB]?oldB:(rates.BDT?"BDT":"USD");
+ if(a.value===b.value&&rates.BDT)b.value="BDT";
+}
+function convert(){
+ if(!rates)return;
+ const amount=Number(el("currencyAmount").value),from=el("currencyFrom").value,to=el("currencyTo").value;
+ if(!Number.isFinite(amount)||amount<0){el("currencyResult").textContent="—";status(lang()==="bn"?"সঠিক পরিমাণ লিখুন।":"Enter a valid amount.");return}
+ const value=amount*Number(rates[to])/Number(rates[from]);
+ if(!Number.isFinite(value)){el("currencyResult").textContent="—";status(msg[lang()].error);return}
+ try{el("currencyResult").textContent=new Intl.NumberFormat(lang(),{maximumFractionDigits:6}).format(value)+" "+to}catch(e){el("currencyResult").textContent=value.toFixed(4)+" "+to}
+ const stamp=meta&&(meta.time_last_update_utc||meta.date||meta.updatedAt)||"";
+ el("currencyRateDate").textContent=stamp?(msg[lang()].updated+": "+stamp):msg[lang()].updated;
+ status("");
+}
+async function load(force){
+ status(msg[lang()].loading);
+ const endpoints=["https://open.er-api.com/v6/latest/USD","https://api.exchangerate-api.com/v4/latest/USD"];
+ let last=null;
+ for(const url of endpoints){
+  try{
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+   let response;try{response=await fetch(url,{cache:"no-store",mode:"cors",signal:controller.signal})}finally{clearTimeout(timer)}
+   if(!response.ok)throw new Error("HTTP "+response.status);
+   const body=await response.json(),data=body.conversion_rates||body.rates;
+   if(!valid(data))throw new Error("Incomplete rate data");
+   rates=data;meta=body;
+   try{localStorage.setItem(cacheKey,JSON.stringify({rates,meta,fetchedAt:Date.now()}))}catch(e){}
+   fill();convert();return;
+  }catch(e){last=e}
+ }
+ let saved=null;try{saved=JSON.parse(localStorage.getItem(cacheKey)||"null")}catch(e){}
+ if(valid(saved&&saved.rates)){
+  rates=saved.rates;meta=saved.meta||{};fill();convert();
+  status(lang()==="bn"?"ইন্টারনেট সংযোগ পাওয়া যায়নি। সর্বশেষ সংরক্ষিত রেট দেখানো হচ্ছে।":"Offline: showing the last saved rates.");
+ }else{
+  el("currencyResult").textContent="—";
+  status(msg[lang()].error+(last&&last.message?" ("+last.message+")":""));
+ }
+}
+el("currencyConvert").addEventListener("click",()=>{if(rates)convert();else load(true)});
+el("currencySwap").addEventListener("click",()=>{const x=el("currencyFrom").value;el("currencyFrom").value=el("currencyTo").value;el("currencyTo").value=x;convert()});
+el("currencyAmount").addEventListener("input",convert);
+el("currencyFrom").addEventListener("change",convert);
+el("currencyTo").addEventListener("change",convert);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&(!rates))load(false)});
+try{const saved=JSON.parse(localStorage.getItem(cacheKey)||"null");if(valid(saved&&saved.rates)){rates=saved.rates;meta=saved.meta||{};fill();convert()}}catch(e){}
+load(false);
+})();
+</script>
 </body></html>
