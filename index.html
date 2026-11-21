@@ -1351,6 +1351,8 @@ input,select,textarea{accent-color:#d9ae59}
  #quickContact{right:8px!important;bottom:68px!important}
 }
 
+/* Prevent mobile browser scroll anchoring from jumping as product cards render */
+#products,#cards{overflow-anchor:none}
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
@@ -1405,14 +1407,14 @@ input,select,textarea{accent-color:#d9ae59}
 
 
 <script>
-/* KEP: wait for customer data before opening Products from in-app browsers */
+/* KEP: stable Products opening — render first, scroll once, prevent delayed page jump */
 (()=>{
  const productLink=document.querySelector('.main-nav .nav-tile[href="#products"]');
  if(!productLink)return;
  productLink.addEventListener('click',event=>{
   event.preventDefault();event.stopImmediatePropagation();
   const panel=document.getElementById('products'),cards=document.getElementById('cards');
-  if(panel){document.querySelectorAll('.interactive-panel').forEach(item=>item.hidden=item!==panel);}
+  if(panel)document.querySelectorAll('.interactive-panel').forEach(item=>item.hidden=item!==panel);
   document.querySelectorAll('.main-nav .nav-tile[aria-controls]').forEach(tab=>tab.setAttribute('aria-expanded',String(tab===productLink)));
   if(!siteData){
    try{
@@ -1421,11 +1423,13 @@ input,select,textarea{accent-color:#d9ae59}
    }catch(cacheError){console.warn('Products cache unavailable',cacheError);}
   }else{renderProducts();}
   if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্যের তথ্য লোড হচ্ছে…</p>';
-  panel?.scrollIntoView({behavior:'auto',block:'start'});
   Promise.resolve(window.__kepInitPromise).then(()=>{
    if(siteData){renderCountry();renderProducts();}
    else if(cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';
-  }).catch(()=>{if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';});
+  }).catch(()=>{if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';})
+   .finally(()=>{
+    if(panel)requestAnimationFrame(()=>requestAnimationFrame(()=>panel.scrollIntoView({behavior:'auto',block:'start'})));
+   });
  },true);
 })();
 </script>
