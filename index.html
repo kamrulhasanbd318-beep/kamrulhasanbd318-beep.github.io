@@ -167,12 +167,12 @@ footer,.footer{border-top:1px solid #d9b45e44}
 </style>
 </head><body>
 <div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Prime</span></a><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Eagle Prime</span></a><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-home" href="#markets" data-i18n="navWelcome">আমার লোকেশন</a><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-family" href="#family" data-i18n="navFamily">আমাদের পরিবার</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-messenger" href="./messenger/" target="_blank" rel="noopener" data-i18n="navMessenger">💬 Messenger</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div></nav></div></header>
 
 <aside class="quick-sidebar" id="quickSidebar" aria-label="দ্রুত মেনু">
 <button class="quick-sidebar-toggle" id="quickSidebarToggle" type="button" aria-expanded="false" aria-controls="quickSidebarMenu" aria-label="মেনু খুলুন">☰</button>
 <nav class="quick-sidebar-menu" id="quickSidebarMenu" aria-label="দ্রুত নেভিগেশন">
-<a href="#products" data-t="products">🛍️ প্রোডাক্ট</a><a href="#markets" data-t="delivery">🚚 ডেলিভারি</a><a href="#payment" data-i18n="navPayment">💳 পেমেন্ট</a><a href="#family" data-i18n="navFamily">👨‍👩‍👧 আমাদের পরিবার</a><a href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a>
+<a href="#products" data-t="products">🛍️ প্রোডাক্ট</a><a href="#markets" data-t="delivery">🚚 ডেলিভারি</a><a href="#payment" data-i18n="navPayment">💳 পেমেন্ট</a><a href="#family" data-i18n="navFamily">👨‍👩‍👧 আমাদের পরিবার</a><a href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a href="./tracking.html" data-t="trackOrderButton">📦 অর্ডার ট্র্যাকিং</a>
 </nav></aside>
 <main id="home">
 <section class="hero"><div class="wrap heroIn"><div class="copy"><div class="eyebrow" data-t="eyebrow">Premium Gulf Collection</div><h1 id="heroTitle">Premium Products. Trusted Gulfwide Delivery.</h1><p id="heroText">Discover our collection for customers across the Gulf.</p><div class="actions"><a class="btn outline" href="#products" data-t="browse">Browse Products</a></div></div></div></section>
@@ -677,6 +677,75 @@ input,select,textarea{accent-color:#d9ae59}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 
+
+/* KEP navigation layout adjustment — preserve all existing sections and behaviors */
+.main-nav{
+ display:grid;
+ grid-template-columns:repeat(4,max-content);
+ justify-content:end;
+ align-items:center;
+ gap:9px;
+}
+.main-nav .nav-tile{
+ min-height:42px;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ padding:9px 13px;
+ border-radius:13px;
+ white-space:nowrap;
+}
+.main-nav .nav-track{
+ border-color:#6fc7ef;
+ background:linear-gradient(135deg,#174665,#10243a);
+ box-shadow:0 5px 16px #0004, inset 0 0 0 1px #ffffff10;
+}
+.main-nav .nav-track:hover{
+ border-color:#a7e5ff;
+ background:linear-gradient(135deg,#1b6386,#17334e);
+}
+.main-nav .language-switch{
+ grid-column:1/-1;
+ justify-self:end;
+ width:auto;
+ margin-top:2px;
+ padding:5px 8px;
+}
+.quick-sidebar-menu{
+ display:grid;
+ gap:8px;
+ padding:12px;
+ border:1px solid #e7c66e99;
+ border-radius:16px;
+ background:linear-gradient(155deg,#172e49f7,#071321fa);
+ box-shadow:0 18px 42px #0008;
+ backdrop-filter:blur(16px);
+}
+.quick-sidebar-menu a{
+ display:flex;
+ align-items:center;
+ min-height:42px;
+ padding:10px 12px;
+ border:1px solid #ffffff20;
+ border-radius:11px;
+ background:linear-gradient(120deg,#1b3552,#0c1b2e);
+}
+.quick-sidebar-menu a[href="./tracking.html"]{
+ border-color:#70c9f1;
+ color:#dff6ff;
+ background:linear-gradient(120deg,#174665,#0c1b2e);
+}
+@media(max-width:900px){
+ .main-nav{grid-template-columns:repeat(3,minmax(0,1fr));justify-content:stretch;width:100%}
+ .main-nav .nav-tile{white-space:normal;text-align:center;padding:8px 9px;font-size:.84rem}
+ .main-nav .language-switch{grid-column:1/-1;justify-self:start}
+}
+@media(max-width:560px){
+ .main-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .main-nav .nav-tile{min-height:42px;font-size:.82rem}
+ .main-nav .language-switch{width:100%;justify-content:flex-start}
+ .quick-sidebar-menu{width:min(220px,calc(100vw - 28px))}
+}
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
