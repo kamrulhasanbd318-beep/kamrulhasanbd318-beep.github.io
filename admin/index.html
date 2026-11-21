@@ -74,7 +74,46 @@ a{overflow-wrap:anywhere}
 .admin-quick-action.track{background:linear-gradient(135deg,#7650c8,#4338a8)}
 .admin-quick-action.agent{background:linear-gradient(135deg,#16845b,#116149)}
 @media(max-width:540px){.admin-quick-actions{gap:7px;padding:8px;border-radius:16px}.admin-quick-action{min-height:78px;padding:10px 5px;gap:5px;flex-direction:column;font-size:12px;border-radius:11px}.admin-quick-action .qa-icon{font-size:23px}}
-.tabs .admin-product-tab{min-height:54px;padding:13px 25px;border:2px solid #ffd45e!important;border-radius:14px;background:linear-gradient(135deg,#8a5b08,#e3a51c,#78500a)!important;color:#fff8df!important;font-size:1.15rem;font-weight:900;box-shadow:0 0 0 3px #f5c45130,0 8px 22px #d99c1850;order:-1}.tabs .admin-product-tab:hover{filter:brightness(1.13);transform:translateY(-2px)}@media(max-width:540px){.tabs .admin-product-tab{min-height:50px;padding:11px 18px;font-size:1.08rem}}</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head><body><header class="head"><div class="wrap"><h1>Kamrul Eagle Prime — Live Admin</h1><div class="muted">সহজ ম্যানেজমেন্ট · Save করলেই লাইভ সাইটে আপডেট</div><p><a href="/" style="color:#ffe09a">কাস্টমার ওয়েবসাইট দেখুন ↗</a></p></div></header>
+.tabs .admin-product-tab{min-height:54px;padding:13px 25px;border:2px solid #ffd45e!important;border-radius:14px;background:linear-gradient(135deg,#8a5b08,#e3a51c,#78500a)!important;color:#fff8df!important;font-size:1.15rem;font-weight:900;box-shadow:0 0 0 3px #f5c45130,0 8px 22px #d99c1850;order:-1}.tabs .admin-product-tab:hover{filter:brightness(1.13);transform:translateY(-2px)}@media(max-width:540px){.tabs .admin-product-tab{min-height:50px;padding:11px 18px;font-size:1.08rem}}/* KEP PREMIUM ADMIN VISUAL REDESIGN v2 — CSS ONLY; content and functionality unchanged */
+:root{--bg:#071426;--panel:#10243a;--gold:#f2c96d;--muted:#b9c8da;--line:rgba(232,198,121,.24)}
+body{background:radial-gradient(ellipse at 8% 0%,#294766 0,transparent 32%),radial-gradient(ellipse at 94% 12%,#47341d 0,transparent 25%),linear-gradient(145deg,#050b15,#0a1728 55%,#070e19);background-attachment:fixed}
+.head{background:rgba(5,13,24,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid #e7c87866;box-shadow:0 14px 40px #0006}
+.head h1{font-size:clamp(1.3rem,3vw,1.85rem);letter-spacing:.025em;text-shadow:0 4px 22px #e2bb6228}
+#auth,.card{background:linear-gradient(145deg,rgba(28,49,73,.96),rgba(8,21,37,.97));border:1px solid #e7c87855;border-radius:23px;color:#f7f1e5;box-shadow:0 18px 46px #0006,inset 0 1px #ffffff13;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.card h2,#auth h2{font-size:1.2rem;color:#ffe4a0;letter-spacing:.01em}
+.field label{color:#f6e7c4}
+.field input,.field textarea,.field select{background:rgba(4,15,28,.78);border:1px solid #d6b66d66;border-radius:13px;color:#fff;box-shadow:inset 0 2px 8px #0003;transition:border-color .18s,box-shadow .18s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#ffe09a;box-shadow:0 0 0 3px #f2c96d20;outline:none}
+.btn{min-height:44px;border-radius:999px;padding:10px 18px;background:linear-gradient(145deg,#263f5c,#10243a);border:1px solid #ffffff20;box-shadow:0 7px 18px #0004;transition:transform .18s,filter .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1);box-shadow:0 11px 24px #0005}
+.btn.gold,.gold{background:linear-gradient(135deg,#fff0c4,#d4a64f 72%,#b7832e);border:1px solid #fff0c4;color:#172238}
+.btn.soft,.soft,.tab{background:linear-gradient(145deg,#243b56,#10243a);color:#e9eff8;border:1px solid #ffffff20}
+.btn.danger,.danger{background:linear-gradient(135deg,#a83a43,#70232d);border-color:#ff9ca4}
+.tabs{top:92px;gap:9px;padding:10px;border:1px solid #e7c87855;border-radius:20px;background:rgba(5,16,29,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 14px 36px #0006}
+.tabs .btn{border-radius:999px;padding:10px 17px;min-height:42px}
+.tabs .tab{background:linear-gradient(145deg,#203954,#10243a);color:#e4edf8}
+.tabs .tab.active{background:linear-gradient(135deg,#fff0c4,#d4a64f);color:#172238;border-color:#fff0c4;box-shadow:0 5px 18px #d6a94d44}
+.product,.track-item,.country{background:linear-gradient(145deg,rgba(29,51,76,.96),rgba(8,22,38,.98));border:1px solid #d9b45e55;border-radius:18px;box-shadow:0 10px 28px #0004,inset 0 1px #ffffff10}
+.product h3,.country h3{color:#ffe4a0}
+.preview{border:1px solid #d9b45e55;border-radius:14px;background:#071526}
+.status{border:1px solid #ffffff20;border-radius:14px;background:rgba(5,17,30,.78);color:#dce8f5}
+.status.ok{background:rgba(13,75,54,.58);border-color:#39c99a88;color:#c5ffe6}
+.status.err{background:rgba(100,29,42,.6);border-color:#ff829188;color:#ffe0e3}
+.track-item .customer-meta{color:#c7d4e4}
+.track-item a{color:#ffe4a0}
+#trackingMap{border:1px solid #d9b45e88;border-radius:18px;box-shadow:0 10px 30px #0005}
+input[type=checkbox],input[type=radio]{accent-color:#e7bd64}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffe3a0;outline-offset:3px}
+@media(min-width:900px){.tabs{top:90px}}
+@media(max-width:700px){
+ .head{padding:12px 0}
+ .tabs{top:86px;gap:7px;padding:8px;border-radius:15px}
+ .tabs .btn{padding:9px 14px}
+ #auth,.card{border-radius:18px}
+ .row{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head><body><header class="head"><div class="wrap"><h1>Kamrul Eagle Prime — Live Admin</h1><div class="muted">সহজ ম্যানেজমেন্ট · Save করলেই লাইভ সাইটে আপডেট</div><p><a href="/" style="color:#ffe09a">কাস্টমার ওয়েবসাইট দেখুন ↗</a></p></div></header>
 <main class="wrap">
 <section id="auth" class="card"><h2>নিরাপদ অ্যাডমিন লগইন</h2><p class="muted">অনুমোদিত ইমেইল: Superking99973@gmail.com। প্রথমবার অ্যাকাউন্ট তৈরি করে ইমেইল ভেরিফাই করুন।</p><div class="field"><label>ইমেইল</label><input id="email" type="email" value="Superking99973@gmail.com" autocomplete="username"></div><div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" autocomplete="current-password" placeholder="আপনার পাসওয়ার্ড"></div><div class="row"><button class="btn gold" id="login">লগইন</button><button class="btn soft" id="signup">প্রথমবার অ্যাকাউন্ট তৈরি</button></div><div class="status" id="authStatus">শুধু নির্ধারিত ইমেইল দিয়ে অ্যাক্সেস করা যাবে।</div></section>
 <section id="panel" class="hide">
@@ -236,49 +275,7 @@ $("sourcePreview").onclick=()=>{
  if(!sourceLoadedPath){say("sourceStatus","আগে ফাইল লোড করুন।","err");return}
  const content=$("sourceEditor").value,frame=$("sourceFrame");
  if(sourceLoadedPath.endsWith(".html")) frame.srcdoc=content;
- else if(sourceLoadedPath.endsWith(".json")){let pretty;try{pretty=JSON.stringify(JSON.parse(content),null,2)}catch(e){say("sourceStatus","JSON ভুল: "+e.message,"err");return}frame.srcdoc="<!doctype html><meta charset='utf-8'><style>body{font:13px monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:16px}
-
-/* KEP PREMIUM ADMIN VISUAL REDESIGN v2 — CSS ONLY; content and functionality unchanged */
-:root{--bg:#071426;--panel:#10243a;--gold:#f2c96d;--muted:#b9c8da;--line:rgba(232,198,121,.24)}
-body{background:radial-gradient(ellipse at 8% 0%,#294766 0,transparent 32%),radial-gradient(ellipse at 94% 12%,#47341d 0,transparent 25%),linear-gradient(145deg,#050b15,#0a1728 55%,#070e19);background-attachment:fixed}
-.head{background:rgba(5,13,24,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid #e7c87866;box-shadow:0 14px 40px #0006}
-.head h1{font-size:clamp(1.3rem,3vw,1.85rem);letter-spacing:.025em;text-shadow:0 4px 22px #e2bb6228}
-#auth,.card{background:linear-gradient(145deg,rgba(28,49,73,.96),rgba(8,21,37,.97));border:1px solid #e7c87855;border-radius:23px;color:#f7f1e5;box-shadow:0 18px 46px #0006,inset 0 1px #ffffff13;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.card h2,#auth h2{font-size:1.2rem;color:#ffe4a0;letter-spacing:.01em}
-.field label{color:#f6e7c4}
-.field input,.field textarea,.field select{background:rgba(4,15,28,.78);border:1px solid #d6b66d66;border-radius:13px;color:#fff;box-shadow:inset 0 2px 8px #0003;transition:border-color .18s,box-shadow .18s}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:#ffe09a;box-shadow:0 0 0 3px #f2c96d20;outline:none}
-.btn{min-height:44px;border-radius:999px;padding:10px 18px;background:linear-gradient(145deg,#263f5c,#10243a);border:1px solid #ffffff20;box-shadow:0 7px 18px #0004;transition:transform .18s,filter .18s,box-shadow .18s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.1);box-shadow:0 11px 24px #0005}
-.btn.gold,.gold{background:linear-gradient(135deg,#fff0c4,#d4a64f 72%,#b7832e);border:1px solid #fff0c4;color:#172238}
-.btn.soft,.soft,.tab{background:linear-gradient(145deg,#243b56,#10243a);color:#e9eff8;border:1px solid #ffffff20}
-.btn.danger,.danger{background:linear-gradient(135deg,#a83a43,#70232d);border-color:#ff9ca4}
-.tabs{top:92px;gap:9px;padding:10px;border:1px solid #e7c87855;border-radius:20px;background:rgba(5,16,29,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 14px 36px #0006}
-.tabs .btn{border-radius:999px;padding:10px 17px;min-height:42px}
-.tabs .tab{background:linear-gradient(145deg,#203954,#10243a);color:#e4edf8}
-.tabs .tab.active{background:linear-gradient(135deg,#fff0c4,#d4a64f);color:#172238;border-color:#fff0c4;box-shadow:0 5px 18px #d6a94d44}
-.product,.track-item,.country{background:linear-gradient(145deg,rgba(29,51,76,.96),rgba(8,22,38,.98));border:1px solid #d9b45e55;border-radius:18px;box-shadow:0 10px 28px #0004,inset 0 1px #ffffff10}
-.product h3,.country h3{color:#ffe4a0}
-.preview{border:1px solid #d9b45e55;border-radius:14px;background:#071526}
-.status{border:1px solid #ffffff20;border-radius:14px;background:rgba(5,17,30,.78);color:#dce8f5}
-.status.ok{background:rgba(13,75,54,.58);border-color:#39c99a88;color:#c5ffe6}
-.status.err{background:rgba(100,29,42,.6);border-color:#ff829188;color:#ffe0e3}
-.track-item .customer-meta{color:#c7d4e4}
-.track-item a{color:#ffe4a0}
-#trackingMap{border:1px solid #d9b45e88;border-radius:18px;box-shadow:0 10px 30px #0005}
-input[type=checkbox],input[type=radio]{accent-color:#e7bd64}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffe3a0;outline-offset:3px}
-@media(min-width:900px){.tabs{top:90px}}
-@media(max-width:700px){
- .head{padding:12px 0}
- .tabs{top:86px;gap:7px;padding:8px;border-radius:15px}
- .tabs .btn{padding:9px 14px}
- #auth,.card{border-radius:18px}
- .row{gap:8px}
-}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
-
-</style><pre>"+pretty.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))+"</pre>"}
+ else if(sourceLoadedPath.endsWith(".json")){let pretty;try{pretty=JSON.stringify(JSON.parse(content),null,2)}catch(e){say("sourceStatus","JSON ভুল: "+e.message,"err");return}frame.srcdoc="<!doctype html><meta charset='utf-8'><style>body{font:13px monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:16px}</style><pre>"+pretty.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))+"</pre>"}
  else frame.srcdoc="<!doctype html><meta charset='utf-8'><pre>এই ফাইলের জন্য আলাদা ভিজ্যুয়াল প্রিভিউ নেই।</pre>";
  say("sourceStatus","প্রিভিউ sandbox-এ খোলা হয়েছে; এটি লাইভ সাইট নয়।","ok")
 };
