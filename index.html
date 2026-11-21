@@ -483,9 +483,22 @@ initCurrencyConverter();
    const around='(around:'+meters+','+lat+','+lng+')';
    const q='[out:json][timeout:20];(node'+around+'[amenity~"^(hospital|clinic|school|college|university|place_of_worship|marketplace)$"];way'+around+'[amenity~"^(hospital|clinic|school|college|university|place_of_worship|marketplace)$"];relation'+around+'[amenity~"^(hospital|clinic|school|college|university|place_of_worship|marketplace)$"];node'+around+'[shop~"^(mall|supermarket|department_store)$"];way'+around+'[shop~"^(mall|supermarket|department_store)$"];relation'+around+'[shop~"^(mall|supermarket|department_store)$"];nwr'+around+'[tourism~"^(attraction|museum|viewpoint)$"];nwr'+around+'[leisure~"^(park|sports_centre)$"];);out center tags;';
    try{
-    const res=await fetch('https://overpass-api.de/api/interpreter',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:'data='+encodeURIComponent(q),signal:st.abort.signal});
-    if(!res.ok)throw new Error('overpass');
-    const data=await res.json();st.layer.clearLayers();
+    const endpoints=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+    let data=null,lastError=null;
+    for(const endpoint of endpoints){
+     if(st.abort.signal.aborted)return;
+     const controller=new AbortController(),cancel=()=>controller.abort();
+     st.abort.signal.addEventListener('abort',cancel,{once:true});
+     const timeout=setTimeout(()=>controller.abort(),9000);
+     try{
+      const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:'data='+encodeURIComponent(q),signal:controller.signal});
+      if(!res.ok)throw new Error('overpass');
+      data=await res.json();break;
+     }catch(err){lastError=err;if(st.abort.signal.aborted)return}
+     finally{clearTimeout(timeout);st.abort.signal.removeEventListener('abort',cancel)}
+    }
+    if(!data)throw lastError||new Error('landmark service unavailable');
+    st.layer.clearLayers();
     const items=(data.elements||[]).slice(0,100);
     for(const item of items){
      const p=item.lat!==undefined?[item.lat,item.lon]:item.center?[item.center.lat,item.center.lon]:null;if(!p)continue;
