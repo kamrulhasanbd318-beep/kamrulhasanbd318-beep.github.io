@@ -1,4 +1,4 @@
-const CACHE_NAME="kamrul-eagle-v23";
+const CACHE_NAME="kamrul-eagle-v24";
 const CORE_URLS=["./","./index.html"];
 
 self.addEventListener("install",event=>{
