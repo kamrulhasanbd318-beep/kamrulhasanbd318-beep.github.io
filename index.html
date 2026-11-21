@@ -928,6 +928,39 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>#notice{width:100%!important}
  .navin>.main-nav{width:100%!important;justify-content:center!important}
 }
+
+/* Customer menu: one highlighted Product button on top, all other buttons individually below */
+.main-nav{
+ display:grid!important;
+ grid-template-columns:minmax(0,1fr)!important;
+ grid-auto-flow:row!important;
+ gap:10px!important;
+ width:100%!important;
+}
+.main-nav>.nav-tile{
+ grid-column:1/-1!important;
+ width:100%!important;
+ min-height:52px!important;
+ justify-content:center!important;
+ box-sizing:border-box!important;
+}
+.main-nav>.nav-tile.nav-products{
+ grid-column:1/-1!important;
+ min-height:66px!important;
+ font-size:1.16rem!important;
+ font-weight:950!important;
+ border:2px solid #ffe18a!important;
+ border-radius:16px!important;
+ background:linear-gradient(135deg,#79500a 0%,#f0bd43 48%,#9a650c 100%)!important;
+ color:#fff9e8!important;
+ box-shadow:0 0 0 3px #ffd45e35,0 8px 24px #d99c1880,inset 0 1px 0 #fff8d6!important;
+}
+@media(max-width:720px){
+ .main-nav{grid-template-columns:minmax(0,1fr)!important;gap:8px!important}
+ .main-nav>.nav-tile{min-height:50px!important}
+ .main-nav>.nav-tile.nav-products{min-height:60px!important;font-size:1.08rem!important}
+}
+
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
