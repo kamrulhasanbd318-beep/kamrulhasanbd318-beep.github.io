@@ -187,6 +187,46 @@ footer,.footer{border-top:1px solid #d9b45e44}
 @media(max-width:720px){.quick-sidebar{top:12px;left:10px;right:auto;align-items:flex-start}.quick-sidebar-toggle{width:36px;height:36px;font-size:18px}.quick-sidebar-menu{width:158px}.navin{padding-right:0!important;padding-left:42px}}
 @media(prefers-reduced-motion:reduce){.quick-sidebar *{transition:none!important}}
 </style>
+
+<style>
+/* Premium brand frame and compact language controls */
+.navin>.brand{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ gap:9px!important;padding:8px 15px!important;min-height:48px!important;
+ border:1.5px solid #e8c66f!important;border-radius:14px!important;
+ background:linear-gradient(135deg,#142b45 0%,#09182b 58%,#33260e 100%)!important;
+ box-shadow:0 0 0 2px #e8c66f20,0 5px 16px #0006,inset 0 1px 0 #fff2!important;
+ color:#fff3cf!important;font-size:clamp(1.02rem,2.2vw,1.24rem)!important;
+ font-weight:950!important;letter-spacing:.025em!important;text-shadow:0 1px 5px #0008;
+}
+.navin>.brand b{
+ display:inline-grid!important;place-items:center!important;width:34px!important;height:34px!important;
+ border:1px solid #fff0bd!important;border-radius:10px!important;
+ background:linear-gradient(145deg,#ffe8a4,#c18b27)!important;color:#14243a!important;
+ box-shadow:0 2px 8px #0004!important;font-size:1rem!important;
+}
+.navin>.language-switch{
+ width:auto!important;gap:4px!important;padding:4px!important;
+ border:1px solid #d7b45f!important;border-radius:12px!important;
+ background:#0b1b2dcc!important;box-shadow:0 4px 12px #0004!important;
+}
+.navin>.language-switch .lang-btn{
+ flex:0 0 auto!important;min-width:0!important;width:auto!important;
+ padding:6px 9px!important;border:1px solid #b99445!important;border-radius:8px!important;
+ font-size:clamp(11px,1.5vw,13px)!important;line-height:1.15!important;font-weight:800!important;
+ background:linear-gradient(145deg,#263d58,#102139)!important;color:#fff2ce!important;
+}
+.navin>.language-switch .lang-btn.active{
+ background:linear-gradient(135deg,#ffe9a8,#d2a344)!important;color:#15243a!important;
+ border-color:#fff0bb!important;box-shadow:0 0 10px #e8c66f55!important;
+}
+@media(max-width:720px){
+ .navin>.brand{padding:7px 12px!important;min-height:44px!important;font-size:1.05rem!important}
+ .navin>.brand b{width:31px!important;height:31px!important}
+ .navin>.language-switch{width:auto!important;max-width:100%!important;justify-self:center!important}
+ .navin>.language-switch .lang-btn{padding:5px 8px!important;font-size:11px!important}
+}
+</style>
 </head><body>
 <header class="nav"><div class="wrap navin"><a class="brand" href="#home"><b>KE</b> <span id="brand">Kamrul Hasan Eagle Prime</span></a><div class="notice notice-secondary" id="notice"><div class="wrap"><div class="notice-copy"><strong id="noticeTitle">Customer Notice</strong><span id="noticeText">Free delivery in listed areas. Advance payment only.</span></div></div></div><div class="language-switch" aria-label="Choose language"><button id="bnLanguage" type="button" class="lang-btn">🇧🇩 বাংলা</button><button id="language" type="button" class="lang-btn">🇬🇧 English</button><button id="arabicLanguage" type="button" class="lang-btn">🌐 العربية</button></div><nav class="main-nav" aria-label="প্রধান মেনু"><a class="nav-tile nav-products" href="#products" data-t="products">প্রোডাক্ট</a><a class="nav-tile nav-delivery" href="#markets" data-t="delivery">ডেলিভারি</a><a class="nav-tile nav-payment" href="#payment" data-i18n="navPayment">পেমেন্ট</a><a class="nav-tile nav-currency" href="#currency-converter" data-t="converterNav">💱 কারেন্সি কনভার্টার</a><a class="nav-tile nav-track" href="./tracking.html" data-t="trackOrderButton">📦 Track Your Order</a></nav></div></header>
 
