@@ -138,7 +138,36 @@ footer,.footer{border-top:1px solid #d9b45e44}
  .navin>.main-nav{width:100%!important}
  #quickSidebar{top:145px!important;left:8px!important;right:auto!important}
 }
-.nav-tile.nav-products{border:2px solid #ffd45e;background:linear-gradient(135deg,#76500b,#d99c18,#694608);color:#fff8df;box-shadow:0 0 0 2px #ffd45e33,0 5px 18px #d99c1855;font-size:1.02rem;font-weight:900;padding:10px 16px}.nav-tile.nav-products:hover{transform:translateY(-1px);box-shadow:0 0 0 3px #ffd45e55,0 8px 22px #d99c1870}</style><style>
+.nav-tile.nav-products{border:2px solid #ffd45e;background:linear-gradient(135deg,#76500b,#d99c18,#694608);color:#fff8df;box-shadow:0 0 0 2px #ffd45e33,0 5px 18px #d99c1855;font-size:1.02rem;font-weight:900;padding:10px 16px}.nav-tile.nav-products:hover{transform:translateY(-1px);box-shadow:0 0 0 3px #ffd45e55,0 8px 22px #d99c1870}
+/* Refined premium product menu button */
+.main-nav>.nav-tile.nav-products{
+ border:2px solid transparent!important;
+ border-radius:17px!important;
+ background:
+  linear-gradient(120deg,#102b3a 0%,#123f4a 48%,#142b42 100%) padding-box,
+  linear-gradient(115deg,#6fffe0 0%,#d7b65d 48%,#6ba9ff 100%) border-box!important;
+ color:#f4fffd!important;
+ box-shadow:0 0 0 2px #66e7d333,0 8px 22px #001b2caa,inset 0 1px 0 #ffffff26!important;
+ text-shadow:0 1px 3px #00131c!important;
+}
+.main-nav>.nav-tile.nav-products:before{
+ background:linear-gradient(145deg,#d8fff4,#75cfc4)!important;
+ color:#12313b!important;
+ border:1px solid #fff2d0!important;
+ box-shadow:0 2px 9px #001b2c88!important;
+}
+.main-nav>.nav-tile.nav-products:hover{
+ border-color:transparent!important;
+ background:
+  linear-gradient(120deg,#164454 0%,#17606a 48%,#183c59 100%) padding-box,
+  linear-gradient(115deg,#a0ffe9 0%,#ffe29a 48%,#9ac7ff 100%) border-box!important;
+ box-shadow:0 0 0 3px #73eadb44,0 11px 27px #001b2cbb,inset 0 1px 0 #ffffff35!important;
+}
+@media(max-width:720px){
+ .main-nav>.nav-tile.nav-products{border-radius:15px!important}
+}
+
+</style><style>
 /* Three matching light navigation cards directly below the hero */
 .hero-shortcuts{width:min(1120px,calc(100% - 32px));margin:20px auto 6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .hero-shortcut{box-sizing:border-box;min-width:0;min-height:66px;padding:13px 18px;display:flex;align-items:center;justify-content:center;gap:11px;border:1px solid #dce5ef;border-radius:15px;background:linear-gradient(135deg,#fff 0%,#f3f7fc 100%);box-shadow:0 5px 16px rgba(28,49,77,.08);color:#23364f;text-decoration:none;font-weight:800;font-size:1rem;transition:transform .18s,box-shadow .18s,border-color .18s}
