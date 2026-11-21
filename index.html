@@ -888,14 +888,15 @@ input,select,textarea{accent-color:#d9ae59}
  .navin>.language-switch{justify-self:center!important}
 }
 
-/* KEP owner header above the customer notice */
+/* Keep the original header layout: brand, notice, languages, then menu */
 .nav{position:relative;z-index:4}
-.navin{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand languages" "menu menu"!important}
-.navin>.brand{grid-area:brand!important}
-.navin>.language-switch{grid-area:languages!important}
+.navin{grid-template-columns:minmax(0,1fr) auto!important;grid-template-areas:"brand brand" "notice notice" ". languages" "menu menu"!important}
+.navin>.brand{grid-area:brand!important;justify-self:center!important}
+.navin>#notice{grid-area:notice!important;display:block!important;width:100%!important;margin:0!important}
+.navin>.language-switch{grid-area:languages!important;justify-self:center!important}
 .navin>.main-nav{grid-area:menu!important}
 #notice{position:relative;z-index:2}
-@media(max-width:700px){.navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "languages" "menu"!important}.navin>.brand,.navin>.language-switch{justify-self:center!important}.navin>.language-switch{width:min(100%,390px)!important;justify-content:center!important}}
+@media(max-width:700px){.navin{grid-template-columns:1fr!important;grid-template-areas:"brand" "notice" "languages" "menu"!important}.navin>.brand,.navin>.language-switch{justify-self:center!important}.navin>#notice{width:100%!important}.navin>.language-switch{width:min(100%,390px)!important;justify-content:center!important}}
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
