@@ -1385,17 +1385,23 @@ input,select,textarea{accent-color:#d9ae59}
 (()=>{
  const productLink=document.querySelector('.main-nav .nav-tile[href="#products"]');
  if(!productLink)return;
- productLink.addEventListener('click',async event=>{
+ productLink.addEventListener('click',event=>{
   event.preventDefault();event.stopImmediatePropagation();
   const panel=document.getElementById('products'),cards=document.getElementById('cards');
-  if(cards&&!window.siteData)cards.innerHTML='<p class="intro">পণ্যের তথ্য লোড হচ্ছে…</p>';
-  if(window.__kepInitPromise)await window.__kepInitPromise;
-  if(!siteData){window.__kepInitPromise=init();await window.__kepInitPromise;}
   if(panel){document.querySelectorAll('.interactive-panel').forEach(item=>item.hidden=item!==panel);}
-  if(siteData){renderProducts();}
-  else if(cards){cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';}
   document.querySelectorAll('.main-nav .nav-tile[aria-controls]').forEach(tab=>tab.setAttribute('aria-expanded',String(tab===productLink)));
+  if(!siteData){
+   try{
+    const cached=localStorage.getItem('kep-site-data-fast-cache');
+    if(cached){siteData=JSON.parse(cached);customerDataSnapshot=cached;applyKepTheme();renderCountry();renderProducts();}
+   }catch(cacheError){console.warn('Products cache unavailable',cacheError);}
+  }else{renderProducts();}
+  if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্যের তথ্য লোড হচ্ছে…</p>';
   panel?.scrollIntoView({behavior:'auto',block:'start'});
+  Promise.resolve(window.__kepInitPromise).then(()=>{
+   if(siteData){renderCountry();renderProducts();}
+   else if(cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';
+  }).catch(()=>{if(!siteData&&cards)cards.innerHTML='<p class="intro">পণ্য লোড হয়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার Products চাপুন।</p>';});
  },true);
 })();
 </script>
