@@ -770,6 +770,90 @@ try{initCurrencyConverter()}catch(e){console.error("Currency converter initializ
 document.querySelectorAll("[data-i18n]").forEach(()=>{});try{applyStatic(document.documentElement.lang||"bn")}catch(e){console.error("Static translation failed:",e)}
 })();
 </script>
+<script id="kep-currency-converter-repair">
+(()=> {
+ "use strict";
+ const ids=["currencyAmount","currencyFrom","currencyTo","currencySwap","currencyConvert","currencyResult","currencyRateDate","currencyStatus"];
+ const el=Object.fromEntries(ids.map(id=>[id,document.getElementById(id)]));
+ if(!el.currencyAmount||!el.currencyFrom||!el.currencyTo||!el.currencyConvert||!el.currencyResult||!el.currencyStatus)return;
+ if(window.__kepCurrencyConverterRepairV1)return;
+ window.__kepCurrencyConverterRepairV1=true;
+ const codes=["SAR","OMR","AED","QAR","BHD","KWD","MYR","NPR","INR","PKR","PHP","BDT"];
+ const cacheKey="kep-currency-converter-rates-v1";
+ let rates=null,meta={};
+ const lang=()=>document.documentElement.lang||"bn";
+ const messages={
+  bn:{loading:"বিনিময় হার লোড হচ্ছে…",error:"লাইভ বিনিময় হার পাওয়া যায়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",offline:"সংরক্ষিত বিনিময় হার ব্যবহার করা হচ্ছে।",updated:"রেট আপডেট",amount:"সঠিক পরিমাণ লিখুন।"},
+  en:{loading:"Loading exchange rates…",error:"Live exchange rates are unavailable. Check your connection and try again.",offline:"Using saved exchange rates.",updated:"Rate updated",amount:"Enter a valid amount."},
+  ar:{loading:"جارٍ تحميل أسعار الصرف…",error:"أسعار الصرف المباشرة غير متاحة. تحقق من الاتصال وحاول مرة أخرى.",offline:"يتم استخدام أسعار الصرف المحفوظة.",updated:"آخر تحديث للسعر",amount:"أدخل مبلغاً صحيحاً."}
+ };
+ const msg=()=>messages[lang()]||messages.en;
+ const valid=r=>r&&codes.every(c=>Number(r[c])>0&&Number.isFinite(Number(r[c])));
+ function setStatus(s){el.currencyStatus.textContent=s||""}
+ function currencyLabel(c){
+  const region={SAR:"SA",OMR:"OM",AED:"AE",QAR:"QA",BHD:"BH",KWD:"KW",MYR:"MY",NPR:"NP",INR:"IN",PKR:"PK",PHP:"PH",BDT:"BD"}[c];
+  try{return new Intl.DisplayNames([lang()],{type:"region"}).of(region)+" ("+c+")"}catch(_){return c}
+ }
+ function renderOptions(){
+  const fill=(node,preferred)=>{const old=node.value;node.innerHTML=codes.map(c=>'<option value="'+c+'">'+currencyLabel(c)+'</option>').join("");node.value=codes.includes(old)?old:preferred};
+  fill(el.currencyFrom,"OMR");fill(el.currencyTo,"BDT");
+  if(el.currencyFrom.value===el.currencyTo.value)el.currencyTo.value="BDT";
+ }
+ function convert(){
+  if(!rates)return;
+  const amount=Number(el.currencyAmount.value),from=el.currencyFrom.value,to=el.currencyTo.value;
+  if(el.currencyAmount.value.trim()===""||!Number.isFinite(amount)||amount<0){el.currencyResult.textContent="—";setStatus(msg().amount);return}
+  const a=Number(rates[from]),b=Number(rates[to]);
+  if(!(a>0&&b>0)){el.currencyResult.textContent="—";setStatus(msg().error);return}
+  const value=amount*b/a;
+  try{el.currencyResult.textContent=new Intl.NumberFormat(lang(),{maximumFractionDigits:6}).format(value)+" "+({SAR:"ر.س",OMR:"ر.ع.",AED:"د.إ",QAR:"ر.ق",BHD:"د.ب",KWD:"د.ك",MYR:"RM",NPR:"रु",INR:"₹",PKR:"Rs",PHP:"₱",BDT:"৳"}[to]||to)}catch(_){el.currencyResult.textContent=value.toFixed(4)+" "+to}
+  const stamp=meta.updatedAt||meta.date||"";
+  el.currencyRateDate.textContent=stamp?msg().updated+": "+stamp:"";
+  setStatus("");
+ }
+ function normalise(body){
+  const source=body.conversion_rates||body.rates||body.usd;
+  if(!source||typeof source!=="object")return null;
+  const out={};for(const [k,v] of Object.entries(source))out[String(k).toUpperCase()]=Number(v);
+  return valid(out)?out:null;
+ }
+ async function request(url){
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+  try{const response=await fetch(url,{cache:"no-store",signal:controller.signal});if(!response.ok)throw new Error("HTTP "+response.status);return await response.json()}
+  finally{clearTimeout(timer)}
+ }
+ async function load(force=false){
+  let saved=null;try{saved=JSON.parse(localStorage.getItem(cacheKey)||"null")}catch(_){}
+  if(!force&&valid(saved?.rates)&&Date.now()-Number(saved.fetchedAt)<21600000){
+   rates=saved.rates;meta=saved.meta||{};renderOptions();convert();return;
+  }
+  setStatus(msg().loading);
+  const sources=[
+   "https://open.er-api.com/v6/latest/USD",
+   "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
+   "https://latest.currency-api.pages.dev/v1/currencies/usd.json"
+  ];
+  let lastError=null;
+  for(const url of sources){
+   try{
+    const body=await request(url),found=normalise(body);
+    if(!found)throw new Error("Incomplete rate data");
+    rates=found;meta={date:body.time_last_update_utc||body.date||"",updatedAt:body.time_last_update_utc||body.date||""};
+    try{localStorage.setItem(cacheKey,JSON.stringify({rates,meta,fetchedAt:Date.now()}))}catch(_){}
+    renderOptions();convert();return;
+   }catch(error){lastError=error}
+  }
+  if(valid(saved?.rates)){rates=saved.rates;meta=saved.meta||{};renderOptions();convert();setStatus(msg().offline);return}
+  el.currencyResult.textContent="—";setStatus(msg().error+(lastError?.message?" ("+lastError.message+")":""));
+ }
+ el.currencyAmount.addEventListener("input",convert);
+ el.currencyFrom.addEventListener("change",convert);
+ el.currencyTo.addEventListener("change",convert);
+ el.currencyConvert.addEventListener("click",()=>{if(rates)convert();else load(true)});
+ if(el.currencySwap)el.currencySwap.addEventListener("click",()=>{const previous=el.currencyFrom.value;el.currencyFrom.value=el.currencyTo.value;el.currencyTo.value=previous;convert()});
+ load(false);
+})();
+</script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script><style>
 /* GPS PICKER + NEARBY LANDMARKS v2 */
 .current-location-box{margin:6px 0;padding:13px;border:1px solid #d9b45e;border-radius:14px;background:linear-gradient(135deg,#132b43,#091827);color:#f7f1e5}
