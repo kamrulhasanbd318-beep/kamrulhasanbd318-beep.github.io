@@ -620,6 +620,63 @@ initCurrencyConverter();
 .kep-tracking-shortcut .track-copy{display:flex;flex-direction:column;gap:2px}
 .kep-tracking-shortcut small{font-size:.7rem;font-weight:700;opacity:.8}
 @media(max-width:520px){.kep-tracking-shortcut{right:10px;bottom:68px;padding:9px 12px;gap:8px;font-size:.82rem}.kep-tracking-shortcut .track-icon{width:27px;height:27px;flex-basis:27px;font-size:15px}.kep-tracking-shortcut small{font-size:.65rem}}
+
+
+/* KEP PREMIUM VISUAL REDESIGN v2 — CSS ONLY; content and functionality unchanged */
+:root{--kep-gold:#f5d58b;--kep-gold-deep:#b98a36;--kep-glass:rgba(16,31,51,.78);--kep-line:rgba(232,198,121,.28)}
+body{background:radial-gradient(ellipse at 12% 0%,#263f60 0,transparent 34%),radial-gradient(ellipse at 88% 16%,#47351d 0,transparent 28%),linear-gradient(145deg,#050b15,#0a1728 52%,#080e19);background-attachment:fixed}
+.nav{background:rgba(5,12,24,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:0;border-bottom:1px solid var(--kep-line);box-shadow:0 12px 38px #0007}
+.navin{padding-top:13px;padding-bottom:13px}
+.brand{font-size:1.08rem;letter-spacing:.055em;text-shadow:0 2px 18px #e5bc6344}
+.main-nav{gap:9px}
+.main-nav .nav-tile,nav a{border:1px solid #ffffff20;border-radius:999px;background:linear-gradient(145deg,rgba(45,67,94,.88),rgba(13,27,46,.92));box-shadow:0 5px 16px #0004,inset 0 1px #ffffff14;padding:9px 15px;min-height:42px;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s}
+.main-nav .nav-tile:hover,nav a:hover{transform:translateY(-2px);border-color:#f5d58b;background:linear-gradient(135deg,#584728,#203957);box-shadow:0 8px 22px #0006,0 0 0 2px #f5d58b12;color:#fff4d5}
+.main-nav .nav-tile[aria-expanded=true]{background:linear-gradient(135deg,#ffe8ad,#c99742);color:#182338;border-color:#fff0c5;box-shadow:0 7px 22px #d6a94d44}
+.language-switch{padding:5px 7px;border:1px solid #ffffff20;border-radius:999px;background:#071321b8;box-shadow:inset 0 1px #ffffff10}
+.lang-btn{border-radius:999px;border-color:#ffffff20;background:#1b3049;padding:8px 14px}
+.lang-btn.active{background:linear-gradient(135deg,#fff0c4,#d2a24e);box-shadow:0 4px 16px #e4bd6840}
+.hero{border:0;border-bottom:1px solid var(--kep-line);background:radial-gradient(ellipse at 78% 16%,#a17a3438,transparent 30%),radial-gradient(ellipse at 15% 90%,#2b638255,transparent 38%),linear-gradient(120deg,#07111f,#132b46 56%,#211d18)}
+.heroIn{min-height:440px}
+.hero .eyebrow,.kicker{border-color:#f5d58b66;background:rgba(232,198,121,.1);box-shadow:inset 0 1px #ffffff14}
+.hero h1{filter:drop-shadow(0 6px 22px #e3b95b22)}
+.btn{border-radius:999px;min-height:46px;padding:12px 21px;box-shadow:0 8px 22px #0003;transition:transform .18s,filter .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 12px 26px #0005}
+.btn.gold,.gold{background:linear-gradient(135deg,#fff0c4,#d4a64f 72%,#b7832e);border:1px solid #fff0c4;color:#172238}
+.btn.outline,.outline{border:1px solid #f1d18a88;background:rgba(16,37,60,.75);backdrop-filter:blur(8px)}
+.notice,.notice-secondary{border:1px solid #d9b45e55;background:linear-gradient(100deg,rgba(70,47,17,.88),rgba(23,48,72,.94),rgba(18,50,51,.88));box-shadow:0 10px 28px #0003}
+.section{border-bottom:1px solid #ffffff12}
+.section h2{letter-spacing:-.025em;text-shadow:0 4px 18px #d6ad5b1f}
+.cards{gap:22px}
+.card,.payment-country,.family-card,.delivery-card,.contactbox,.active-payment-wrap,.policy article{border:1px solid #e7c87855;border-radius:23px;background:linear-gradient(145deg,rgba(31,53,78,.92),rgba(9,22,39,.96));box-shadow:0 18px 44px #0005,inset 0 1px #ffffff13;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .22s,border-color .22s,box-shadow .22s}
+.card:hover,.payment-country:hover,.family-card:hover{transform:translateY(-4px);border-color:#f5d58b99;box-shadow:0 24px 48px #0007,0 0 24px #e7c87812}
+.card img{border-bottom:1px solid #e7c87855}
+.cardbody{padding:23px}
+.product-rates,.marketTools label,.payment-foot{border:1px solid #ffffff20;border-radius:16px;background:rgba(5,17,31,.52);box-shadow:inset 0 1px #ffffff0d}
+.product-actions span,.product-actions.location-first-prompt{border:1px solid #e7c87866;border-radius:999px;background:linear-gradient(145deg,#263f5c,#101e31);box-shadow:0 5px 14px #0003}
+.product-actions span:hover{border-color:#ffe8ad;background:linear-gradient(135deg,#514328,#203957)}
+.city{border-radius:999px;padding:9px 15px;background:linear-gradient(135deg,#174a50,#17324c);border-color:#54c6c7}
+.delivery-card{background:radial-gradient(ellipse at top,#65502b 0,rgba(21,36,55,.97) 66%);border-width:1px}
+.contactbox{background:linear-gradient(145deg,rgba(23,47,72,.96),rgba(7,18,32,.97))}
+.contact-option{border-radius:17px;box-shadow:0 8px 20px #0003,inset 0 1px #ffffff22;transition:transform .2s,filter .2s}
+.contact-option:hover{transform:translateY(-3px) scale(1.01);filter:brightness(1.1)}
+.order-modal{border-radius:26px;background:linear-gradient(145deg,#1b3552,#091525);box-shadow:0 30px 100px #000c}
+.order-modal-close{border-radius:50%}
+input,select,textarea{accent-color:#d9ae59}
+:focus-visible{outline:3px solid #ffe3a0!important;outline-offset:3px}
+.footer{background:rgba(3,8,15,.94);border-top:1px solid var(--kep-line)}
+@media(max-width:720px){
+ .nav{background:rgba(5,12,24,.94)}
+ .navin{gap:10px}
+ .main-nav{display:flex;flex-wrap:nowrap;overflow-x:auto;padding:3px 2px 9px;scrollbar-width:thin;scroll-snap-type:x proximity}
+ .main-nav .nav-tile,nav a{flex:0 0 auto;scroll-snap-align:start}
+ .language-switch{align-self:flex-start}
+ .heroIn{min-height:0;padding:52px 0}
+ .cards{gap:16px}
+ .cardbody{padding:18px}
+ .section{padding:40px 0}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
 </style>
 <a class="kep-tracking-shortcut" href="./tracking.html" aria-label="অর্ডার ট্র্যাক করুন">
  <span class="track-icon" aria-hidden="true">📦</span>
